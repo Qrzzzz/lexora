@@ -1,5 +1,10 @@
 # Lexora
 
+> [!WARNING]
+> **Status: Idea / Planning**
+> Lexora is currently a concept-stage project.
+> This repository is used to collect early product ideas, interface notes, import-format drafts, and technical decisions. It does not contain a working iOS application yet.
+
 Lexora 是一个面向 iOS 的轻量化背单词应用构想。
 
 它的目标不是做一个复杂的语言学习平台，而是提供一个干净、离线、可控的个人词库工具。用户可以导入自己的单词表，并通过类似卡片式的学习界面进行记忆和复习。
