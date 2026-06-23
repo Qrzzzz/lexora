@@ -2,6 +2,7 @@
 
 > [!WARNING]
 > **Status: Idea / Planning**
+> 
 > Lexora is currently a concept-stage project.
 > This repository is used to collect early product ideas, interface notes, import-format drafts, and technical decisions. It does not contain a working iOS application yet.
 
