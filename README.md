@@ -156,3 +156,12 @@ Lexora 只考虑 iOS 端。
 Status: Idea / Planning
 
 Lexora is currently a concept-stage project.
+
+## License
+
+This repository is not open source.  
+Lexora is made available for personal, educational, and non-commercial reference only.
+
+Commercial use, redistribution, repackaging, publishing derivative products, or using this project as part of any commercial app, service, template, or product is prohibited without prior written permission.
+
+See [LICENSE](./LICENSE) for details.
