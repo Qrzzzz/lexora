@@ -245,6 +245,10 @@ kbd {
 .card-example {
   display: none;
 }
+.loading-note {
+  font-size: 16px;
+  color: var(--muted);
+}
 .spelling-form {
   width: 100%;
   max-width: 470px;

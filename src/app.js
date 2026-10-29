@@ -1016,6 +1016,10 @@ function bind() {
 }
 
 async function boot() {
+  $("study-stage").setAttribute("aria-busy", "true");
+  $("study-stage").append(element("p", "loading-note", "正在载入词册…"));
+  $("study-controls").hidden = true;
+  $("settings-trigger").disabled = true;
   try {
     const saved = await loadWorkspace();
     if (saved) workspace = validateWorkspace(saved);
@@ -1035,6 +1039,8 @@ async function boot() {
     );
   }
   revealed = workspace.preferences.showAnswer;
+  $("settings-trigger").disabled = false;
+  $("study-stage").removeAttribute("aria-busy");
   bind();
   renderStudy();
   if (!blockAutosave) save();

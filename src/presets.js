@@ -13,11 +13,12 @@ export const presets = [
 
 export async function loadPreset(preset = presets[0]) {
   const controller = new AbortController(),
-    timer = setTimeout(() => controller.abort(), 15000);
+    timer = setTimeout(() => controller.abort(), 60000);
   try {
     const response = await fetch(preset.url, {
       cache: "no-cache",
       signal: controller.signal,
+      priority: "high",
     });
     if (!response.ok)
       throw Error("样例词册暂时无法加载，请稍后重试，或导入本地文件");
