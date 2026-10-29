@@ -52,7 +52,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 14px/1.7 var(--serif);
+  font: 18px/1.7 var(--serif);
   -webkit-font-smoothing: antialiased;
 }
 button,
@@ -118,7 +118,7 @@ a {
   display: none !important;
 }
 kbd {
-  font-size: 10px;
+  font-size: 16px;
   color: var(--muted);
 }
 .skip-link {
@@ -165,7 +165,7 @@ kbd {
   pointer-events: auto;
 }
 .brand {
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.5px;
   text-decoration: none;
   color: var(--muted);
@@ -272,7 +272,7 @@ kbd {
   font-weight: 400;
 }
 .spelling-result {
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 14px;
   color: var(--muted);
 }
@@ -303,7 +303,7 @@ kbd {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   padding: 8px;
   min-height: 48px;
@@ -327,7 +327,7 @@ kbd {
   position: fixed;
   right: 33px;
   bottom: 37px;
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   padding: 8px;
 }
@@ -351,7 +351,7 @@ kbd {
   margin-top: 24px;
 }
 .review-badge {
-  font-size: 10px;
+  font-size: 16px;
   color: var(--muted);
   letter-spacing: 2px;
   margin-bottom: 25px;
@@ -361,10 +361,10 @@ kbd {
   gap: 22px;
   margin-top: 25px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
 }
 .review-actions button {
-  font-size: 12px;
+  font-size: 16px;
 }
 .empty-stage h1 {
   font-size: 35px;
@@ -414,7 +414,7 @@ kbd {
   scrollbar-width: none;
 }
 .workspace-tabs button {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   white-space: nowrap;
   padding: 12px 0;
@@ -425,13 +425,13 @@ kbd {
   border-color: var(--ink);
 }
 .text-button {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   padding: 6px 0;
   white-space: nowrap;
 }
 .solid-button {
-  font-size: 12px;
+  font-size: 16px;
   padding: 10px 20px;
   background: var(--ink);
   color: var(--paper);
@@ -444,7 +444,7 @@ kbd {
 }
 .small-note,
 .import-area p {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -464,13 +464,13 @@ kbd {
   font-weight: 400;
 }
 .deck-row p {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   margin-top: 5px;
 }
 .deck-row.is-current h3::after {
   content: " · 当前";
-  font-size: 10px;
+  font-size: 16px;
   color: var(--muted);
 }
 .import-area {
@@ -483,7 +483,7 @@ kbd {
   border-bottom: 1px solid var(--line);
 }
 .import-area h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 .import-area.is-dragging {
@@ -501,11 +501,11 @@ kbd {
 }
 .setting-row h2,
 .setting-row h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 .setting-row p {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -514,7 +514,7 @@ select {
   border: 0;
   border-bottom: 1px solid var(--line);
   border-radius: 0;
-  font-size: 12px;
+  font-size: 16px;
   padding: 6px;
   max-width: 180px;
 }
@@ -595,7 +595,7 @@ select {
 }
 .inline-notice p,
 .import-sample {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--meaning);
   margin-top: 12px;
   overflow-wrap: anywhere;
@@ -608,10 +608,10 @@ select {
   gap: 20px;
   margin-top: 20px;
   align-items: center;
-  font-size: 12px;
+  font-size: 16px;
 }
 .error-note {
-  font-size: 12px;
+  font-size: 16px;
   white-space: pre-wrap;
   color: var(--error);
   padding: 15px 0;
@@ -627,7 +627,7 @@ select {
   border-bottom: 1px solid var(--line);
   background: none;
   border-radius: 0;
-  font-size: 13px;
+  font-size: 16px;
   padding: 8px 0;
 }
 .library-tools input::placeholder {
@@ -647,13 +647,13 @@ select {
   overflow-wrap: anywhere;
 }
 .library-row p {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--meaning);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 .library-row button {
-  font-size: 11px;
+  font-size: 16px;
   white-space: nowrap;
 }
 .library-row.is-mastered strong {
@@ -661,7 +661,7 @@ select {
   text-decoration: line-through;
 }
 .help-lines p {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--meaning);
   margin: 20px 0;
 }
@@ -671,7 +671,7 @@ select {
 .storage-warning {
   position: relative;
   z-index: 15;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--error);
   margin: 70px auto 0;
   max-width: 720px;
@@ -724,7 +724,7 @@ select {
     left: 24px;
   }
   .brand {
-    font-size: 13px;
+    font-size: 16px;
   }
   .study-layout {
     padding: 90px 0 150px;
@@ -760,7 +760,7 @@ select {
   }
   .study-action {
     min-height: 52px;
-    font-size: 12px;
+    font-size: 16px;
     padding: 12px 4px;
   }
   .study-action:hover {
@@ -772,7 +772,7 @@ select {
   #undo {
     bottom: calc(84px + env(safe-area-inset-bottom));
     right: 24px;
-    font-size: 10px;
+    font-size: 16px;
     min-height: 38px;
   }
   #undo kbd {
@@ -789,16 +789,16 @@ select {
     gap: 24px;
   }
   .workspace-tabs button {
-    font-size: 11px;
+    font-size: 16px;
   }
   .library-tools {
     gap: 15px;
   }
   .library-tools input {
-    font-size: 12px;
+    font-size: 16px;
   }
   .library-tools select {
-    font-size: 11px;
+    font-size: 16px;
     max-width: 95px;
   }
   .library-row {
@@ -806,10 +806,10 @@ select {
     grid-template-columns: 1fr 1.1fr auto;
   }
   .library-row strong {
-    font-size: 15px;
+    font-size: 16px;
   }
   .library-row p {
-    font-size: 11px;
+    font-size: 16px;
   }
   .theme-options {
     gap: 10px;
@@ -818,7 +818,7 @@ select {
     gap: 16px;
   }
   .import-area p {
-    font-size: 10px;
+    font-size: 16px;
   }
   .solid-button {
     padding: 10px 15px;
@@ -857,14 +857,14 @@ select {
 .history-entry > .control-label::before {
   display: none;
 }
-.history-term::before {
+.has-history-ink .history-term::before {
   content: "";
   position: absolute;
   z-index: -1;
   left: -0.08em;
   right: -0.08em;
-  bottom: 0.035em;
-  height: 0.55em;
+  top: 0.34em;
+  height: 0.66em;
   background: var(--control-ink);
   transform: scaleX(0);
   transform-origin: left center;
@@ -874,13 +874,14 @@ select {
     opacity 150ms;
   pointer-events: none;
 }
-.history-entry[aria-pressed="true"] .history-term::before,
-.history-entry:focus-visible .history-term::before,
-.history-entry.is-pressed .history-term::before {
+.history-entry.has-history-ink[aria-pressed="true"] .history-term::before,
+.history-entry.has-history-ink:focus-visible .history-term::before,
+.history-entry.has-history-ink.is-pressed .history-term::before {
   transform: scaleX(1);
   opacity: 1;
 }
-.history-entry.is-feedback:not([aria-pressed="true"]) .history-term::before {
+.history-entry.has-history-ink.is-feedback:not([aria-pressed="true"])
+  .history-term::before {
   animation: marker-stroke 520ms var(--control-ease);
 }
 .term-button {
@@ -941,7 +942,7 @@ select {
 }
 .section-heading {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin: 25px 0 8px;
 }
@@ -955,10 +956,10 @@ select {
 }
 .preset-row h3 {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
 }
 .preset-row p {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   margin-top: 5px;
 }
@@ -966,7 +967,7 @@ select {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 12px;
+  font-size: 16px;
   white-space: nowrap;
 }
 .dictionary-entry {
@@ -979,7 +980,7 @@ select {
   line-height: 1.4;
 }
 .entry-pronunciations {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
   margin-top: 16px;
 }
@@ -999,14 +1000,14 @@ select {
 }
 .entry-sense h3 {
   font-weight: 400;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
 }
 .entry-sense ol {
   margin: 0;
   padding-left: 20px;
   line-height: 2;
-  font-size: 15px;
+  font-size: 16px;
 }
 .entry-sense li {
   white-space: pre-wrap;
@@ -1016,12 +1017,12 @@ select {
   border-top: 1px solid var(--line);
   margin-top: 20px;
   padding-top: 18px;
-  font-size: 10px;
+  font-size: 16px;
   color: var(--muted);
 }
 @media (max-width: 760px) {
   .library-term {
-    font-size: 15px;
+    font-size: 16px;
   }
   .entry-term {
     font-size: 34px;
@@ -1034,7 +1035,7 @@ select {
     gap: 10px;
   }
   .entry-sense ol {
-    font-size: 14px;
+    font-size: 16px;
   }
   .preset-actions {
     gap: 14px;
@@ -1078,7 +1079,7 @@ a[href]:not(.brand):not(.skip-link) {
   display: inline-flex;
   align-items: center;
   padding: 6px 4px;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
 }
 .ui-control > .control-label {
@@ -1233,7 +1234,7 @@ a[href]:not(.brand):not(.skip-link) {
   font-size: 18px;
 }
 .setting-row p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
   max-width: 420px;
 }
@@ -1359,7 +1360,7 @@ a[href]:not(.brand):not(.skip-link) {
   min-width: 0;
 }
 .library-row p {
-  font-size: 14px;
+  font-size: 16px;
 }
 .deck-row h3 {
   font-size: 20px;
@@ -1367,7 +1368,7 @@ a[href]:not(.brand):not(.skip-link) {
 .deck-row p,
 .preset-row p,
 .small-note {
-  font-size: 14px;
+  font-size: 16px;
 }
 .preset-row h3,
 .import-area h3 {
@@ -1482,7 +1483,7 @@ a[href]:not(.brand):not(.skip-link) {
     font-size: 17px;
   }
   .setting-row p {
-    font-size: 14px;
+    font-size: 16px;
     max-width: 200px;
   }
   .theme-options {
@@ -1509,7 +1510,7 @@ a[href]:not(.brand):not(.skip-link) {
     min-height: 52px;
   }
   .library-tools select {
-    font-size: 15px;
+    font-size: 16px;
     min-width: 108px;
     padding: 10px 8px;
   }
@@ -1521,19 +1522,19 @@ a[href]:not(.brand):not(.skip-link) {
     font-size: 17px;
   }
   .library-row button {
-    font-size: 15px;
+    font-size: 16px;
     min-width: 58px;
     padding: 8px;
   }
   .library-row p {
-    font-size: 13px;
+    font-size: 16px;
   }
   .preset-actions {
     gap: 7px;
   }
   .preset-actions button,
   .preset-actions a {
-    font-size: 15px;
+    font-size: 16px;
     padding: 10px 8px;
   }
   .preset-row h3 {
@@ -1545,7 +1546,7 @@ a[href]:not(.brand):not(.skip-link) {
     padding: 0 16px;
   }
   .workspace-tabs button {
-    font-size: 15px;
+    font-size: 16px;
     padding: 12px 5px;
   }
   .theme-options button {
@@ -1556,7 +1557,7 @@ a[href]:not(.brand):not(.skip-link) {
     font-size: 17px;
   }
 }
-.history-entry[aria-pressed="true"] .history-term::before {
+.history-entry.has-history-ink[aria-pressed="true"] .history-term::before {
   animation: marker-settle 320ms var(--control-ease) both;
 }
 @keyframes marker-settle {

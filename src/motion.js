@@ -128,13 +128,14 @@ export function createMotion(stage, enabled, current) {
     host.setAttribute("aria-hidden", "true");
     document.body.append(host);
     particles = host;
-    for (let i = 0; i < 20; i++) {
+    const finished = [];
+    for (let i = 0; i < 24; i++) {
       const chip = document.createElement("i");
-      const along = (i / 19 - 0.5) * word.width * 0.9;
+      const along = (i / 23 - 0.5) * word.width * 0.9;
       const side = i % 2 ? 1 : -1;
-      const dx = side * (18 + (i % 5) * 10);
-      const dy = side * (15 + (i % 4) * 9);
-      const size = [2, 3, 2, 4, 2][i % 5];
+      const dx = side * (30 + (i % 5) * 13);
+      const dy = side * (22 + (i % 4) * 12);
+      const size = [4, 6, 4, 7, 5][i % 5];
       chip.className = "square-particle";
       Object.assign(chip.style, {
         left: `${word.left + word.width * 0.5 + along}px`,
@@ -143,14 +144,19 @@ export function createMotion(stage, enabled, current) {
         height: `${size}px`,
       });
       host.append(chip);
-      animate(
+      const animation = animate(
         chip,
         [
           { transform: "translate(0,0) rotate(-9deg) scale(.25)", opacity: 0 },
           {
             transform: `translate(${dx * 0.2}px,${dy * 0.2}px) rotate(${side * 18}deg) scale(1)`,
-            opacity: 0.62,
+            opacity: 0.94,
             offset: 0.2,
+          },
+          {
+            transform: `translate(${dx * 0.68}px,${dy * 0.64 + 5}px) rotate(${side * (35 + i * 7)}deg) scale(.85)`,
+            opacity: 0.8,
+            offset: 0.55,
           },
           {
             transform: `translate(${dx}px,${dy + 14}px) rotate(${side * (55 + i * 11)}deg) scale(.2)`,
@@ -158,19 +164,20 @@ export function createMotion(stage, enabled, current) {
           },
         ],
         {
-          duration: 310 + (i % 4) * 30,
+          duration: 320 + (i % 4) * 30,
           delay: 44 + (i % 3) * 8,
           easing: "cubic-bezier(.18,.7,.28,1)",
         },
       );
+      if (animation)
+        finished.push(
+          animation.finished.then(
+            () => chip.remove(),
+            () => chip.remove(),
+          ),
+        );
     }
-    const last = animate(host, [{ opacity: 1 }, { opacity: 1 }], {
-      duration: 465,
-    });
-    last?.finished.then(
-      () => host.remove(),
-      () => host.remove(),
-    );
+    Promise.all(finished).then(() => host.remove());
   }
   function captureHistory(list) {
     return new Map(

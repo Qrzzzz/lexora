@@ -1,19 +1,33 @@
+import { icon, renderIcons } from "./icons.js";
 // Text-weight and ink feedback borrow the document site's marker treatment.
 export function installControlFeedback({ onInteraction, motionEnabled }) {
   const selector = "button,select,a[href]";
   const timers = new WeakMap();
   function prepare(root) {
     if (!(root instanceof Element)) return;
+    if (
+      root.closest(
+        ".word-motion-layer,.motion-layer,.square-particle-layer,.site-loading",
+      )
+    )
+      return;
+    renderIcons(root);
     const targets = [
       ...(root.matches(selector) ? [root] : []),
       ...root.querySelectorAll(selector),
     ];
     for (const el of targets) {
-      if (
-        el.closest(".word-motion-layer,.motion-layer") ||
-        el.tagName === "SELECT"
-      )
+      if (el.closest(".word-motion-layer,.motion-layer,.site-loading"))
         continue;
+      if (el.tagName === "SELECT") {
+        if (!el.parentElement.classList.contains("select-control")) {
+          const wrap = document.createElement("span");
+          wrap.className = "select-control";
+          el.before(wrap);
+          wrap.append(el, icon("chevron-down"));
+        }
+        continue;
+      }
       el.classList.add("ui-control");
       if (
         el.matches("[role=switch]") ||
@@ -22,7 +36,21 @@ export function installControlFeedback({ onInteraction, motionEnabled }) {
         continue;
       const label = document.createElement("span");
       label.className = "control-label";
-      label.append(...el.childNodes);
+      const content = [...el.childNodes].filter(
+        (node) =>
+          !(node instanceof SVGElement && node.classList.contains("icon")),
+      );
+      if (
+        !content.some(
+          (node) =>
+            node.textContent.trim() ||
+            (node instanceof Element && node.children.length),
+        )
+      ) {
+        el.classList.add("icon-only");
+        continue;
+      }
+      label.append(...content);
       el.append(label);
     }
   }

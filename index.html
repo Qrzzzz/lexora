@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="stylesheet" href="./src/original-word-motion.css" />
     <link rel="stylesheet" href="./src/history.css" />
+    <link rel="stylesheet" href="./src/workspace.css" />
     <link rel="stylesheet" href="./src/loading/original-loading.css" />
     <link rel="stylesheet" href="./src/loading/adapter.css" />
     <script type="module" src="./src/app.js"></script>
@@ -86,7 +87,7 @@
             aria-controls="workspace"
             aria-label="设置"
           >
-            ···
+            <span data-icon="settings"></span>
           </button>
         </nav>
       </header>
@@ -125,8 +126,8 @@
                 class="study-action"
                 aria-keyshortcuts="Space J ArrowLeft"
               >
-                <span class="action-icon" aria-hidden="true">←</span
-                ><span>下一个</span><kbd>Space</kbd>
+                <span data-icon="arrow-right"></span><span>下一个</span
+                ><kbd>Space</kbd>
               </button>
               <button
                 id="reveal"
@@ -136,15 +137,13 @@
                 <span id="reveal-label">翻开释义</span><kbd>Enter</kbd>
               </button>
               <button id="master" class="study-action master-action">
-                <span>斩</span
-                ><span class="action-icon" aria-hidden="true">↗</span
-                ><kbd>X</kbd>
+                <span>斩</span><span data-icon="scissors"></span><kbd>X</kbd>
               </button>
             </div>
             <div class="reading-foot">
               <span id="reading-caption">将熟悉的斩去，让陌生的再见。</span
               ><button id="undo" disabled>
-                <span aria-hidden="true">↶</span> 撤回 <kbd>U</kbd>
+                <span data-icon="undo-2"></span> 撤回 <kbd>U</kbd>
               </button>
             </div>
           </div>
@@ -160,7 +159,9 @@
               <span class="eyebrow" id="workspace-eyebrow" hidden></span>
               <h1 id="workspace-heading" tabindex="-1">词册</h1>
             </div>
-            <button id="close-workspace" class="text-button">返回 ↑</button>
+            <button id="close-workspace" class="text-button">
+              <span data-icon="arrow-left"></span>返回
+            </button>
           </header>
           <nav class="workspace-tabs" aria-label="页面">
             <button data-tab="decks">词册</button
@@ -179,7 +180,8 @@
                 <h3>导入词册</h3>
                 <p>JSON / JSONL，也可拖入文件。</p>
               </div>
-              <button id="choose-deck" class="solid-button">选择文件 ＋</button
+              <button id="choose-deck" class="solid-button">
+                <span data-icon="plus"></span>选择文件</button
               ><input
                 id="deck-file"
                 type="file"
@@ -190,8 +192,8 @@
             <p class="small-note">
               <a href="./examples/dictionary-v2.json" download>格式示例</a> ·
               <a href="./docs/deck-format.md" target="_blank" rel="noopener"
-                >格式说明 ↗</a
-              >
+                >格式说明 <span data-icon="arrow-up-right"></span
+              ></a>
             </p>
             <section
               id="import-preview"
@@ -226,105 +228,124 @@
             <p id="library-count" class="small-note" role="status"></p>
             <div id="library-list"></div>
             <button id="library-more" class="text-button" hidden>
-              再展开 100 条 ↓
+              <span data-icon="chevron-down"></span>更多条目
             </button>
           </div>
           <div id="panel-entry" class="panel" hidden></div>
           <div id="panel-settings" class="panel" hidden>
-            <div class="setting-row">
-              <div><h2>模式</h2></div>
-              <select id="mode" aria-label="阅读方式">
-                <option value="recall">翻面回想</option>
-                <option value="spelling">词汇拼写</option>
-              </select>
-            </div>
-            <div class="setting-row">
-              <div>
-                <h2>顺序</h2>
-                <p>下轮生效</p>
-              </div>
-              <select id="order" aria-label="相遇的顺序">
-                <option value="source">原序</option>
-                <option value="shuffle">乱序</option>
-              </select>
-            </div>
-            <div class="setting-row">
-              <div><h2>配色</h2></div>
-              <div
-                id="theme-options"
-                class="theme-options"
-                role="group"
-                aria-label="阅读配色"
+            <div class="settings-layout">
+              <section
+                class="settings-section reading-settings"
+                aria-labelledby="reading-settings-title"
               >
-                <button data-theme="paper" aria-label="暖纸" title="暖纸">
-                  <i></i></button
-                ><button data-theme="white" aria-label="素白" title="素白">
-                  <i></i></button
-                ><button data-theme="mist" aria-label="浅雾" title="浅雾">
-                  <i></i></button
-                ><button data-theme="night" aria-label="夜读" title="夜读">
-                  <i></i>
-                </button>
-              </div>
-            </div>
-            <div class="setting-row">
-              <div><h2>纸纹</h2></div>
-              <button
-                id="texture"
-                class="toggle"
-                role="switch"
-                aria-checked="false"
-                aria-label="纸张肌理"
+                <h2 id="reading-settings-title" class="settings-title">学习</h2>
+                <div class="reading-options">
+                  <label class="reading-option"
+                    ><span>模式</span>
+                    <select id="mode" aria-label="阅读方式">
+                      <option value="recall">回想</option>
+                      <option value="spelling">拼写</option>
+                    </select>
+                  </label>
+                  <label class="reading-option"
+                    ><span>顺序 <small>下轮生效</small></span>
+                    <select id="order" aria-label="相遇的顺序">
+                      <option value="source">原序</option>
+                      <option value="shuffle">乱序</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+              <section
+                class="settings-section paper-settings"
+                aria-labelledby="paper-settings-title"
               >
-                <span></span>
+                <h2 id="paper-settings-title" class="settings-title">纸面</h2>
+                <div
+                  id="theme-options"
+                  class="theme-options"
+                  role="group"
+                  aria-label="阅读配色"
+                >
+                  <button data-theme="white" aria-label="素白" title="素白">
+                    <i><span data-icon="check"></span></i
+                    ><span>素白</span></button
+                  ><button data-theme="paper" aria-label="暖纸" title="暖纸">
+                    <i><span data-icon="check"></span></i
+                    ><span>暖纸</span></button
+                  ><button data-theme="mist" aria-label="浅雾" title="浅雾">
+                    <i><span data-icon="check"></span></i
+                    ><span>浅雾</span></button
+                  ><button data-theme="night" aria-label="夜读" title="夜读">
+                    <i><span data-icon="check"></span></i><span>夜读</span>
+                  </button>
+                </div>
+                <div class="setting-row">
+                  <div><h3>纸纹</h3></div>
+                  <button
+                    id="texture"
+                    class="toggle"
+                    role="switch"
+                    aria-checked="false"
+                    aria-label="纸张肌理"
+                  >
+                    <span></span>
+                  </button>
+                </div>
+              </section>
+              <section
+                class="settings-section feedback-settings"
+                aria-labelledby="feedback-settings-title"
+              >
+                <h2 id="feedback-settings-title" class="settings-title">
+                  反馈
+                </h2>
+                <div class="setting-row">
+                  <div><h3>动效</h3></div>
+                  <button
+                    id="motion"
+                    class="toggle"
+                    role="switch"
+                    aria-checked="true"
+                    aria-label="学习动画"
+                  >
+                    <span></span>
+                  </button>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <h3>震动</h3>
+                    <p id="haptics-note" hidden>此浏览器不支持</p>
+                  </div>
+                  <button
+                    id="haptics"
+                    class="toggle"
+                    role="switch"
+                    aria-checked="true"
+                    aria-label="震动反馈"
+                  >
+                    <span></span>
+                  </button>
+                </div>
+                <div class="setting-row upcoming-row">
+                  <div><h3>音效</h3></div>
+                  <button
+                    id="sound"
+                    class="future-control"
+                    role="switch"
+                    aria-checked="false"
+                    aria-label="学习音效（后续开发）"
+                    disabled
+                  >
+                    后续开发
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div class="settings-footer">
+              <button id="restart-round" class="text-button">
+                <span data-icon="rotate-ccw"></span>重开本轮
               </button>
-            </div>
-            <div class="setting-row">
-              <div><h2>动效</h2></div>
-              <button
-                id="motion"
-                class="toggle"
-                role="switch"
-                aria-checked="true"
-                aria-label="学习动画"
-              >
-                <span></span>
-              </button>
-            </div>
-            <div class="setting-row">
-              <div>
-                <h2>音效</h2>
-                <p>后续开发</p>
-              </div>
-              <button
-                id="sound"
-                class="toggle"
-                role="switch"
-                aria-checked="false"
-                aria-label="学习音效（后续开发）"
-                disabled
-              >
-                <span></span>
-              </button>
-            </div>
-            <div class="setting-row">
-              <div>
-                <h2>震动</h2>
-                <p id="haptics-note" hidden>当前浏览器不支持网页震动</p>
-              </div>
-              <button
-                id="haptics"
-                class="toggle"
-                role="switch"
-                aria-checked="true"
-                aria-label="震动反馈"
-              >
-                <span></span>
-              </button>
-            </div>
-            <div class="setting-row">
-              <div><h2>本轮</h2></div>
-              <button id="restart-round" class="text-button">重新开始 ↻</button>
             </div>
           </div>
           <div id="panel-backup" class="panel" hidden>
@@ -334,18 +355,23 @@
                 <h3>完整备份</h3>
                 <p>词册、进度、设置</p>
               </div>
-              <button id="export-backup" class="text-button">导出 ↓</button>
+              <button id="export-backup" class="text-button">
+                <span data-icon="download"></span>导出
+              </button>
             </div>
             <div class="setting-row">
               <div>
                 <h3>当前词册</h3>
                 <p>仅内容，不含进度</p>
               </div>
-              <button id="export-deck" class="text-button">导出 ↓</button>
+              <button id="export-deck" class="text-button">
+                <span data-icon="download"></span>导出
+              </button>
             </div>
             <div class="setting-row">
               <div><h3>恢复备份</h3></div>
-              <button id="choose-backup" class="text-button">导入 ↑</button
+              <button id="choose-backup" class="text-button">
+                <span data-icon="upload"></span>导入</button
               ><input
                 id="backup-file"
                 type="file"
@@ -366,20 +392,42 @@
             <p id="backup-error" class="error-note" role="alert" hidden></p>
           </div>
           <div id="panel-help" class="panel" hidden>
-            <div class="help-lines">
-              <p>再遇：留到下轮。斩：标记掌握。回顾：仅回看，不改变进度。</p>
-              <p>
-                空格 下一个 · Enter 释义 / 检查 · J / ← 下一个 · X / → 斩 · U
-                撤回 · S 设置 · B 词册 · Esc 返回。
-              </p>
-              <p>
-                手机直接点按底部按钮。撤回记录仅在本次打开期间保留，最多 30 步。
-              </p>
-              <p>
-                文件在本地读取，不上传。首次打开载入样例词册，也可导入自己的
-                JSON。
-              </p>
+            <div class="help-grid">
+              <div class="help-action">
+                <span data-icon="arrow-right"></span>
+                <h2>下一个</h2>
+                <kbd>空格</kbd>
+                <p>留到下一轮</p>
+              </div>
+              <div class="help-action">
+                <span data-icon="eye"></span>
+                <h2>释义</h2>
+                <kbd>Enter</kbd>
+                <p>显示或隐藏</p>
+              </div>
+              <div class="help-action">
+                <span data-icon="scissors"></span>
+                <h2>斩</h2>
+                <kbd>X</kbd>
+                <p>标为掌握</p>
+              </div>
+              <div class="help-action">
+                <span data-icon="undo-2"></span>
+                <h2>撤回</h2>
+                <kbd>U</kbd>
+              </div>
+              <div class="help-action">
+                <span data-icon="book-open"></span>
+                <h2>词册</h2>
+                <kbd>B</kbd>
+              </div>
+              <div class="help-action">
+                <span data-icon="arrow-left"></span>
+                <h2>返回</h2>
+                <kbd>Esc</kbd>
+              </div>
             </div>
+            <p class="help-touch-note">手机直接点按底部按钮。</p>
           </div>
         </section>
       </main>

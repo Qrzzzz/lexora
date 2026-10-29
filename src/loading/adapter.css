@@ -12,3 +12,8 @@ body:has(> .site-loading) {
   --site-font-sans: var(--serif);
   pointer-events: auto;
 }
+.site-loading__title,
+.site-loading__attribution,
+.site-loading__recovery {
+  font-size: 16px;
+}

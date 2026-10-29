@@ -28,6 +28,7 @@ import { createMotion } from "./motion.js";
 import { createFeedback } from "./feedback.js";
 import { installControlFeedback } from "./controls.js";
 import { loading } from "./loading/index.js";
+import { icon } from "./icons.js";
 const $ = (id) => document.getElementById(id);
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -35,8 +36,9 @@ const element = (tag, className, text) => {
   if (text !== undefined) node.textContent = text;
   return node;
 };
-const button = (text, action, className = "text-button") => {
+const button = (text, action, className = "text-button", iconName) => {
   const node = element("button", className, text);
+  if (iconName) node.prepend(icon(iconName));
   node.type = "button";
   node.onclick = action;
   return node;
@@ -76,7 +78,10 @@ function storageWarning(message) {
   storageOK = false;
   $("storage-warning").textContent = message;
   $("storage-warning").hidden = false;
-  $("backup-shortcut").textContent = "请导出备份 ↗";
+  $("backup-shortcut").replaceChildren(
+    icon("download"),
+    document.createTextNode("请导出备份"),
+  );
 }
 function save({ explicit = false } = {}) {
   if (blockAutosave && !explicit) return Promise.resolve(false);
@@ -167,6 +172,10 @@ function renderHistory(previous = motion.captureHistory($("history-list"))) {
       "history-entry",
     );
     b.classList.toggle("is-mastered", p.mastered.includes(card.id));
+    b.classList.toggle(
+      "has-history-ink",
+      /[a-z]/i.test(cardTerm(card)) && !/[\u3400-\u9fff]/.test(cardTerm(card)),
+    );
     b.dataset.cardId = card.id;
     b.dataset.eventId = event.eventId;
     b.setAttribute("aria-label", `回看 ${cardTerm(card)}`);
@@ -301,9 +310,12 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
     $("study-controls").hidden = true;
     const controls = element("div", "review-actions");
     controls.append(
-      button("返回", closeHistory),
-      button(p.mastered.includes(card.id) ? "恢复" : "斩", () =>
-        toggleFromReview(card.id),
+      button("返回", closeHistory, "text-button", "arrow-left"),
+      button(
+        p.mastered.includes(card.id) ? "恢复" : "斩",
+        () => toggleFromReview(card.id),
+        "text-button",
+        p.mastered.includes(card.id) ? "undo-2" : "scissors",
       ),
     );
     stage.append(controls);
@@ -547,7 +559,7 @@ function renderDecks() {
     row.append(
       info,
       button(
-        deck.id === workspace.activeDeckId ? "继续翻读 →" : "翻开 →",
+        deck.id === workspace.activeDeckId ? "继续" : "翻开",
         () => {
           workspace.activeDeckId = deck.id;
           reviewId = null;
@@ -556,6 +568,8 @@ function renderDecks() {
           save();
           closeWorkspace();
         },
+        "text-button",
+        "arrow-right",
       ),
     );
     $("deck-list").append(row);
@@ -590,6 +604,7 @@ function renderPresets() {
       }
     });
     const link = element("a", "text-button", "下载");
+    link.prepend(icon("download"));
     link.href = preset.url;
     link.download = "lexora-cet4-core.json";
     const actions = element("div", "preset-actions");

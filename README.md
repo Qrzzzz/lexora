@@ -138,6 +138,8 @@ node scripts/package-site.mjs
 
 感谢 [思源宋体](https://github.com/adobe-fonts/source-han-serif) 提供字体支持，感谢 [WordTyper Vocabularies](https://github.com/grhliu/wordtyper-vocabularies) 与 [ECDICT](https://github.com/skywind3000/ECDICT) 提供首个样例的数据基础。
 
+界面图标使用 [Lucide](https://lucide.dev)，所需 SVG 随项目自托管，无需外部 CDN。
+
 ## 📄 许可证
 
-项目沿用 [Lexora Non-Commercial License](./LICENCE)。内置思源宋体独立遵循 [SIL Open Font License 1.1](./assets/FONT-LICENSE.txt)，样例数据独立遵循其 [MIT 许可与来源声明](./data/NOTICE.md)，不适用项目的非商业限制。
+项目沿用 [Lexora Non-Commercial License](./LICENCE)。内置思源宋体独立遵循 [SIL Open Font License 1.1](./assets/FONT-LICENSE.txt)，样例数据独立遵循其 [MIT 许可与来源声明](./data/NOTICE.md)，Lucide 图标遵循其 [ISC 与 MIT 许可](./assets/icons/LICENSE)，均不适用项目的非商业限制。

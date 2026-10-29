@@ -1,0 +1,71 @@
+{
+  "package": "lucide-static",
+  "version": "1.64.0",
+  "url": "https://www.npmjs.com/package/lucide-static/v/1.64.0",
+  "icons": [
+    {
+      "name": "settings",
+      "sha256": "d8f2e75c94a585a16da4f6f2f16dc79b873049ac433afe4969af5c63ef2c38bd"
+    },
+    {
+      "name": "arrow-right",
+      "sha256": "1ded0c96f7f2cfa7b747eaf589e53ce137b913e93ec3eab4a88255d2662238ec"
+    },
+    {
+      "name": "arrow-left",
+      "sha256": "045d4d31469b14695f330d09c051c4c172eb419b22d5bfc05afda48dbda61cdb"
+    },
+    {
+      "name": "arrow-up-right",
+      "sha256": "f1567e59d02a6f5a25072c3c45b42eaade9979e580c88cd2970a0ae054a21cca"
+    },
+    {
+      "name": "undo-2",
+      "sha256": "1359cceeef6d80005ba8c943eda465f5025ef63704832c099fad2aa228e1ded7"
+    },
+    {
+      "name": "download",
+      "sha256": "76ba3da9a5322a09d0fa2263404f28d14983da1bc210bf221457ace0403a5068"
+    },
+    {
+      "name": "upload",
+      "sha256": "287ccdc3cc3ef9406f061e9aead27388a0da28b23fb88c8fc365022629ee7037"
+    },
+    {
+      "name": "plus",
+      "sha256": "8b5a1bbdd2233e6102e53a451451b917d5da3f9dbb7eca1838d7c00454adc3e0"
+    },
+    {
+      "name": "chevron-down",
+      "sha256": "dbc9f669b9bb87b16ee59d3cbdf794837b500ee87656b7391abe6ab267f5190f"
+    },
+    {
+      "name": "scissors",
+      "sha256": "57dbf8a41d22c463233088bacbd9c46d5c984d14ffdfa9123c3044a1a8ed0cd7"
+    },
+    {
+      "name": "eye",
+      "sha256": "fe7ac66bfbfef6b848f67f5d1d933f0265d42597b0355306a47d50fa05319bdf"
+    },
+    {
+      "name": "eye-off",
+      "sha256": "1aac5157b85094114a6ca3e4a0b01bc437413e6fcbd315f9900f2bf367a67ed3"
+    },
+    {
+      "name": "book-open",
+      "sha256": "e609890b1c5a794c3d099a1ec986ab1e459b97944dffccab06fed0f3177e58ad"
+    },
+    {
+      "name": "rotate-ccw",
+      "sha256": "7c967a53e4b9d0041914927546235f8016db5f451806441434bf440be0b8c2fc"
+    },
+    {
+      "name": "check",
+      "sha256": "2f7654aacb31af939d8f0dbcacc3080823f9892d12944550453fe24bcf2c601d"
+    },
+    {
+      "name": "folder-open",
+      "sha256": "56e4a9efba444c127ab2ad19bed2b182cc79d252855d5f80153011eaaef719d0"
+    }
+  ]
+}
