@@ -1,23 +1,110 @@
-# Lexora
+<div align="center">
 
-导入自己的词汇与知识卡片，在浏览器中学习。
+# 📖 Lexora
 
-Lexora 已从 iOS 构想转为纯静态 Web 项目。首页沿用原型的居中大字、释义与留白；没有账号、后端、广告或云同步。内容和进度保存在当前浏览器的 IndexedDB。
+### 在一页留白里，记住词汇与知识
 
-## 当前能力
+**中文界面 · 静态网页 · 本地保存 · JSON 词册 · 思源宋体**
 
-- JSON 词册导入、格式校验与确认预览；兼容仓库早期 `test.jsonl`。
-- 多词册独立进度、翻面回想、词汇拼写、原序 / 乱序。
-- 复用原型的斩词切片、飞散与翻页动效，补充少量方块粒子、反向撤回与可点击回顾。
-- 桌面键盘 / 鼠标操作，移动端常显触控按钮；动效跟随系统减少动态效果设置，也可关闭。
-- 设置、词册、条目与备份使用页面内视图，没有弹窗。
-- 默认原版黑白；可选的浅色与纸纹仍是待调整试样。
-- 自托管思源宋体可变字体，全站共用，支持 200–900 字重；[字体来源与许可](assets/FONTS.md)。
-- 手动导出当前词册，或导出 / 恢复包含所有词册、进度和偏好的完整备份。
+<p>
+  <strong>导航</strong><br/>
+  <a href="https://qrzzzz.github.io/lexora/">在线使用</a> ·
+  <a href="./examples/first-dictionary.json">3815 词样例</a> ·
+  <a href="./docs/deck-format.md">词册格式</a> ·
+  <a href="#主要功能">主要功能</a> ·
+  <a href="#本地开发">本地开发</a> ·
+  <a href="./LICENCE">许可证</a>
+</p>
 
-**暂无公共词库。** 内置三条卡片只用于演示格式，不代表四六级或专业词汇表。网站不调用 AI API。
+[![检查](https://github.com/Qrzzzz/lexora/actions/workflows/check.yml/badge.svg)](https://github.com/Qrzzzz/lexora/actions/workflows/check.yml)
+[![发布](https://github.com/Qrzzzz/lexora/actions/workflows/pages.yml/badge.svg)](https://github.com/Qrzzzz/lexora/actions/workflows/pages.yml)
 
-## 本地运行
+</div>
+
+---
+
+<details>
+<summary><strong>🖥️ 界面预览</strong></summary>
+
+<img src="./docs/readme-assets/study.png" alt="Lexora 学习页，居中单词与简短中文释义" width="100%" />
+
+<table>
+  <tr>
+    <td width="70%" align="center" valign="top"><img src="./docs/readme-assets/dictionary.png" alt="词条详情，显示音标、词性与多组释义" width="100%" /><br/><sub>词条详情</sub></td>
+    <td width="30%" align="center" valign="top"><img src="./docs/readme-assets/mobile.png" alt="中文移动界面，底部提供可点按的学习操作" width="100%" /><br/><sub>移动端</sub></td>
+  </tr>
+</table>
+
+</details>
+
+## 🌐 在线使用
+
+打开 **[qrzzzz.github.io/lexora](https://qrzzzz.github.io/lexora/)** 即可开始，无需安装或登录。
+
+首次打开会载入一套完整的四级核心词汇样例，也可以在菜单的「词册」页导入自己的 JSON 文件。网页由 GitHub Pages 托管，词册解析与学习都在浏览器中完成。
+
+<a id="主要功能"></a>
+
+## ✨ 主要功能
+
+### 📚 词册与词条
+
+- 支持词汇和知识卡片，按词册分别保存学习进度。
+- 学习页显示简短释义；点击词目，查看音标、不同词性与完整释义。
+- 支持本地 JSON 导入、导入预览、格式校验和词册修订更新；兼容早期 JSON / JSONL。
+- 支持搜索、已掌握筛选、恢复已斩条目。不加入例句或在线词典接口。
+
+### ✍️ 学习与交互
+
+- 翻面回想、词汇拼写、原序与乱序。
+- 保留原型的斩词切片、飞散和翻页动效，补充方块粒子、反向撤回与可点击回顾。
+- 桌面支持键盘与鼠标，手机提供常显的触控操作；回顾不改变正在学习的位置。
+- 设置、词册、条目和备份使用页面内视图。首页保持留白，界面暂只提供中文。
+
+### 🔤 阅读与保存
+
+- 全站自托管思源宋体，默认黑白，可选浅色、夜读与纸纹。
+- 动效跟随系统的减少动态效果设置，也可手动关闭。
+- 进度保存在当前浏览器的 IndexedDB；可自行导出词册或包含词册、进度、偏好的完整备份。
+
+没有账号、云同步或跨设备共享。更换浏览器、清理网站数据前，请先导出完整备份。本地导入文件不上传，网站不调用 AI API。
+
+## 📘 首个词册样例
+
+内置「WordTyper 四级核心词表」，完整转换固定来源的 **3,815 个词目、8,186 组释义**，没有抽样截取。
+
+- 3,805 词带原始音标；10 词缺失，按原样留空。
+- 按来源保留词性与多义；来源未标词性的内容显示为「未标词性」。
+- 短释义最多取前三个义项、32 字以内，完整内容始终保留在词条详情中。
+- 来源是 [WordTyper Vocabularies](https://github.com/grhliu/wordtyper-vocabularies) 的 CET-4 核心词表，上游声明派生自 [ECDICT](https://github.com/skywind3000/ECDICT)。这是该来源的完整核心词册，不代表官方四级大纲全部词汇。
+
+数据保留来源的拼写与旧式音标，未经过专家校订。固定版本、许可、缺项与重现方式见[样例说明](./docs/sample-dictionary.md)及[数据声明](./data/NOTICE.md)。
+
+## 🧩 词册格式
+
+词册内容与个人进度分开。v2 词汇条目的核心字段为：
+
+```json
+{
+  "id": "book",
+  "type": "vocabulary",
+  "term": "book",
+  "shortDefinition": "书；预订",
+  "pronunciations": [
+    { "system": "ipa", "region": "general", "value": "/bʊk/" }
+  ],
+  "senses": [
+    { "id": "noun-1", "partOfSpeech": "n.", "definitions": ["书", "账簿"] },
+    { "id": "verb-1", "partOfSpeech": "v.", "definitions": ["预订", "登记"] }
+  ]
+}
+```
+
+导入文件还需要词册元数据和 cards 数组，见[完整规范](./docs/deck-format.md)、[JSON Schema](./schemas/deck-v2.schema.json)和[最小示例](./examples/dictionary-v2.json)。词册、词条和义组使用稳定 ID；更新时递增 revision，未变条目保留进度。v1 词册继续兼容。
+
+<a id="本地开发"></a>
+
+## 🛠️ 本地开发
 
 需要 Node.js 22 或更高版本：
 
@@ -26,78 +113,24 @@ npm ci
 npm run dev
 ```
 
-打开终端显示的本地地址，默认是 `http://127.0.0.1:4173`。运行时没有第三方 JavaScript 依赖，开发依赖 Ajv 仅用于 Schema 回归测试。
-
-这是使用 ES modules 的静态网站，应通过 HTTP(S) 访问。不要直接双击 `index.html` 用 `file://` 打开。
-
-## 词册格式
-
-```json
-{
-  "format": "lexora.deck",
-  "schemaVersion": 1,
-  "id": "my-notebook",
-  "revision": 1,
-  "title": "我的词册",
-  "cards": [
-    { "id": "retain", "type": "vocabulary", "prompt": "retain", "answer": "保留；记住" },
-    { "id": "retrieval", "type": "knowledge", "prompt": "什么是主动回忆？", "answer": "不看答案，从记忆中提取内容。" }
-  ]
-}
-```
-
-[完整规范](docs/deck-format.md) · [JSON Schema 2020-12](schemas/deck-v1.schema.json) · [可导入示例](examples/notebook.json)
-
-卡片和词册 ID 是稳定身份，不能随着排序改变。更新词册时提高 revision；未变条目的进度保留，题面、答案或接受写法变化的条目重新学习。纯文本呈现，不执行导入内容里的 HTML 或代码。
-
-## 操作
-
-手机直接点按底部按钮。桌面把指针移到学习区可显示按钮，也可以用快捷键：
-
-| 按键 | 动作 |
-| --- | --- |
-| Enter / Space | 显隐答案；拼写模式检查 / 继续 |
-| J / ← | 留到下一轮 |
-| X / → | 斩去已掌握条目 |
-| U | 撤回本次打开期间的最近操作，最多 30 步，受内存预算限制 |
-| S / B | 设置 / 词册 |
-| Esc | 返回学习或退出回顾 |
-
-回顾只展示刚刚读过的卡片，不会跳转学习队列。回顾中可以明确恢复或斩去条目，该操作可以撤回。
-
-## 数据边界
-
-本地导入文件不上传。浏览器数据不跨设备同步，清理站点数据会删除词册和进度。建议按需自行导出完整备份；恢复前会预览并要求确认替换。
-
-本地保存失败会显示持久提示；读取损坏数据时进入临时示例，不自动覆盖旧记录。早期独立原型的学习备份不包含词库本体，本版尚未做其进度迁移。
-
-## 检查与部署
+默认地址为 `http://127.0.0.1:4173`。运行时没有第三方 JavaScript 依赖，开发依赖 Ajv 用于 Schema 测试；请通过 HTTP(S) 访问，不要直接双击 HTML。
 
 ```sh
 npm test
+python data/build_first_dictionary.py
 node scripts/package-site.mjs
 ```
 
-第二条命令只生成 `output/site/`。可把该目录交给任何静态托管服务。所有资源使用相对路径，适配 GitHub Pages 的 `/lexora/` 项目路径。
+词表脚本只使用 Python 标准库，校验固定来源散列，可重复生成同一文件。最后一条命令输出 `output/site/`，可部署到普通静态托管服务。
 
-仓库提供自动检查工作流，以及**手动触发**的 `Publish GitHub Pages` 工作流。首次发布先在仓库 Settings → Pages 中选择 GitHub Actions，然后在 Actions 中手动运行发布工作流。推送代码只执行检查，不自动发布网站。
+推送 main 会自动运行检查和 Pages 发布；也支持手动触发。发布前校验格式、学习规则与词表可重复生成性，站点的 `build-info.json` 记录对应提交与词册散列。
 
-## 项目结构
+[贡献说明](./CONTRIBUTING.md) · [本地验证记录](./docs/validation.md)
 
-```text
-src/deck.js       格式解析、语义校验、早期 JSONL 适配
-src/model.js      词册、学习队列、更新与备份规则
-src/storage.js    IndexedDB 持久化
-src/motion.js     原版动效移植及新增撤回 / 回顾动效
-src/app.js        页面交互
-src/style.css     原版视觉基础与移动适配
-schemas/         独立的词册格式契约
-tests/           格式和学习状态回归测试
-docs/            规范、验证记录、早期 iOS 构想存档
-```
+## 🙏 致谢
 
-[贡献说明](CONTRIBUTING.md) · [早期 iOS 构想存档](docs/ios-concept.md)
+感谢 [思源宋体](https://github.com/adobe-fonts/source-han-serif) 提供字体支持，感谢 [WordTyper Vocabularies](https://github.com/grhliu/wordtyper-vocabularies) 与 [ECDICT](https://github.com/skywind3000/ECDICT) 提供首个样例的数据基础。
 
-## 许可
+## 📄 许可证
 
-沿用仓库原有 [Lexora Non-Commercial License](LICENCE)。字体另遵循其 [SIL Open Font License](assets/FONT-LICENSE.txt)。
+项目沿用 [Lexora Non-Commercial License](./LICENCE)。内置思源宋体独立遵循 [SIL Open Font License 1.1](./assets/FONT-LICENSE.txt)，样例数据独立遵循其 [MIT 许可与来源声明](./data/NOTICE.md)，不适用项目的非商业限制。

@@ -1,4 +1,4 @@
-import { validateDeck, validId } from "./deck.js";
+import { validateDeck, validId, cardTerm, cardSummary } from "./deck.js";
 export const PREFS = {
   theme: "white",
   texture: false,
@@ -113,9 +113,10 @@ export function toggleMastered(w, cardId) {
 function learningContent(card) {
   return JSON.stringify([
     card.type,
-    card.prompt,
-    card.answer,
+    cardTerm(card),
+    cardSummary(card),
     card.acceptedAnswers || null,
+    card.senses || null,
   ]);
 }
 export function planImport(w, deck) {

@@ -19,7 +19,7 @@ function keys(value, allowed, path) {
 function text(value, path, max, required = false) {
   if (
     typeof value !== "string" ||
-    value.length > max ||
+    [...value].length > max ||
     (required && !value.trim())
   )
     fail(path, `应为${required ? "非空" : ""}文本，最长 ${max} 字符`);
@@ -69,11 +69,16 @@ export function validateDeck(input) {
       "sources",
       "cards",
       "extensions",
+      ...(input?.schemaVersion === 2 ? ["$schema"] : []),
     ],
     root,
   );
-  if (input.format !== DECK_FORMAT || input.schemaVersion !== 1)
-    fail(root, "仅支持 lexora.deck / schemaVersion 1");
+  if (input.format !== DECK_FORMAT || ![1, 2].includes(input.schemaVersion))
+    fail(root, "仅支持 lexora.deck / schemaVersion 1 或 2");
+  optional(input, "$schema", root, (v, p) => {
+    if (v !== "https://qrzzzz.github.io/lexora/schemas/deck-v2.schema.json")
+      fail(p, "请使用词册 v2 的标准 Schema 地址");
+  });
   id(input.id, "词册.id");
   if (!Number.isSafeInteger(input.revision) || input.revision < 1)
     fail("词册.revision", "应为大于零的整数");
@@ -106,18 +111,21 @@ export function validateDeck(input) {
   const ids = new Set();
   input.cards.forEach((card, index) => {
     const p = `第 ${index + 1} 条卡片`;
+    if (!object(card)) fail(p, "应为对象");
+    const dictionary = input.schemaVersion === 2 && card.type === "vocabulary";
     keys(
       card,
       [
         "id",
         "type",
-        "prompt",
-        "answer",
+        ...(dictionary
+          ? ["term", "shortDefinition", "senses"]
+          : ["prompt", "answer"]),
         "acceptedAnswers",
         "language",
         "answerLanguage",
         "pronunciations",
-        "examples",
+        ...(input.schemaVersion === 1 ? ["examples"] : []),
         "tags",
         "note",
         "sourceRefs",
@@ -130,8 +138,24 @@ export function validateDeck(input) {
     ids.add(card.id);
     if (!["vocabulary", "knowledge"].includes(card.type))
       fail(`${p}.type`, "仅支持 vocabulary 或 knowledge");
-    text(card.prompt, `${p}.prompt`, 2000, true);
-    text(card.answer, `${p}.answer`, 12000, true);
+    if (dictionary) {
+      text(card.term, `${p}.term`, 200, true);
+      text(card.shortDefinition, `${p}.shortDefinition`, 160, true);
+      list(card.senses, `${p}.senses`, 50, (sense, sp) => {
+        keys(sense, ["id", "partOfSpeech", "definitions"], sp);
+        id(sense.id, `${sp}.id`);
+        text(sense.partOfSpeech, `${sp}.partOfSpeech`, 80, true);
+        strings(sense.definitions, `${sp}.definitions`, 50, 4000);
+        if (!sense.definitions.length)
+          fail(`${sp}.definitions`, "至少需要一条释义");
+      });
+      if (!card.senses.length) fail(`${p}.senses`, "至少需要一组释义");
+      if (new Set(card.senses.map((s) => s.id)).size !== card.senses.length)
+        fail(`${p}.senses`, "义组 ID 重复");
+    } else {
+      text(card.prompt, `${p}.prompt`, 2000, true);
+      text(card.answer, `${p}.answer`, 12000, true);
+    }
     for (const key of ["language", "answerLanguage"])
       optional(card, key, p, locale);
     optional(card, "acceptedAnswers", p, (v, q) => {
@@ -146,9 +170,32 @@ export function validateDeck(input) {
         fail(`${p}.sourceRefs`, `未定义的来源「${ref}」`);
     optional(card, "pronunciations", p, (v, q) =>
       list(v, q, 10, (entry, ep) => {
-        keys(entry, ["label", "value"], ep);
+        keys(
+          entry,
+          input.schemaVersion === 2
+            ? ["system", "region", "value", "senseRefs"]
+            : ["label", "value"],
+          ep,
+        );
         text(entry.value, `${ep}.value`, 200, true);
-        optional(entry, "label", ep, (s, sp) => text(s, sp, 80));
+        if (input.schemaVersion === 2) {
+          if (entry.system !== "ipa") fail(`${ep}.system`, "当前仅支持 ipa");
+          optional(entry, "region", ep, (s, sp) => {
+            if (
+              typeof s !== "string" ||
+              !/^[a-z]{2,12}(?:-[a-z0-9]{1,8})*$/.test(s)
+            )
+              fail(sp, "使用 uk、us、general 等小写地区标记");
+          });
+          optional(entry, "senseRefs", ep, (refs, rp) => {
+            strings(refs, rp, 50, 160);
+            if (
+              !refs.length ||
+              refs.some((ref) => !card.senses?.some((s) => s.id === ref))
+            )
+              fail(rp, "必须引用本词条已有的义组 ID");
+          });
+        } else optional(entry, "label", ep, (s, sp) => text(s, sp, 80));
       }),
     );
     optional(card, "examples", p, (v, q) =>
@@ -287,7 +334,39 @@ export function canSpell(card) {
   return card.type === "vocabulary" || !!card.acceptedAnswers?.length;
 }
 export function matchesAnswer(card, value) {
-  return (card.acceptedAnswers || [card.prompt]).some(
+  return (card.acceptedAnswers || [cardTerm(card)]).some(
     (answer) => normalizeAnswer(answer) === normalizeAnswer(value),
   );
+}
+
+export function cardTerm(card) {
+  return card.type === "vocabulary" && card.term !== undefined
+    ? card.term
+    : card.prompt;
+}
+export function cardSummary(card) {
+  return card.type === "vocabulary" && card.shortDefinition !== undefined
+    ? card.shortDefinition
+    : card.answer;
+}
+export function cardDefinition(card) {
+  return card.senses
+    ? card.senses
+        .map((s) => `${s.partOfSpeech} · ${s.definitions.join("；")}`)
+        .join("\n")
+    : card.answer;
+}
+export function pronunciationLabel(p, card) {
+  const region =
+    { uk: "英", gb: "英", us: "美", general: "" }[p.region] ?? p.region;
+  const parts = card?.senses
+    ?.filter((s) => p.senseRefs?.includes(s.id))
+    .map((s) => s.partOfSpeech);
+  return [
+    p.label || region,
+    p.value,
+    parts?.length ? `（${[...new Set(parts)].join(" / ")}）` : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
 }

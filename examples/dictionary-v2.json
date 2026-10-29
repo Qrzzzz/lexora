@@ -1,0 +1,62 @@
+{
+  "format": "lexora.deck",
+  "schemaVersion": 2,
+  "id": "lexora:dictionary-example",
+  "revision": 1,
+  "title": "词典格式示例",
+  "language": "en",
+  "answerLanguage": "zh-Hans",
+  "cards": [
+    {
+      "id": "record",
+      "type": "vocabulary",
+      "term": "record",
+      "shortDefinition": "记录；录制",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "uk",
+          "value": "/ˈrekɔːd/",
+          "senseRefs": ["noun-1"]
+        },
+        {
+          "system": "ipa",
+          "region": "us",
+          "value": "/ˈrekərd/",
+          "senseRefs": ["noun-1"]
+        },
+        {
+          "system": "ipa",
+          "region": "uk",
+          "value": "/rɪˈkɔːd/",
+          "senseRefs": ["verb-1"]
+        },
+        {
+          "system": "ipa",
+          "region": "us",
+          "value": "/rɪˈkɔːrd/",
+          "senseRefs": ["verb-1"]
+        }
+      ],
+      "senses": [
+        {
+          "id": "noun-1",
+          "partOfSpeech": "n.",
+          "definitions": ["记录", "唱片"]
+        },
+        {
+          "id": "verb-1",
+          "partOfSpeech": "v.",
+          "definitions": ["记录", "录制"]
+        }
+      ]
+    },
+    {
+      "id": "retrieval-practice",
+      "type": "knowledge",
+      "prompt": "什么是主动回忆？",
+      "answer": "不看答案，尝试从记忆中提取已学内容。",
+      "language": "zh-Hans"
+    }
+  ]
+}

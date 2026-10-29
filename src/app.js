@@ -1,5 +1,15 @@
-import { parseDeck, MAX_DECK_BYTES, canSpell, matchesAnswer } from "./deck.js";
+import {
+  parseDeck,
+  MAX_DECK_BYTES,
+  canSpell,
+  matchesAnswer,
+  cardTerm,
+  cardSummary,
+  cardDefinition,
+  pronunciationLabel,
+} from "./deck.js";
 import { demoDeck } from "./demo.js";
+import { presets, loadPreset } from "./presets.js";
 import {
   createWorkspace,
   validateWorkspace,
@@ -35,6 +45,9 @@ let workspace,
   checked = false,
   pendingDeck = null,
   pendingBackup = null,
+  entryId = null,
+  entryReturn = null,
+  presetError = "",
   libraryLimit = 100;
 let undoStack = [],
   undoBytes = 0,
@@ -159,12 +172,12 @@ function renderHistory() {
     b.classList.toggle("is-mastered", p.mastered.includes(card.id));
     b.dataset.cardId = card.id;
     b.dataset.eventId = event.eventId;
-    b.setAttribute("aria-label", `回看 ${card.prompt}`);
+    b.setAttribute("aria-label", `回看 ${cardTerm(card)}`);
     b.setAttribute("aria-pressed", reviewId === card.id);
     b.style.setProperty("--history-opacity", String([1, 0.68, 0.4, 0.21][age]));
     b.style.setProperty("--history-blur", `${[0, 0.15, 0.45, 0.75][age]}px`);
     b.append(
-      element("span", "history-term", card.prompt),
+      element("span", "history-term", cardTerm(card)),
       element(
         "span",
         "history-status",
@@ -239,7 +252,7 @@ function renderStudy() {
   const spell =
     !reviewId && workspace.preferences.mode === "spelling" && canSpell(card);
   const prompt =
-    spell && card.type === "vocabulary" ? card.answer : card.prompt;
+    spell && card.type === "vocabulary" ? cardSummary(card) : cardTerm(card);
   const heading = element(
     "h1",
     `word${prompt.length > 17 ? " is-long" : ""}`,
@@ -250,14 +263,15 @@ function renderStudy() {
       ? card.answerLanguage || deck.answerLanguage
       : card.language || deck.language) || "";
   stage.append(heading);
+  const termButton = button(prompt, () => openEntry(card.id), "term-button");
+  termButton.setAttribute("aria-label", `查看「${cardTerm(card)}」词条`);
+  heading.replaceChildren(termButton);
   if (!spell && card.pronunciations?.length)
     stage.append(
       element(
         "div",
         "pronunciation",
-        card.pronunciations
-          .map((p) => [p.label, p.value].filter(Boolean).join(" "))
-          .join("   "),
+        card.pronunciations.map((p) => pronunciationLabel(p, card)).join("   "),
       ),
     );
   if (spell) {
@@ -318,21 +332,15 @@ function renderStudy() {
   checked = false;
 }
 function appendAnswer(parent, card) {
+  const summary = cardSummary(card);
   const answer = element(
     "div",
-    `answer${card.answer.length > 45 ? " is-long" : ""}`,
-    card.answer,
+    `answer${summary.length > 45 ? " is-long" : ""}`,
+    summary,
   );
   answer.lang =
     card.answerLanguage || activeDeck(workspace)?.answerLanguage || "";
   parent.append(answer);
-  for (const example of (card.examples || []).slice(0, 2)) {
-    const e = element("p", "card-example", example.text);
-    if (example.translation)
-      e.append(element("small", "", example.translation));
-    parent.append(e);
-  }
-  if (card.note) parent.append(element("p", "card-note", card.note));
 }
 function rate(kind) {
   if (tab || reviewId || !currentCard(workspace)) return;
@@ -405,7 +413,7 @@ function checkSpelling() {
   const answer = element(
     "div",
     "spelling-answer",
-    card.type === "vocabulary" ? card.prompt : card.answer,
+    card.type === "vocabulary" ? cardTerm(card) : cardSummary(card),
   );
   input.parentElement.append(result, answer);
   $("reveal-label").textContent = "继续";
@@ -478,10 +486,12 @@ function openWorkspace(name) {
     settings: ["", "设置"],
     backup: ["", "备份"],
     help: ["", "帮助"],
+    entry: ["", "词条"],
   };
   $("workspace-eyebrow").textContent = names[name][0];
   $("workspace-heading").textContent = names[name][1];
   if (name === "decks") renderDecks();
+  if (name === "entry") renderEntry();
   if (name === "library") {
     libraryLimit = 100;
     renderLibrary();
@@ -492,6 +502,13 @@ function openWorkspace(name) {
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 function closeWorkspace() {
+  if (tab === "entry" && entryReturn?.tab === "library") {
+    entryReturn = null;
+    openWorkspace("library");
+    return;
+  }
+  if (tab === "entry") reviewId = entryReturn?.reviewId || null;
+  entryReturn = null;
   motion.clear();
   tab = null;
   $("workspace").hidden = true;
@@ -538,6 +555,109 @@ function renderDecks() {
     );
     $("deck-list").append(row);
   }
+  renderPresets();
+}
+function renderPresets() {
+  const list = $("preset-list");
+  list.replaceChildren();
+  for (const preset of presets) {
+    if (workspace.decks.some((d) => d.id === preset.deckId)) continue;
+    const row = element("div", "preset-row"),
+      info = element("div");
+    info.append(
+      element("h3", "", preset.title),
+      element("p", "", `${preset.count.toLocaleString("zh-CN")} 词 · 样例词册`),
+    );
+    const add = button("导入", async () => {
+      add.disabled = true;
+      add.textContent = "加载中";
+      $("import-error").hidden = true;
+      $("import-preview").hidden = true;
+      try {
+        showImportPreview(await loadPreset(preset));
+        presetError = "";
+      } catch (e) {
+        $("import-error").textContent = e.message;
+        $("import-error").hidden = false;
+      } finally {
+        add.disabled = false;
+        add.textContent = "导入";
+      }
+    });
+    const link = element("a", "text-button", "下载");
+    link.href = preset.url;
+    link.download = "lexora-cet4-core.json";
+    const actions = element("div", "preset-actions");
+    actions.append(add, link);
+    row.append(info, actions);
+    list.append(row);
+  }
+  $("preset-heading").hidden = !list.children.length;
+  $("preset-error").textContent = presetError;
+  $("preset-error").hidden = !presetError;
+}
+function openEntry(id) {
+  entryId = id;
+  entryReturn = { tab, reviewId };
+  openWorkspace("entry");
+}
+function renderEntry() {
+  const deck = activeDeck(workspace),
+    card = deck?.cards.find((c) => c.id === entryId),
+    panel = $("panel-entry");
+  panel.replaceChildren();
+  if (!card) {
+    panel.append(element("p", "small-note", "词条不存在"));
+    return;
+  }
+  const article = element("article", "dictionary-entry");
+  article.append(element("h2", "entry-term", cardTerm(card)));
+  if (card.pronunciations?.length)
+    article.append(
+      element(
+        "p",
+        "entry-pronunciations",
+        card.pronunciations.map((p) => pronunciationLabel(p, card)).join("　"),
+      ),
+    );
+  if (card.senses) {
+    article.append(element("p", "entry-summary", cardSummary(card)));
+    for (const sense of card.senses) {
+      const group = element("section", "entry-sense"),
+        definitions = element("ol");
+      group.append(
+        element(
+          "h3",
+          "",
+          sense.partOfSpeech === "other" ? "未标词性" : sense.partOfSpeech,
+        ),
+      );
+      for (const definition of sense.definitions)
+        definitions.append(element("li", "", definition));
+      group.append(definitions);
+      article.append(group);
+    }
+  } else article.append(element("p", "entry-summary", cardDefinition(card)));
+  if (card.note) article.append(element("p", "small-note", card.note));
+  const references = (deck.sources || []).filter((s) =>
+    card.sourceRefs?.includes(s.id),
+  );
+  if (references.length) {
+    const footer = element("footer", "entry-sources");
+    footer.append(element("span", "", "来源："));
+    references.forEach((source, i) => {
+      if (i) footer.append(document.createTextNode(" · "));
+      if (source.url) {
+        const link = element("a", "", source.title);
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        footer.append(link);
+      } else footer.append(document.createTextNode(source.title));
+    });
+    article.append(footer);
+  }
+  panel.append(article);
 }
 function renderLibrary() {
   const deck = activeDeck(workspace),
@@ -554,7 +674,9 @@ function renderLibrary() {
     mastered = new Set(p.mastered);
   const cards = deck.cards.filter(
     (c) =>
-      (c.prompt + "\n" + c.answer).toLocaleLowerCase().includes(query) &&
+      (cardTerm(c) + "\n" + cardSummary(c) + "\n" + cardDefinition(c))
+        .toLocaleLowerCase()
+        .includes(query) &&
       (filter === "all" || (filter === "mastered") === mastered.has(c.id)),
   );
   $("library-count").textContent =
@@ -578,11 +700,11 @@ function renderLibrary() {
     action.dataset.cardId = card.id;
     action.setAttribute(
       "aria-label",
-      `${mastered.has(card.id) ? "恢复" : "斩去"} ${card.prompt}`,
+      `${mastered.has(card.id) ? "恢复" : "斩去"} ${cardTerm(card)}`,
     );
     row.append(
-      element("strong", "", card.prompt),
-      element("p", "", card.answer),
+      button(cardTerm(card), () => openEntry(card.id), "library-term"),
+      element("p", "", cardSummary(card)),
       action,
     );
     list.append(row);
@@ -597,29 +719,31 @@ async function readDeck(file) {
   try {
     if (file.size > MAX_DECK_BYTES)
       throw Error("词册文件超过 10 MiB，请拆分后导入");
-    const deck = parseDeck(await file.text(), file.name),
-      plan = planImport(workspace, deck);
-    if (plan.kind === "new" && workspace.decks.length >= 100)
-      throw Error("当前手帖最多保存 100 本词册");
-    pendingDeck = deck;
-    $("import-title").textContent =
-      `${plan.kind === "new" ? "添入" : "更新"}「${deck.title}」`;
-    $("import-description").textContent =
-      `${deck.cards.length} 条 · 修订 ${deck.revision}` +
-      (plan.kind === "update"
-        ? ` · 新增 ${plan.added}，内容变化 ${plan.changed}，移除 ${plan.removed}。相同 ID 的进度保留，内容变化的条目重新学习。`
-        : " · 文件只在本地读取。");
-    $("import-sample").textContent = deck.cards
-      .slice(0, 3)
-      .map((c) => `${c.prompt} — ${c.answer.slice(0, 120)}`)
-      .join("\n");
-    $("import-preview").hidden = false;
-    motion.enter($("import-preview"));
-    $("confirm-import").focus({ preventScroll: true });
+    showImportPreview(parseDeck(await file.text(), file.name));
   } catch (error) {
     $("import-error").textContent = error.message;
     $("import-error").hidden = false;
   }
+}
+function showImportPreview(deck) {
+  const plan = planImport(workspace, deck);
+  if (plan.kind === "new" && workspace.decks.length >= 100)
+    throw Error("当前手帖最多保存 100 本词册");
+  pendingDeck = deck;
+  $("import-title").textContent =
+    `${plan.kind === "new" ? "添入" : "更新"}「${deck.title}」`;
+  $("import-description").textContent =
+    `${deck.cards.length} 条 · 修订 ${deck.revision}` +
+    (plan.kind === "update"
+      ? ` · 新增 ${plan.added}，内容变化 ${plan.changed}，移除 ${plan.removed}。相同 ID 的进度保留，内容变化的条目重新学习。`
+      : " · 文件只在本地读取。");
+  $("import-sample").textContent = deck.cards
+    .slice(0, 3)
+    .map((c) => `${cardTerm(c)} — ${cardSummary(c).slice(0, 120)}`)
+    .join("\n");
+  $("import-preview").hidden = false;
+  motion.enter($("import-preview"));
+  $("confirm-import").focus({ preventScroll: true });
 }
 function download(value, name) {
   const url = URL.createObjectURL(
@@ -868,7 +992,15 @@ function bind() {
 async function boot() {
   try {
     const saved = await loadWorkspace();
-    workspace = saved ? validateWorkspace(saved) : createWorkspace(demoDeck);
+    if (saved) workspace = validateWorkspace(saved);
+    else {
+      try {
+        workspace = createWorkspace(await loadPreset());
+      } catch (e) {
+        workspace = createWorkspace();
+        presetError = e.message;
+      }
+    }
   } catch (error) {
     workspace = createWorkspace(demoDeck);
     blockAutosave = true;

@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qrzzzz.github.io/lexora/schemas/deck-v2.schema.json",
+  "title": "Lexora dictionary deck v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "id", "revision", "title", "cards"],
+  "properties": {
+    "format": {
+      "const": "lexora.deck"
+    },
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "\\S"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "language": {
+      "$ref": "#/$defs/locale"
+    },
+    "answerLanguage": {
+      "$ref": "#/$defs/locale"
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50000,
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "extensions": {
+      "$ref": "#/$defs/extensions"
+    },
+    "$schema": {
+      "const": "https://qrzzzz.github.io/lexora/schemas/deck-v2.schema.json"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^(?!constructor$|prototype$)[A-Za-z0-9][A-Za-z0-9:._/-]{0,159}$"
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_-]*(?:\\.[a-z0-9_-]+)+$"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "pattern": "\\S"
+        },
+        "url": {
+          "type": "string",
+          "maxLength": 2000,
+          "pattern": "^https?://[^\\s]+$"
+        },
+        "license": {
+          "type": "string",
+          "maxLength": 200
+        }
+      }
+    },
+    "card": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/vocabulary"
+        },
+        {
+          "$ref": "#/$defs/knowledge"
+        }
+      ]
+    },
+    "pronunciation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "value"],
+      "properties": {
+        "system": {
+          "const": "ipa"
+        },
+        "region": {
+          "type": "string",
+          "pattern": "^[a-z]{2,12}(?:-[a-z0-9]{1,8})*$"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        },
+        "senseRefs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "sense": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "partOfSpeech", "definitions"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "partOfSpeech": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "\\S"
+        },
+        "definitions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000,
+            "pattern": "\\S"
+          }
+        }
+      }
+    },
+    "vocabulary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "term", "shortDefinition", "senses"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "acceptedAnswers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "pattern": "\\S"
+          }
+        },
+        "language": {
+          "$ref": "#/$defs/locale"
+        },
+        "answerLanguage": {
+          "$ref": "#/$defs/locale"
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "\\S"
+          }
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "sourceRefs": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "extensions": {
+          "$ref": "#/$defs/extensions"
+        },
+        "pronunciations": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/pronunciation"
+          }
+        },
+        "type": {
+          "const": "vocabulary"
+        },
+        "term": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        },
+        "shortDefinition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        },
+        "senses": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/sense"
+          }
+        }
+      }
+    },
+    "knowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "prompt", "answer"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "acceptedAnswers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "pattern": "\\S"
+          }
+        },
+        "language": {
+          "$ref": "#/$defs/locale"
+        },
+        "answerLanguage": {
+          "$ref": "#/$defs/locale"
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "\\S"
+          }
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "sourceRefs": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "extensions": {
+          "$ref": "#/$defs/extensions"
+        },
+        "pronunciations": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/pronunciation"
+          }
+        },
+        "type": {
+          "const": "knowledge"
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "\\S"
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000,
+          "pattern": "\\S"
+        }
+      }
+    }
+  }
+}

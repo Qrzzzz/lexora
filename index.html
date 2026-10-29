@@ -110,6 +110,9 @@
           </nav>
           <div id="panel-decks" class="panel" hidden>
             <div id="deck-list" class="deck-list"></div>
+            <h2 id="preset-heading" class="section-heading">样例词册</h2>
+            <div id="preset-list"></div>
+            <p id="preset-error" class="error-note" role="status" hidden></p>
             <div class="import-area" id="drop-zone">
               <div>
                 <h3>导入词册</h3>
@@ -124,7 +127,7 @@
               />
             </div>
             <p class="small-note">
-              <a href="./examples/notebook.json" download>示例</a> ·
+              <a href="./examples/dictionary-v2.json" download>格式示例</a> ·
               <a href="./docs/deck-format.md" target="_blank" rel="noopener"
                 >格式说明 ↗</a
               >
@@ -165,6 +168,7 @@
               再展开 100 条 ↓
             </button>
           </div>
+          <div id="panel-entry" class="panel" hidden></div>
           <div id="panel-settings" class="panel" hidden>
             <div class="setting-row">
               <div><h2>模式</h2></div>
@@ -279,7 +283,10 @@
               <p>
                 手机直接点按底部按钮。撤回记录仅在本次打开期间保留，最多 30 步。
               </p>
-              <p>文件在本地读取，不上传。内置三条格式示例，暂无公共词库。</p>
+              <p>
+                文件在本地读取，不上传。首次打开载入样例词册，也可导入自己的
+                JSON。
+              </p>
             </div>
           </div>
         </section>

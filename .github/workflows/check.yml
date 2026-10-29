@@ -16,4 +16,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Verify sample dictionary reproducibility
+        run: |
+          python3 data/build_first_dictionary.py
+          git diff --exit-code -- examples/first-dictionary.json
       - run: node scripts/package-site.mjs
