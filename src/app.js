@@ -182,8 +182,10 @@ function renderHistory(previous = motion.captureHistory($("history-list"))) {
     b.setAttribute("aria-pressed", reviewId === card.id);
     b.style.setProperty("--history-opacity", String(1 - age * 0.075));
     b.style.setProperty("--history-blur", `${age * 0.48}px`);
+    const term = element("span", "history-term");
+    term.append(element("span", "history-word", cardTerm(card)));
     b.append(
-      element("span", "history-term", cardTerm(card)),
+      term,
       element(
         "span",
         "history-status",

@@ -188,7 +188,11 @@ export function createMotion(stage, enabled, current) {
           {
             rect: entry.getBoundingClientRect(),
             opacity: Number(style.opacity),
-            filter: style.filter,
+            wordShadow: getComputedStyle(entry.querySelector(".history-word"))
+              .textShadow,
+            statusShadow: getComputedStyle(
+              entry.querySelector(".history-status"),
+            ).textShadow,
           },
         ];
       }),
@@ -199,7 +203,6 @@ export function createMotion(stage, enabled, current) {
       const old = previous.get(entry.dataset.eventId),
         rect = entry.getBoundingClientRect();
       const opacity = Number(entry.style.getPropertyValue("--history-opacity"));
-      const filter = `blur(${entry.style.getPropertyValue("--history-blur")})`;
       if (
         old &&
         old.opacity === opacity &&
@@ -215,12 +218,29 @@ export function createMotion(stage, enabled, current) {
               ? `translate(${old.rect.left - rect.left}px,${old.rect.top - rect.top}px)`
               : `translateY(${rect.height + 20}px)`,
             opacity: old?.opacity ?? 0,
-            filter: old?.filter || "blur(1px)",
           },
-          { transform: "none", opacity, filter },
+          { transform: "none", opacity },
         ],
         { duration: 420, easing: "cubic-bezier(.16,1,.3,1)" },
       );
+      for (const [selector, key] of [
+        [".history-word", "wordShadow"],
+        [".history-status", "statusShadow"],
+      ]) {
+        const text = entry.querySelector(selector);
+        const target = getComputedStyle(text).textShadow;
+        const previousShadow = old?.[key];
+        if (!previousShadow || target === "none" || previousShadow === target)
+          continue;
+        const from =
+          previousShadow === "none"
+            ? `0px 0px 0px ${getComputedStyle(entry).getPropertyValue("--history-text-color").trim()}`
+            : previousShadow;
+        animate(text, [{ textShadow: from }, { textShadow: target }], {
+          duration: 420,
+          easing: "cubic-bezier(.16,1,.3,1)",
+        });
+      }
     }
   }
   reduced.addEventListener("change", clear);

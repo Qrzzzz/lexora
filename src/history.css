@@ -14,20 +14,26 @@
   height: 552px;
   padding: 16px 8px 28px 0;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    #000 18px,
-    #000 calc(100% - 12px),
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    #000 18px,
-    #000 calc(100% - 12px),
-    transparent
-  );
+}
+/* Paper fades avoid stacking a mask with a moving filtered text surface. */
+.history-window::before,
+.history-window::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.history-window::before {
+  top: 0;
+  height: 18px;
+  background: linear-gradient(to bottom, var(--paper), transparent);
+}
+.history-window::after {
+  bottom: 0;
+  height: 12px;
+  background: linear-gradient(to bottom, transparent, var(--paper));
 }
 .history-list {
   display: flex;
@@ -36,6 +42,7 @@
   width: 100%;
 }
 .history-entry {
+  --history-text-color: var(--muted);
   display: block;
   flex: 0 0 60px;
   width: 100%;
@@ -45,18 +52,15 @@
   text-align: left;
   color: var(--muted);
   opacity: var(--history-opacity, 1);
-  filter: blur(var(--history-blur, 0px));
-  transition:
-    opacity 220ms,
-    filter 220ms;
+  transition: opacity 220ms;
 }
 .history-entry > .control-label {
+  isolation: auto;
   display: block;
   width: 100%;
 }
 .history-term {
   position: relative;
-  isolation: isolate;
   display: block;
   width: fit-content;
   min-width: 0;
@@ -67,6 +71,17 @@
   font-size: 20px;
   line-height: 1.3;
 }
+.history-word {
+  position: relative;
+  z-index: 1;
+}
+.history-word,
+.history-status {
+  /* Text shadows soften glyphs without a CSS filter/composited blur buffer.
+     Twice the shadow radius approximates the previous Gaussian blur. */
+  color: transparent;
+  text-shadow: 0 0 calc(var(--history-blur, 0px) * 2) var(--history-text-color);
+}
 .history-status {
   display: block;
   margin-top: 2px;
@@ -74,12 +89,24 @@
   line-height: 1.25;
 }
 .history-entry[aria-pressed="true"] {
+  --history-text-color: var(--ink);
   color: var(--ink);
 }
 .history-entry:hover,
 .history-entry:focus-visible {
-  filter: none !important;
+  --history-text-color: var(--ink);
   opacity: 1 !important;
+}
+.history-entry:is(:hover, :focus-visible) :is(.history-word, .history-status) {
+  color: var(--history-text-color);
+  text-shadow: none !important;
+}
+@media (forced-colors: active) {
+  .history-word,
+  .history-status {
+    color: CanvasText;
+    text-shadow: none !important;
+  }
 }
 .brand {
   font-size: 20px;
