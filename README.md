@@ -1,167 +1,103 @@
 # Lexora
 
-> [!WARNING]
-> **Status: Idea / Planning**
-> 
-> Lexora is currently a concept-stage project.
-> This repository is used to collect early product ideas, interface notes, import-format drafts, and technical decisions. It does not contain a working iOS application yet.
+导入自己的词汇与知识卡片，在浏览器中学习。
 
-Lexora 是一个面向 iOS 的轻量化背单词应用构想。
+Lexora 已从 iOS 构想转为纯静态 Web 项目。首页沿用原型的居中大字、释义与留白；没有账号、后端、广告或云同步。内容和进度保存在当前浏览器的 IndexedDB。
 
-它的目标不是做一个复杂的语言学习平台，而是提供一个干净、离线、可控的个人词库工具。用户可以导入自己的单词表，并通过类似卡片式的学习界面进行记忆和复习。
+## 当前能力
 
-当前项目仍处于早期构思阶段，暂不包含实际代码实现。
+- JSON 词册导入、格式校验与确认预览；兼容仓库早期 `test.jsonl`。
+- 多词册独立进度、翻面回想、词汇拼写、原序 / 乱序。
+- 复用原型的斩词切片、飞散与翻页动效，补充少量方块粒子、反向撤回与可点击回顾。
+- 桌面键盘 / 鼠标操作，移动端常显触控按钮；动效跟随系统减少动态效果设置，也可关闭。
+- 设置、词册、条目与备份使用页面内视图，没有弹窗。
+- 默认原版黑白；可选的浅色与纸纹仍是待调整试样。
+- 自托管思源宋体可变字体，全站共用，支持 200–900 字重；[字体来源与许可](assets/FONTS.md)。
+- 手动导出当前词册，或导出 / 恢复包含所有词册、进度和偏好的完整备份。
 
-## 命名由来
+**暂无公共词库。** 内置三条卡片只用于演示格式，不代表四六级或专业词汇表。网站不调用 AI API。
 
-**Lexora** 由 **Lex** 与 **Aurora** 的意象组合而来。**Lex** 来自 *lexicon*、*lexical* 等与词汇、语言和词库相关的词，指向一个人不断收集、整理和记住单词的过程；**Aurora** 则带有晨光与极光的意象。背单词也是类似的过程：一个陌生的词最初只是模糊的符号，随着一次次复习、一次次重新遇见，它的意义、发音、用法和语感才逐渐清晰起来。因此，**Lexora** 想表达的不是更高强度的刷词，而是一种更安静、更个人化的学习体验。它像一个轻量的词汇容器，保存用户自己的词表，也保存那些正在被慢慢理解、慢慢记住的单词。可以把 Lexora 理解为一片属于词汇的晨光：那些原本陌生的词，在反复翻看与记忆中被一点点照亮，最终不再只是列表中的字符，而成为可以被理解、被使用、被记住的语言。
+## 本地运行
 
-## 核心定位
+需要 Node.js 22 或更高版本：
 
-Lexora 的核心方向是：
-
-* 仅支持 iOS
-* 纯离线使用
-* 支持从 CSV / TXT 导入单词表
-* 提供轻量化的背单词界面
-* 适配 Liquid Glass
-* 不做账号系统、不做社区、不做复杂内容平台
-
-## 设计目标
-
-Lexora 希望保持简单、克制、直接。
-
-相比大型背单词应用，Lexora 更关注以下几点：
-
-* 用户拥有自己的词表
-* 数据本地保存
-* 导入流程清晰可靠
-* 背词界面轻量、低干扰
-* 复习过程不被广告、社交、推荐流打断
-* 界面符合 iOS 原生体验
-
-## 初步功能设想
-
-### 词书管理
-
-* 创建本地词书
-* 查看词书列表
-* 查看词书内单词
-* 删除或重命名词书
-
-### 单词导入
-
-* 支持 CSV 导入
-* 支持 TXT 导入
-* 导入前预览内容
-* 显示成功导入数量
-* 显示格式错误行
-* 部分行错误时，不影响其他单词导入
-
-### 背词界面
-
-背单词界面大致采用卡片式学习流程。
-
-初步设想包括：
-
-* 当前单词
-* 图片或视觉辅助区域
-* 释义展示
-* 例句展示
-* 熟悉 / 不熟悉标记
-* 下一个单词
-* 简洁的进度提示
-
-整体交互可以参考常见图文卡片式背词应用，但 Lexora 会保持更轻量、更本地化、更少干扰。
-
-### 复习系统
-
-第一阶段只实现基础复习逻辑：
-
-* 标记熟悉
-* 标记不熟悉
-* 查看不熟词
-* 重新复习不熟词
-
-复杂的间隔重复算法可以后续再考虑。
-
-## 初步导入格式
-
-### CSV
-
-最小格式：
-
-```csv
-word,meaning
-abandon,放弃
-brief,简短的
+```sh
+npm ci
+npm run dev
 ```
 
-扩展格式：
+打开终端显示的本地地址，默认是 `http://127.0.0.1:4173`。运行时没有第三方 JavaScript 依赖，开发依赖 Ajv 仅用于 Schema 回归测试。
 
-```csv
-word,meaning,phonetic,example,tags
-abandon,放弃,/əˈbændən/,He abandoned the plan.,cet4;verb
+这是使用 ES modules 的静态网站，应通过 HTTP(S) 访问。不要直接双击 `index.html` 用 `file://` 打开。
+
+## 词册格式
+
+```json
+{
+  "format": "lexora.deck",
+  "schemaVersion": 1,
+  "id": "my-notebook",
+  "revision": 1,
+  "title": "我的词册",
+  "cards": [
+    { "id": "retain", "type": "vocabulary", "prompt": "retain", "answer": "保留；记住" },
+    { "id": "retrieval", "type": "knowledge", "prompt": "什么是主动回忆？", "answer": "不看答案，从记忆中提取内容。" }
+  ]
+}
 ```
 
-### TXT
+[完整规范](docs/deck-format.md) · [JSON Schema 2020-12](schemas/deck-v1.schema.json) · [可导入示例](examples/notebook.json)
 
-一种可能的 TXT 格式：
+卡片和词册 ID 是稳定身份，不能随着排序改变。更新词册时提高 revision；未变条目的进度保留，题面、答案或接受写法变化的条目重新学习。纯文本呈现，不执行导入内容里的 HTML 或代码。
 
-```txt
-abandon - 放弃
-brief - 简短的
-conduct - 进行；行为
+## 操作
+
+手机直接点按底部按钮。桌面把指针移到学习区可显示按钮，也可以用快捷键：
+
+| 按键 | 动作 |
+| --- | --- |
+| Enter / Space | 显隐答案；拼写模式检查 / 继续 |
+| J / ← | 留到下一轮 |
+| X / → | 斩去已掌握条目 |
+| U | 撤回本次打开期间的最近操作，最多 30 步，受内存预算限制 |
+| S / B | 设置 / 词册 |
+| Esc | 返回学习或退出回顾 |
+
+回顾只展示刚刚读过的卡片，不会跳转学习队列。回顾中可以明确恢复或斩去条目，该操作可以撤回。
+
+## 数据边界
+
+本地导入文件不上传。浏览器数据不跨设备同步，清理站点数据会删除词册和进度。建议按需自行导出完整备份；恢复前会预览并要求确认替换。
+
+本地保存失败会显示持久提示；读取损坏数据时进入临时示例，不自动覆盖旧记录。早期独立原型的学习备份不包含词库本体，本版尚未做其进度迁移。
+
+## 检查与部署
+
+```sh
+npm test
+node scripts/package-site.mjs
 ```
 
-具体格式仍待进一步确定。
+第二条命令只生成 `output/site/`。可把该目录交给任何静态托管服务。所有资源使用相对路径，适配 GitHub Pages 的 `/lexora/` 项目路径。
 
-## 平台方向
+仓库提供自动检查工作流，以及**手动触发**的 `Publish GitHub Pages` 工作流。首次发布先在仓库 Settings → Pages 中选择 GitHub Actions，然后在 Actions 中手动运行发布工作流。推送代码只执行检查，不自动发布网站。
 
-Lexora 只考虑 iOS 端。
+## 项目结构
 
-后续技术方向暂定为：
+```text
+src/deck.js       格式解析、语义校验、早期 JSONL 适配
+src/model.js      词册、学习队列、更新与备份规则
+src/storage.js    IndexedDB 持久化
+src/motion.js     原版动效移植及新增撤回 / 回顾动效
+src/app.js        页面交互
+src/style.css     原版视觉基础与移动适配
+schemas/         独立的词册格式契约
+tests/           格式和学习状态回归测试
+docs/            规范、验证记录、早期 iOS 构想存档
+```
 
-* Swift
-* SwiftUI
-* 本地数据存储
-* 原生 iOS 文件导入
-* Liquid Glass 风格适配
+[贡献说明](CONTRIBUTING.md) · [早期 iOS 构想存档](docs/ios-concept.md)
 
-具体技术选型会在真正开始开发前再决定。
+## 许可
 
-## 暂不考虑
-
-为了保持项目简单，暂不考虑：
-
-* Android 版本
-* Web 版本
-* 账号登录
-* 云同步
-* 社区词库
-* 排行榜
-* 广告系统
-* 在线词典
-* AI 自动生成释义
-* 订阅制商业化
-
-这些功能并非永远不做，只是不属于第一阶段目标。
-
-## 当前阶段
-
-当前仓库主要用于记录想法，而不是直接开发。
-
-## 项目状态
-
-Status: Idea / Planning
-
-Lexora is currently a concept-stage project.
-
-## License
-
-This repository is not open source.  
-Lexora is made available for personal, educational, and non-commercial reference only.
-
-Commercial use, redistribution, repackaging, publishing derivative products, or using this project as part of any commercial app, service, template, or product is prohibited without prior written permission.
-
-See [LICENSE](./LICENSE) for details.
+沿用仓库原有 [Lexora Non-Commercial License](LICENCE)。字体另遵循其 [SIL Open Font License](assets/FONT-LICENSE.txt)。

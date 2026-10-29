@@ -1,0 +1,167 @@
+# Lexora
+
+> [!WARNING]
+> **Status: Idea / Planning**
+>
+> Lexora is currently a concept-stage project.
+> This repository is used to collect early product ideas, interface notes, import-format drafts, and technical decisions. It does not contain a working iOS application yet.
+
+Lexora 是一个面向 iOS 的轻量化背单词应用构想。
+
+它的目标不是做一个复杂的语言学习平台，而是提供一个干净、离线、可控的个人词库工具。用户可以导入自己的单词表，并通过类似卡片式的学习界面进行记忆和复习。
+
+当前项目仍处于早期构思阶段，暂不包含实际代码实现。
+
+## 命名由来
+
+**Lexora** 由 **Lex** 与 **Aurora** 的意象组合而来。**Lex** 来自 *lexicon*、*lexical* 等与词汇、语言和词库相关的词，指向一个人不断收集、整理和记住单词的过程；**Aurora** 则带有晨光与极光的意象。背单词也是类似的过程：一个陌生的词最初只是模糊的符号，随着一次次复习、一次次重新遇见，它的意义、发音、用法和语感才逐渐清晰起来。因此，**Lexora** 想表达的不是更高强度的刷词，而是一种更安静、更个人化的学习体验。它像一个轻量的词汇容器，保存用户自己的词表，也保存那些正在被慢慢理解、慢慢记住的单词。可以把 Lexora 理解为一片属于词汇的晨光：那些原本陌生的词，在反复翻看与记忆中被一点点照亮，最终不再只是列表中的字符，而成为可以被理解、被使用、被记住的语言。
+
+## 核心定位
+
+Lexora 的核心方向是：
+
+* 仅支持 iOS
+* 纯离线使用
+* 支持从 CSV / TXT 导入单词表
+* 提供轻量化的背单词界面
+* 适配 Liquid Glass
+* 不做账号系统、不做社区、不做复杂内容平台
+
+## 设计目标
+
+Lexora 希望保持简单、克制、直接。
+
+相比大型背单词应用，Lexora 更关注以下几点：
+
+* 用户拥有自己的词表
+* 数据本地保存
+* 导入流程清晰可靠
+* 背词界面轻量、低干扰
+* 复习过程不被广告、社交、推荐流打断
+* 界面符合 iOS 原生体验
+
+## 初步功能设想
+
+### 词书管理
+
+* 创建本地词书
+* 查看词书列表
+* 查看词书内单词
+* 删除或重命名词书
+
+### 单词导入
+
+* 支持 CSV 导入
+* 支持 TXT 导入
+* 导入前预览内容
+* 显示成功导入数量
+* 显示格式错误行
+* 部分行错误时，不影响其他单词导入
+
+### 背词界面
+
+背单词界面大致采用卡片式学习流程。
+
+初步设想包括：
+
+* 当前单词
+* 图片或视觉辅助区域
+* 释义展示
+* 例句展示
+* 熟悉 / 不熟悉标记
+* 下一个单词
+* 简洁的进度提示
+
+整体交互可以参考常见图文卡片式背词应用，但 Lexora 会保持更轻量、更本地化、更少干扰。
+
+### 复习系统
+
+第一阶段只实现基础复习逻辑：
+
+* 标记熟悉
+* 标记不熟悉
+* 查看不熟词
+* 重新复习不熟词
+
+复杂的间隔重复算法可以后续再考虑。
+
+## 初步导入格式
+
+### CSV
+
+最小格式：
+
+```csv
+word,meaning
+abandon,放弃
+brief,简短的
+```
+
+扩展格式：
+
+```csv
+word,meaning,phonetic,example,tags
+abandon,放弃,/əˈbændən/,He abandoned the plan.,cet4;verb
+```
+
+### TXT
+
+一种可能的 TXT 格式：
+
+```txt
+abandon - 放弃
+brief - 简短的
+conduct - 进行；行为
+```
+
+具体格式仍待进一步确定。
+
+## 平台方向
+
+Lexora 只考虑 iOS 端。
+
+后续技术方向暂定为：
+
+* Swift
+* SwiftUI
+* 本地数据存储
+* 原生 iOS 文件导入
+* Liquid Glass 风格适配
+
+具体技术选型会在真正开始开发前再决定。
+
+## 暂不考虑
+
+为了保持项目简单，暂不考虑：
+
+* Android 版本
+* Web 版本
+* 账号登录
+* 云同步
+* 社区词库
+* 排行榜
+* 广告系统
+* 在线词典
+* AI 自动生成释义
+* 订阅制商业化
+
+这些功能并非永远不做，只是不属于第一阶段目标。
+
+## 当前阶段
+
+当前仓库主要用于记录想法，而不是直接开发。
+
+## 项目状态
+
+Status: Idea / Planning
+
+Lexora is currently a concept-stage project.
+
+## License
+
+This repository is not open source.
+Lexora is made available for personal, educational, and non-commercial reference only.
+
+Commercial use, redistribution, repackaging, publishing derivative products, or using this project as part of any commercial app, service, template, or product is prohibited without prior written permission.
+
+See [LICENSE](./LICENSE) for details.

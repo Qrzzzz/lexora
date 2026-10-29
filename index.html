@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Lexora，导入词汇与知识卡片，在浏览器中学习。"
+    />
+    <title>Lexora</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body data-theme="white">
+    <a class="skip-link" href="#study">跳到学习内容</a>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div class="notebook">
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="Lexora 首页">Lexora</a>
+        <nav aria-label="手帖导航">
+          <button
+            id="deck-trigger"
+            aria-expanded="false"
+            aria-controls="workspace"
+          >
+            词册
+          </button>
+          <button
+            id="settings-trigger"
+            aria-expanded="false"
+            aria-controls="workspace"
+            aria-label="设置"
+          >
+            ···
+          </button>
+        </nav>
+      </header>
+      <p id="storage-warning" class="storage-warning" role="status" hidden></p>
+      <main>
+        <section
+          id="study"
+          class="study-layout"
+          aria-label="学习手帖"
+          tabindex="-1"
+        >
+          <aside class="recollection" aria-labelledby="history-heading">
+            <div class="rail-heading"><h2 id="history-heading">回顾</h2></div>
+            <div class="history-window">
+              <div id="history-list" class="history-list"></div>
+            </div>
+            <p id="history-empty" hidden></p>
+          </aside>
+          <div class="reading-column">
+            <div class="reading-meta">
+              <button id="current-deck" title="打开词册">手帖示例</button
+              ><span id="position">01 / 03</span>
+            </div>
+            <div id="study-stage" class="study-stage" tabindex="-1"></div>
+            <div
+              id="study-controls"
+              class="study-controls"
+              role="group"
+              aria-label="学习操作"
+            >
+              <button id="again" class="study-action">
+                <span class="action-icon" aria-hidden="true">←</span
+                ><span>再遇</span><kbd>J</kbd>
+              </button>
+              <button id="reveal" class="study-action reveal-action">
+                <span id="reveal-label">翻开释义</span><kbd>Enter</kbd>
+              </button>
+              <button id="master" class="study-action master-action">
+                <span>斩</span
+                ><span class="action-icon" aria-hidden="true">↗</span
+                ><kbd>X</kbd>
+              </button>
+            </div>
+            <div class="reading-foot">
+              <span id="reading-caption">将熟悉的斩去，让陌生的再见。</span
+              ><button id="undo" disabled>
+                <span aria-hidden="true">↶</span> 撤回 <kbd>U</kbd>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section
+          id="workspace"
+          class="workspace"
+          aria-labelledby="workspace-heading"
+          hidden
+        >
+          <header class="workspace-heading">
+            <div>
+              <span class="eyebrow" id="workspace-eyebrow" hidden></span>
+              <h1 id="workspace-heading" tabindex="-1">词册</h1>
+            </div>
+            <button id="close-workspace" class="text-button">返回 ↑</button>
+          </header>
+          <nav class="workspace-tabs" aria-label="页面">
+            <button data-tab="decks">词册</button
+            ><button data-tab="library">条目</button
+            ><button data-tab="settings">设置</button
+            ><button data-tab="backup">备份</button
+            ><button data-tab="help">帮助</button>
+          </nav>
+          <div id="panel-decks" class="panel" hidden>
+            <div id="deck-list" class="deck-list"></div>
+            <div class="import-area" id="drop-zone">
+              <div>
+                <h3>导入词册</h3>
+                <p>JSON / JSONL，也可拖入文件。</p>
+              </div>
+              <button id="choose-deck" class="solid-button">选择文件 ＋</button
+              ><input
+                id="deck-file"
+                type="file"
+                accept=".json,.jsonl,application/json"
+                hidden
+              />
+            </div>
+            <p class="small-note">
+              <a href="./examples/notebook.json" download>示例</a> ·
+              <a href="./docs/deck-format.md" target="_blank" rel="noopener"
+                >格式说明 ↗</a
+              >
+            </p>
+            <section
+              id="import-preview"
+              class="inline-notice"
+              aria-label="词册导入预览"
+              hidden
+            >
+              <h3 id="import-title"></h3>
+              <p id="import-description"></p>
+              <div id="import-sample" class="import-sample"></div>
+              <div class="inline-actions">
+                <button id="confirm-import" class="solid-button">
+                  确认导入</button
+                ><button id="cancel-import">取消</button>
+              </div>
+            </section>
+            <p id="import-error" class="error-note" role="alert" hidden></p>
+          </div>
+          <div id="panel-library" class="panel" hidden>
+            <div class="library-tools">
+              <input
+                id="library-search"
+                type="search"
+                placeholder="寻找一个词，或一条知识…"
+                aria-label="搜索条目"
+              /><select id="library-filter" aria-label="筛选条目">
+                <option value="all">全部条目</option>
+                <option value="learning">仍在学习</option>
+                <option value="mastered">已经斩去</option>
+              </select>
+            </div>
+            <p id="library-count" class="small-note" role="status"></p>
+            <div id="library-list"></div>
+            <button id="library-more" class="text-button" hidden>
+              再展开 100 条 ↓
+            </button>
+          </div>
+          <div id="panel-settings" class="panel" hidden>
+            <div class="setting-row">
+              <div><h2>模式</h2></div>
+              <select id="mode" aria-label="阅读方式">
+                <option value="recall">翻面回想</option>
+                <option value="spelling">词汇拼写</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <div>
+                <h2>顺序</h2>
+                <p>下轮生效</p>
+              </div>
+              <select id="order" aria-label="相遇的顺序">
+                <option value="source">原序</option>
+                <option value="shuffle">乱序</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <div><h2>配色</h2></div>
+              <div
+                id="theme-options"
+                class="theme-options"
+                role="group"
+                aria-label="阅读配色"
+              >
+                <button data-theme="paper" aria-label="暖纸" title="暖纸">
+                  <i></i></button
+                ><button data-theme="white" aria-label="素白" title="素白">
+                  <i></i></button
+                ><button data-theme="mist" aria-label="浅雾" title="浅雾">
+                  <i></i></button
+                ><button data-theme="night" aria-label="夜读" title="夜读">
+                  <i></i>
+                </button>
+              </div>
+            </div>
+            <div class="setting-row">
+              <div><h2>纸纹</h2></div>
+              <button
+                id="texture"
+                class="toggle"
+                role="switch"
+                aria-checked="false"
+                aria-label="纸张肌理"
+              >
+                <span></span>
+              </button>
+            </div>
+            <div class="setting-row">
+              <div><h2>动效</h2></div>
+              <button
+                id="motion"
+                class="toggle"
+                role="switch"
+                aria-checked="true"
+                aria-label="学习动画"
+              >
+                <span></span>
+              </button>
+            </div>
+            <div class="setting-row">
+              <div><h2>本轮</h2></div>
+              <button id="restart-round" class="text-button">重新开始 ↻</button>
+            </div>
+          </div>
+          <div id="panel-backup" class="panel" hidden>
+            <p class="small-note">数据保存在此浏览器。清理前请导出备份。</p>
+            <div class="setting-row">
+              <div>
+                <h3>完整备份</h3>
+                <p>词册、进度、设置</p>
+              </div>
+              <button id="export-backup" class="text-button">导出 ↓</button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <h3>当前词册</h3>
+                <p>仅内容，不含进度</p>
+              </div>
+              <button id="export-deck" class="text-button">导出 ↓</button>
+            </div>
+            <div class="setting-row">
+              <div><h3>恢复备份</h3></div>
+              <button id="choose-backup" class="text-button">导入 ↑</button
+              ><input
+                id="backup-file"
+                type="file"
+                accept=".json,application/json"
+                hidden
+              />
+            </div>
+            <section id="backup-preview" class="inline-notice" hidden>
+              <h3>替换当前手帖？</h3>
+              <p id="backup-description"></p>
+              <p class="small-note">当前内容将被替换。可以先导出一份备份。</p>
+              <div class="inline-actions">
+                <button id="confirm-backup" class="solid-button">
+                  确认恢复</button
+                ><button id="cancel-backup">取消</button>
+              </div>
+            </section>
+            <p id="backup-error" class="error-note" role="alert" hidden></p>
+          </div>
+          <div id="panel-help" class="panel" hidden>
+            <div class="help-lines">
+              <p>再遇：留到下轮。斩：标记掌握。回顾：仅回看，不改变进度。</p>
+              <p>
+                Enter 翻面 / 检查 · J / ← 再遇 · X / → 斩 · U 撤回 · S 设置 · B
+                词册 · Esc 返回。
+              </p>
+              <p>
+                手机直接点按底部按钮。撤回记录仅在本次打开期间保留，最多 30 步。
+              </p>
+              <p>文件在本地读取，不上传。内置三条格式示例，暂无公共词库。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="colophon">
+        <span id="daily-count"></span
+        ><button id="backup-shortcut" aria-label="本地保存与备份">备份</button>
+      </footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

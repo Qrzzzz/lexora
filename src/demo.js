@@ -1,0 +1,42 @@
+// Three format examples only. This is not a public vocabulary collection.
+export const demoDeck = {
+  format: "lexora.deck",
+  schemaVersion: 1,
+  id: "lexora:notebook-example",
+  revision: 1,
+  title: "示例",
+  description: "词汇与知识卡片格式示例。",
+  language: "en",
+  answerLanguage: "zh-Hans",
+  cards: [
+    {
+      id: "serendipity",
+      type: "vocabulary",
+      prompt: "serendipity",
+      answer: "不期而遇的美好",
+      pronunciations: [{ value: "/ˌserənˈdɪpəti/" }],
+      tags: ["示例"],
+    },
+    {
+      id: "retain",
+      type: "vocabulary",
+      prompt: "retain",
+      answer: "保留；记住",
+      examples: [
+        {
+          text: "Read, recall, and retain.",
+          translation: "读过，回想，慢慢记住。",
+        },
+      ],
+      tags: ["示例"],
+    },
+    {
+      id: "retrieval-practice",
+      type: "knowledge",
+      prompt: "什么是主动回忆？",
+      answer: "暂时不看答案，尝试从记忆中提取已学的内容。",
+      language: "zh-Hans",
+      tags: ["示例"],
+    },
+  ],
+};
