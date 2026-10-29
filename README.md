@@ -75,7 +75,7 @@
 ### 🔤 阅读与保存
 
 - 全站自托管思源宋体；深浅模式与主题色独立选择，默认随系统。蓝、红、绿、大地、紫、黑白六组预设，也支持自选色号；每个色号自动生成深浅两版，页面与分享海报同步。
-- 大单词的悬停字重参考 [React Bits Text Pressure](https://reactbits.dev/c/text-animations/text-pressure)，仅在鼠标悬停时响应，固定字宽避免抖动，不额外加载字体或 React。
+- 大单词的悬停字重参考 [React Bits Text Pressure](https://reactbits.dev/c/text-animations/text-pressure)，仅在鼠标附近局部改变字重并染色，移开后平滑恢复；固定字宽，不额外加载字体或 React。
 - 动效跟随系统的减少动态效果设置，也可手动关闭。
 - 设置、下一个、记住、撤回采用不同震动模式，提供独立开关。音效暂未启用，设置保留「后续开发」入口，当前不加载或播放音效。
 - 网页震动取决于浏览器能力，iPhone Safari 不支持；不支持时显示说明，不影响视觉反馈。

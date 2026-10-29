@@ -73,9 +73,7 @@
   display: inline-block;
   white-space: pre;
   font-variation-settings: "wght" 900;
-  transition:
-    font-variation-settings 160ms ease-out,
-    color 180ms;
+  /* One JS damping pass handles entry and release; CSS must not add a second lag. */
 }
 .pressure-word {
   white-space: pre-wrap;

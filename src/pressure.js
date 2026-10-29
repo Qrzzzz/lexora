@@ -7,17 +7,26 @@ export function createTextPressure(stage, enabled) {
   let word,
     letters = [],
     raf = 0,
-    active = false,
-    x = 0,
-    y = 0;
+    lastFrame = 0;
   function reset() {
-    active = false;
     cancelAnimationFrame(raf);
     raf = 0;
+    lastFrame = 0;
     for (const letter of letters) {
-      letter.style.fontVariationSettings = '"wght" 900';
-      letter.style.color = "";
+      letter.current = letter.target = 0;
+      letter.element.style.fontVariationSettings = "";
+      letter.element.style.color = "";
     }
+  }
+  function wake() {
+    if (!raf) {
+      lastFrame = 0;
+      raf = requestAnimationFrame(paint);
+    }
+  }
+  function release() {
+    for (const letter of letters) letter.target = 0;
+    if (letters.some((letter) => letter.current > 0)) wake();
   }
   function attach(button, fontsResolved = false) {
     reset();
@@ -58,36 +67,39 @@ export function createTextPressure(stage, enabled) {
       span.ariaHidden = "true";
       if (width > 0 && fontSize > 0) span.style.width = `${width / fontSize}em`;
       label.append(span);
-      letters.push(span);
+      letters.push({ element: span, current: 0, target: 0 });
       offset += char.length;
     }
     word.replaceChildren(label);
   }
-  function paint() {
+  function paint(now) {
     raf = 0;
-    if (
-      !active ||
-      !word?.isConnected ||
-      !enabled() ||
-      !fine.matches ||
-      reduced.matches
-    ) {
+    if (!word?.isConnected || !enabled() || !fine.matches || reduced.matches) {
       reset();
       return;
     }
-    const rect = word.getBoundingClientRect(),
-      radius = Math.max(rect.width * 0.55, 80);
+    const elapsed = lastFrame ? Math.min(now - lastFrame, 48) : 1000 / 60;
+    lastFrame = now;
+    let moving = false;
     for (const letter of letters) {
-      const b = letter.getBoundingClientRect();
-      const p = Math.max(
-        0,
-        1 -
-          Math.hypot(x - b.left - b.width / 2, y - b.top - b.height / 2) /
-            radius,
-      );
-      letter.style.fontVariationSettings = `"wght" ${Math.round(620 + 280 * p)}`;
-      letter.style.color = `color-mix(in srgb, var(--accent) ${Math.round(p * 34)}%, var(--ink))`;
+      if (letter.current === letter.target) continue;
+      // First-order damping has no overshoot; release only the local footprint.
+      const tau = letter.target > letter.current ? 55 : 110;
+      letter.current +=
+        (letter.target - letter.current) * (1 - Math.exp(-elapsed / tau));
+      if (Math.abs(letter.target - letter.current) < 0.001)
+        letter.current = letter.target;
+      else moving = true;
+      if (letter.current === 0) {
+        letter.element.style.fontVariationSettings = "";
+        letter.element.style.color = "";
+      } else {
+        letter.element.style.fontVariationSettings = `"wght" ${Math.round(900 - 540 * letter.current)}`;
+        letter.element.style.color = `color-mix(in srgb, var(--accent) ${Math.round(letter.current * 42)}%, var(--ink))`;
+      }
     }
+    if (moving) raf = requestAnimationFrame(paint);
+    else lastFrame = 0;
   }
   stage.addEventListener(
     "pointermove",
@@ -95,21 +107,38 @@ export function createTextPressure(stage, enabled) {
       if (
         !word ||
         !word.contains(event.target) ||
+        event.pointerType === "touch" ||
         !fine.matches ||
         reduced.matches ||
         !enabled()
       ) {
-        reset();
+        release();
         return;
       }
-      active = true;
-      x = event.clientX;
-      y = event.clientY;
-      if (!raf) raf = requestAnimationFrame(paint);
+      const rect = word.getBoundingClientRect(),
+        fontSize = parseFloat(getComputedStyle(word).fontSize),
+        radius = Math.max(1, Math.min(fontSize * 0.65, rect.width * 0.24));
+      for (const letter of letters) {
+        const b = letter.element.getBoundingClientRect(),
+          distance = Math.hypot(
+            (event.clientX - b.left - b.width / 2) / radius,
+            (event.clientY - b.top - b.height / 2) /
+              Math.max(fontSize * 0.8, b.height * 0.6),
+          ),
+          p = Math.max(0, 1 - distance);
+        // Compact smoothstep: both pressure and its slope vanish at the edge.
+        letter.target = p * p * (3 - 2 * p);
+      }
+      wake();
     },
     { passive: true },
   );
-  stage.addEventListener("pointerleave", reset);
+  stage.addEventListener("pointerleave", release);
+  window.addEventListener("blur", release);
+  window.addEventListener("resize", release);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) reset();
+  });
   reduced.addEventListener("change", reset);
   fine.addEventListener("change", reset);
   return { attach, reset };
