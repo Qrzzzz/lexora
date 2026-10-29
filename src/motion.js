@@ -68,7 +68,10 @@ export function createMotion(stage, enabled, current) {
     if (!capture || !allowed()) return;
     if (Object.hasOwn(capture, "original")) {
       original.play(capture.original);
-      if (kind === "master" && capture.original) burst(capture.original.word);
+      if (kind === "master" && capture.original) {
+        drawSlash();
+        burst(capture.original.word);
+      }
       return;
     }
     layer = document.createElement("div");
@@ -119,6 +122,50 @@ export function createMotion(stage, enabled, current) {
   function reveal(el) {
     animate(el, [{ opacity: 0 }, { opacity: 1 }], { duration: 160 });
   }
+  function drawSlash() {
+    const slash = document.querySelector(".word-motion-layer .word-slash");
+    if (!slash) return;
+    // Preserve the original split geometry; reveal its line from its upper-right
+    // endpoint toward the lower-left. Transparent rest state prevents tail flash.
+    for (const animation of slash.getAnimations()) animation.cancel();
+    slash.style.opacity = "0";
+    animate(
+      slash,
+      [
+        {
+          transform: "rotate(-9deg)",
+          clipPath: "inset(0 0 0 100%)",
+          opacity: 0,
+          offset: 0,
+        },
+        {
+          transform: "rotate(-9deg)",
+          clipPath: "inset(0 0 0 97%)",
+          opacity: 1,
+          offset: 0.05,
+        },
+        {
+          transform: "rotate(-9deg)",
+          clipPath: "inset(0 0 0 0%)",
+          opacity: 1,
+          offset: 0.5,
+        },
+        {
+          transform: "rotate(-9deg)",
+          clipPath: "inset(0 0 0 0%)",
+          opacity: 0.8,
+          offset: 0.7,
+        },
+        {
+          transform: "rotate(-9deg)",
+          clipPath: "inset(0 0 0 0%)",
+          opacity: 0,
+          offset: 1,
+        },
+      ],
+      { duration: 210, easing: "linear" },
+    );
+  }
   function burst(word) {
     // Small square ink chips follow the existing slash. The original split,
     // fragments, timing and incoming word animation remain untouched.
@@ -165,7 +212,7 @@ export function createMotion(stage, enabled, current) {
         ],
         {
           duration: 320 + (i % 4) * 30,
-          delay: 44 + (i % 3) * 8,
+          delay: 20 + (1 - i / 23) * 70 + (i % 3) * 5,
           easing: "cubic-bezier(.18,.7,.28,1)",
         },
       );
@@ -190,9 +237,10 @@ export function createMotion(stage, enabled, current) {
             opacity: Number(style.opacity),
             wordShadow: getComputedStyle(entry.querySelector(".history-word"))
               .textShadow,
-            statusShadow: getComputedStyle(
-              entry.querySelector(".history-status"),
-            ).textShadow,
+            summaryShadow: entry.querySelector(".history-summary-text")
+              ? getComputedStyle(entry.querySelector(".history-summary-text"))
+                  .textShadow
+              : undefined,
           },
         ];
       }),
@@ -225,9 +273,10 @@ export function createMotion(stage, enabled, current) {
       );
       for (const [selector, key] of [
         [".history-word", "wordShadow"],
-        [".history-status", "statusShadow"],
+        [".history-summary-text", "summaryShadow"],
       ]) {
         const text = entry.querySelector(selector);
+        if (!text) continue;
         const target = getComputedStyle(text).textShadow;
         const previousShadow = old?.[key];
         if (!previousShadow || target === "none" || previousShadow === target)

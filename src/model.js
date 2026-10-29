@@ -7,6 +7,7 @@ export const PREFS = {
   showAnswer: true,
   mode: "recall",
   order: "source",
+  historyDisplay: "summary",
 };
 export const localDay = (date = new Date()) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
@@ -221,6 +222,8 @@ export function validateWorkspace(input) {
       (prefs.showAnswer === undefined ||
         typeof prefs.showAnswer === "boolean") &&
       ["recall", "spelling"].includes(prefs.mode) &&
+      (prefs.historyDisplay === undefined ||
+        ["word", "summary"].includes(prefs.historyDisplay)) &&
       ["source", "shuffle"].includes(prefs.order),
     "阅读偏好不正确",
   );
@@ -322,6 +325,7 @@ export function validateWorkspace(input) {
       showAnswer: prefs.showAnswer !== false,
       mode: prefs.mode,
       order: prefs.order,
+      historyDisplay: prefs.historyDisplay ?? "summary",
     },
   };
 }

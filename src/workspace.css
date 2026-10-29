@@ -52,7 +52,7 @@
   font-size: 20px;
 }
 .study-controls {
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: 1.35fr 0.85fr 1.35fr;
 }
 .study-action .control-label {
   white-space: nowrap;
@@ -351,6 +351,14 @@
   }
   .reading-option select {
     padding-left: 0;
+  }
+  .history-display-option {
+    grid-column: 1 / -1;
+    display: flex;
+  }
+  .history-display-option .select-control {
+    width: 132px;
+    margin-top: 0;
   }
   #panel-settings .theme-options {
     grid-template-columns: repeat(4, 1fr);

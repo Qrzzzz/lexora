@@ -143,6 +143,7 @@ function applyPreferences() {
     .trim();
   $("mode").value = p.mode;
   $("order").value = p.order;
+  $("history-display").value = p.historyDisplay;
   $("texture").setAttribute("aria-checked", p.texture);
   $("motion").setAttribute("aria-checked", p.motion);
   $("sound").setAttribute("aria-checked", false);
@@ -184,14 +185,14 @@ function renderHistory(previous = motion.captureHistory($("history-list"))) {
     b.style.setProperty("--history-blur", `${age * 0.48}px`);
     const term = element("span", "history-term");
     term.append(element("span", "history-word", cardTerm(card)));
-    b.append(
-      term,
-      element(
-        "span",
-        "history-status",
-        event.kind === "master" ? "已斩" : "再遇",
-      ),
-    );
+    b.append(term);
+    if (workspace.preferences.historyDisplay === "summary") {
+      const summary = element("span", "history-summary");
+      summary.append(
+        element("span", "history-summary-text", cardSummary(card)),
+      );
+      b.append(summary);
+    }
     list.append(b);
   }
   motion.history(list, previous);
@@ -232,7 +233,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
     : `${String(Math.min(p.round.cursor + 1, p.round.queue.length)).padStart(2, "0")} / ${String(p.round.queue.length).padStart(2, "0")}`;
   $("reading-caption").textContent = reviewId
     ? "回望不会改变当前学习位置。"
-    : `第 ${p.round.number} 轮 · 将熟悉的斩去，让陌生的再见。`;
+    : `第 ${p.round.number} 轮 · 熟悉的收好，陌生的再见。`;
   if (!card) {
     reviewId = null;
     $("study-controls").hidden = true;
@@ -250,7 +251,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
     return;
   }
   if (reviewId && p.mastered.includes(card.id))
-    stage.append(element("span", "review-badge", "已斩"));
+    stage.append(element("span", "review-badge", "已记住"));
   const spell =
     !reviewId && workspace.preferences.mode === "spelling" && canSpell(card);
   const prompt =
@@ -314,10 +315,10 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
     controls.append(
       button("返回", closeHistory, "text-button", "arrow-left"),
       button(
-        p.mastered.includes(card.id) ? "恢复" : "斩",
+        p.mastered.includes(card.id) ? "恢复" : "记住了",
         () => toggleFromReview(card.id),
         "text-button",
-        p.mastered.includes(card.id) ? "undo-2" : "scissors",
+        p.mastered.includes(card.id) ? "undo-2" : "check",
       ),
     );
     stage.append(controls);
@@ -331,7 +332,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
           : "答案";
     $("master").setAttribute(
       "aria-label",
-      card.type === "vocabulary" ? "斩掉这个词" : "标记已经掌握",
+      card.type === "vocabulary" ? "记住了这个词" : "标记已经掌握",
     );
   }
   checked = false;
@@ -463,7 +464,7 @@ function toggleFromReview(id) {
   });
   notify(
     activeProgress(workspace).mastered.includes(id)
-      ? "已斩去，可随时撤回"
+      ? "已记住，可随时撤回"
       : "已恢复，将在下一轮相遇",
   );
 }
@@ -555,7 +556,7 @@ function renderDecks() {
       element(
         "p",
         "",
-        `${deck.cards.length} 条 · 已斩 ${p.mastered.length} 条 · 修订 ${deck.revision}`,
+        `${deck.cards.length} 条 · 已记住 ${p.mastered.length} 条 · 修订 ${deck.revision}`,
       ),
     );
     row.append(
@@ -702,13 +703,13 @@ function renderLibrary() {
       (filter === "all" || (filter === "mastered") === mastered.has(c.id)),
   );
   $("library-count").textContent =
-    `${cards.length} 条 · 当前词册已斩 ${p.mastered.length} 条`;
+    `${cards.length} 条 · 当前词册已记住 ${p.mastered.length} 条`;
   for (const card of cards.slice(0, libraryLimit)) {
     const row = element(
       "div",
       `library-row${mastered.has(card.id) ? " is-mastered" : ""}`,
     );
-    const action = button(mastered.has(card.id) ? "恢复" : "斩去", () => {
+    const action = button(mastered.has(card.id) ? "恢复" : "记住了", () => {
       remember();
       toggleMastered(workspace, card.id);
       save();
@@ -722,7 +723,7 @@ function renderLibrary() {
     action.dataset.cardId = card.id;
     action.setAttribute(
       "aria-label",
-      `${mastered.has(card.id) ? "恢复" : "斩去"} ${cardTerm(card)}`,
+      `${mastered.has(card.id) ? "恢复" : "记住了"} ${cardTerm(card)}`,
     );
     row.append(
       button(cardTerm(card), () => openEntry(card.id), "library-term"),
@@ -825,6 +826,10 @@ function bind() {
     workspace.preferences.order = e.target.value;
     save();
     notify("将在下一轮生效");
+  };
+  $("history-display").onchange = (e) => {
+    workspace.preferences.historyDisplay = e.target.value;
+    save();
   };
   document.querySelectorAll("#theme-options button").forEach(
     (b) =>

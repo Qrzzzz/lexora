@@ -1,7 +1,7 @@
 /* One vertical queue on every screen. Its lower paper margin is the entry path. */
 .recollection {
   position: fixed;
-  left: 32px;
+  left: max(32px, env(safe-area-inset-left));
   top: 50%;
   transform: translateY(-50%);
   width: 184px;
@@ -56,8 +56,12 @@
 }
 .history-entry > .control-label {
   isolation: auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 .history-term {
   position: relative;
@@ -76,14 +80,20 @@
   z-index: 1;
 }
 .history-word,
-.history-status {
+.history-summary-text {
   /* Text shadows soften glyphs without a CSS filter/composited blur buffer.
      Twice the shadow radius approximates the previous Gaussian blur. */
   color: transparent;
   text-shadow: 0 0 calc(var(--history-blur, 0px) * 2) var(--history-text-color);
 }
-.history-status {
+.history-summary {
   display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin-top: 2px;
   font-size: 16px;
   line-height: 1.25;
@@ -97,13 +107,14 @@
   --history-text-color: var(--ink);
   opacity: 1 !important;
 }
-.history-entry:is(:hover, :focus-visible) :is(.history-word, .history-status) {
+.history-entry:is(:hover, :focus-visible)
+  :is(.history-word, .history-summary-text) {
   color: var(--history-text-color);
   text-shadow: none !important;
 }
 @media (forced-colors: active) {
   .history-word,
-  .history-status {
+  .history-summary-text {
     color: CanvasText;
     text-shadow: none !important;
   }
@@ -138,7 +149,7 @@
 }
 @media (max-width: 1100px) and (min-width: 761px) {
   .recollection {
-    left: 18px;
+    left: max(18px, env(safe-area-inset-left));
     width: 140px;
   }
   .history-term {
@@ -186,20 +197,15 @@
     min-height: 48px;
     height: 48px;
     flex-basis: 48px;
-    padding: 8px 4px;
-  }
-  .history-entry > .control-label {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
+    padding: 3px 4px;
   }
   .history-term {
     font-size: 19px;
+    line-height: 1.2;
   }
-  .history-status {
-    flex-shrink: 0;
+  .history-summary {
     font-size: 16px;
+    line-height: 1.15;
     margin-top: 0;
   }
   .brand {

@@ -137,11 +137,11 @@
                 <span id="reveal-label">翻开释义</span><kbd>Enter</kbd>
               </button>
               <button id="master" class="study-action master-action">
-                <span>斩</span><span data-icon="scissors"></span><kbd>X</kbd>
+                <span>记住了</span><span data-icon="check"></span><kbd>X</kbd>
               </button>
             </div>
             <div class="reading-foot">
-              <span id="reading-caption">将熟悉的斩去，让陌生的再见。</span
+              <span id="reading-caption">熟悉的收好，陌生的再见。</span
               ><button id="undo" disabled>
                 <span data-icon="undo-2"></span> 撤回 <kbd>U</kbd>
               </button>
@@ -222,7 +222,7 @@
               /><select id="library-filter" aria-label="筛选条目">
                 <option value="all">全部条目</option>
                 <option value="learning">仍在学习</option>
-                <option value="mastered">已经斩去</option>
+                <option value="mastered">已经记住</option>
               </select>
             </div>
             <p id="library-count" class="small-note" role="status"></p>
@@ -252,6 +252,13 @@
                     <select id="order" aria-label="相遇的顺序">
                       <option value="source">原序</option>
                       <option value="shuffle">乱序</option>
+                    </select>
+                  </label>
+                  <label class="reading-option history-display-option"
+                    ><span>历史</span>
+                    <select id="history-display" aria-label="历史显示方式">
+                      <option value="word">仅单词</option>
+                      <option value="summary">短释义</option>
                     </select>
                   </label>
                 </div>
@@ -406,8 +413,8 @@
                 <p>显示或隐藏</p>
               </div>
               <div class="help-action">
-                <span data-icon="scissors"></span>
-                <h2>斩</h2>
+                <span data-icon="check"></span>
+                <h2>记住了</h2>
                 <kbd>X</kbd>
                 <p>标为掌握</p>
               </div>
