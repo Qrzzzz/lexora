@@ -1,5 +1,5 @@
 /* Only bridge the original document-site tokens to Lexora's paper and type. */
-body:has(> .site-loading) {
+body:has(> .site-loading:not([hidden])) {
   overflow: hidden;
 }
 .site-loading {

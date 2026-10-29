@@ -24,13 +24,25 @@ test("original supplied word-motion function block and CSS stay byte-for-byte in
     "eff66b01cf2117b3020999c2995461cbf972251815953246fc320db0d9e1237e",
   );
 });
-test("backup preferences preserve progress and retire the draft sound flag", () => {
+test("backup preferences preserve progress and retire sound and texture flags", () => {
   const w = createWorkspace(demoDeck);
   delete w.preferences.haptics;
   w.preferences.sound = true;
+  w.preferences.texture = true;
   const restored = validateWorkspace(w);
   assert.equal(Object.hasOwn(restored.preferences, "sound"), false);
+  assert.equal(Object.hasOwn(restored.preferences, "texture"), false);
   assert.equal(restored.preferences.haptics, true);
   restored.preferences.haptics = false;
   assert.deepEqual(validateWorkspace(restored), restored);
+});
+test("new readers follow the system; legacy paper palettes migrate without progress loss", () => {
+  assert.equal(createWorkspace(demoDeck).preferences.theme, "system");
+  for (const theme of ["paper", "mist"]) {
+    const w = createWorkspace(demoDeck);
+    w.preferences.theme = theme;
+    const migrated = validateWorkspace(w);
+    assert.equal(migrated.preferences.theme, "system");
+    assert.deepEqual(migrated.progress, w.progress);
+  }
 });

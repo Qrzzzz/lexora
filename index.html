@@ -17,11 +17,19 @@
     <link rel="stylesheet" href="./src/original-word-motion.css" />
     <link rel="stylesheet" href="./src/history.css" />
     <link rel="stylesheet" href="./src/workspace.css" />
+    <link rel="stylesheet" href="./src/shell.css" />
     <link rel="stylesheet" href="./src/loading/original-loading.css" />
     <link rel="stylesheet" href="./src/loading/adapter.css" />
+    <link rel="modulepreload" href="./src/loading/poem-player.js" />
+    <link rel="modulepreload" href="./src/loading/poems.js" />
+    <script
+      type="module"
+      src="./src/loading/index.js"
+      fetchpriority="high"
+    ></script>
     <script type="module" src="./src/app.js"></script>
   </head>
-  <body data-theme="white">
+  <body data-theme="system">
     <div
       id="site-loading"
       class="site-loading"
@@ -39,10 +47,22 @@
           </div>
         </div>
         <div class="site-loading__poem-stage">
-          <div class="site-loading__poem" data-poem-player>
-            <div class="site-loading__poem-ghost" data-poem-ghost></div>
+          <div
+            class="site-loading__poem"
+            data-poem-player
+            lang="zh-CN"
+            data-form="verse"
+          >
             <!-- prettier-ignore -->
-            <div class="site-loading__poem-live"><span data-poem-text></span><span class="site-loading__cursor">_</span></div>
+            <div class="site-loading__poem-ghost" data-poem-ghost>砚底留余墨，
+窗前少一人。
+闲将空处看，
+未必尽无痕。&#160;_</div>
+            <!-- prettier-ignore -->
+            <div class="site-loading__poem-live"><span data-poem-text>砚底留余墨，
+窗前少一人。
+闲将空处看，
+未必尽无痕。</span><span class="site-loading__cursor">_</span></div>
             <p class="site-loading__attribution" lang="en">
               Words by
               <a
@@ -63,16 +83,15 @@
         role="group"
         aria-label="加载选项"
       >
-        <p>仍在加载，可以稍候，或先导入自己的词册。</p>
-        <button data-loading-continue disabled>先开始</button
+        <p>仍在加载，可以稍候或返回。</p>
+        <button data-loading-continue disabled>返回</button
         ><button data-loading-retry>重试</button>
       </div>
     </div>
     <a class="skip-link" href="#study">跳到学习内容</a>
-    <div class="paper-grain" aria-hidden="true"></div>
     <div class="notebook">
       <header class="masthead">
-        <a class="brand" href="./" aria-label="Lexora 首页">Lexora</a>
+        <a class="brand" href="#home" aria-label="Lexora 首页">Lexora</a>
         <nav aria-label="手帖导航">
           <button
             id="deck-trigger"
@@ -94,8 +113,22 @@
       <p id="storage-warning" class="storage-warning" role="status" hidden></p>
       <main>
         <section
+          id="home"
+          class="home-page"
+          aria-labelledby="home-title"
+          hidden
+        >
+          <h1 id="home-title" tabindex="-1">词册</h1>
+          <div id="home-decks" class="home-decks"></div>
+          <button id="home-import" class="text-button">
+            <span data-icon="plus"></span>导入词册
+          </button>
+          <p id="home-error" class="error-note" role="status" hidden></p>
+        </section>
+        <section
           id="study"
           class="study-layout"
+          hidden
           aria-label="学习手帖"
           tabindex="-1"
         >
@@ -121,23 +154,26 @@
               role="group"
               aria-label="学习操作"
             >
-              <button
-                id="again"
-                class="study-action"
-                aria-keyshortcuts="Space J ArrowLeft"
-              >
-                <span data-icon="arrow-right"></span><span>下一个</span
-                ><kbd>Space</kbd>
+              <button id="master" class="study-action master-action">
+                <span>记住了</span><span data-icon="check"></span><kbd>X</kbd>
               </button>
               <button
                 id="reveal"
                 class="study-action reveal-action"
                 aria-keyshortcuts="Enter"
+                aria-label="提示"
               >
+                <span data-icon="lightbulb"></span>
                 <span id="reveal-label">翻开释义</span><kbd>Enter</kbd>
               </button>
-              <button id="master" class="study-action master-action">
-                <span>记住了</span><span data-icon="check"></span><kbd>X</kbd>
+              <button
+                id="again"
+                class="study-action"
+                aria-keyshortcuts="Space J ArrowLeft"
+                aria-label="下一个"
+              >
+                <span data-icon="arrow-right"></span><span>下一个</span
+                ><kbd>Space</kbd>
               </button>
             </div>
             <div class="reading-foot">
@@ -155,13 +191,13 @@
           hidden
         >
           <header class="workspace-heading">
+            <button id="close-workspace" class="text-button">
+              <span data-icon="arrow-left"></span>返回
+            </button>
             <div>
               <span class="eyebrow" id="workspace-eyebrow" hidden></span>
               <h1 id="workspace-heading" tabindex="-1">词册</h1>
             </div>
-            <button id="close-workspace" class="text-button">
-              <span data-icon="arrow-left"></span>返回
-            </button>
           </header>
           <nav class="workspace-tabs" aria-label="页面">
             <button data-tab="decks">词册</button
@@ -274,29 +310,22 @@
                   role="group"
                   aria-label="阅读配色"
                 >
-                  <button data-theme="white" aria-label="素白" title="素白">
-                    <i><span data-icon="check"></span></i
-                    ><span>素白</span></button
-                  ><button data-theme="paper" aria-label="暖纸" title="暖纸">
-                    <i><span data-icon="check"></span></i
-                    ><span>暖纸</span></button
-                  ><button data-theme="mist" aria-label="浅雾" title="浅雾">
-                    <i><span data-icon="check"></span></i
-                    ><span>浅雾</span></button
-                  ><button data-theme="night" aria-label="夜读" title="夜读">
-                    <i><span data-icon="check"></span></i><span>夜读</span>
-                  </button>
-                </div>
-                <div class="setting-row">
-                  <div><h3>纸纹</h3></div>
                   <button
-                    id="texture"
-                    class="toggle"
-                    role="switch"
-                    aria-checked="false"
-                    aria-label="纸张肌理"
+                    data-theme="system"
+                    aria-label="随系统"
+                    title="随系统"
                   >
-                    <span></span>
+                    <i><span data-icon="check"></span></i
+                    ><span>随系统</span></button
+                  ><button
+                    data-theme="white"
+                    aria-label="浅蓝白"
+                    title="浅蓝白"
+                  >
+                    <i><span data-icon="check"></span></i
+                    ><span>浅蓝白</span></button
+                  ><button data-theme="night" aria-label="深蓝" title="深蓝">
+                    <i><span data-icon="check"></span></i><span>深蓝</span>
                   </button>
                 </div>
               </section>

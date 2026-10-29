@@ -1,4 +1,5 @@
 import { createOriginalWordMotion } from "./original-word-motion.js";
+import { memoryTransition } from "./master-motion.js";
 
 // New interface motion is kept separate from the immutable original word engine.
 export function createMotion(stage, enabled, current) {
@@ -13,8 +14,11 @@ export function createMotion(stage, enabled, current) {
   const animations = new Set();
   let particles;
   let layer;
+  let epoch = 0;
   const allowed = () => enabled() && !reduced.matches;
   function clear() {
+    epoch++;
+    stage.style.visibility = "";
     original.stop();
     for (const a of animations) a.cancel();
     animations.clear();
@@ -53,6 +57,7 @@ export function createMotion(stage, enabled, current) {
     clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
     clone.inert = true;
     Object.assign(clone.style, {
+      opacity: "0",
       position: "fixed",
       left: `${rect.left}px`,
       top: `${rect.top}px`,
@@ -66,13 +71,20 @@ export function createMotion(stage, enabled, current) {
   }
   function play(capture, kind) {
     if (!capture || !allowed()) return;
-    if (Object.hasOwn(capture, "original")) {
-      original.play(capture.original);
-      if (kind === "master" && capture.original) {
-        drawSlash();
-        burst(capture.original.word);
-      }
+    if (kind === "update") {
+      capture.clone?.remove();
+      reveal(stage);
       return;
+    }
+    if (Object.hasOwn(capture, "original")) {
+      if (kind === "master" && capture.original) {
+        playMemory(capture.original, false);
+        burst(capture.original.word);
+      } else original.play(capture.original);
+      return;
+    }
+    if (kind === "restore") {
+      if (playMemory(capture, true)) return;
     }
     layer = document.createElement("div");
     layer.className = "motion-layer";
@@ -80,28 +92,58 @@ export function createMotion(stage, enabled, current) {
     layer.ariaHidden = "true";
     layer.append(capture.clone);
     document.body.append(layer);
-    const direction = kind === "undo" ? -1 : 1;
-    animate(
+    const direction = kind === "previous" || kind === "undo" ? -1 : 1;
+    const outgoing = animate(
       capture.clone,
       [
         { opacity: 1, transform: "translateX(0)" },
-        { opacity: 0, transform: `translateX(${-direction * 45}px)` },
+        {
+          opacity: 0,
+          transform: `translateX(${-direction * Math.min(innerWidth * 0.3, 320)}px)`,
+        },
       ],
       { duration: 180 },
+    );
+    outgoing?.finished.then(
+      () => capture.clone.remove(),
+      () => capture.clone.remove(),
     );
     const entering = animate(
       stage,
       [
-        { opacity: 0, transform: `translateX(${direction * 38}px)` },
+        {
+          opacity: 0,
+          transform: `translateX(${direction * Math.min(innerWidth * 0.2, 220)}px)`,
+        },
         { opacity: 1, transform: "translateX(0)" },
       ],
-      { duration: 270, delay: 40 },
+      { duration: 300, delay: 100 },
     );
     const activeLayer = layer;
     entering?.finished.then(
       () => activeLayer.remove(),
       () => activeLayer.remove(),
     );
+  }
+  function playMemory(capture, reverse) {
+    const token = epoch;
+    const result = memoryTransition(stage, capture, reverse, animate);
+    if (!result) return false;
+    layer = result.host;
+    result.finished.then(() => {
+      result.host.remove();
+      if (token === epoch) {
+        stage.style.visibility = "";
+        if (
+          reverse &&
+          [document.body, stage, document.getElementById("undo")].includes(
+            document.activeElement,
+          )
+        )
+          stage.focus({ preventScroll: true });
+      }
+    });
+    return true;
   }
   function enter(el, { axis = "y", direction = 1, distance = 14 } = {}) {
     animate(
@@ -121,50 +163,6 @@ export function createMotion(stage, enabled, current) {
   }
   function reveal(el) {
     animate(el, [{ opacity: 0 }, { opacity: 1 }], { duration: 160 });
-  }
-  function drawSlash() {
-    const slash = document.querySelector(".word-motion-layer .word-slash");
-    if (!slash) return;
-    // Preserve the original split geometry; reveal its line from its upper-right
-    // endpoint toward the lower-left. Transparent rest state prevents tail flash.
-    for (const animation of slash.getAnimations()) animation.cancel();
-    slash.style.opacity = "0";
-    animate(
-      slash,
-      [
-        {
-          transform: "rotate(-9deg)",
-          clipPath: "inset(0 0 0 100%)",
-          opacity: 0,
-          offset: 0,
-        },
-        {
-          transform: "rotate(-9deg)",
-          clipPath: "inset(0 0 0 97%)",
-          opacity: 1,
-          offset: 0.05,
-        },
-        {
-          transform: "rotate(-9deg)",
-          clipPath: "inset(0 0 0 0%)",
-          opacity: 1,
-          offset: 0.5,
-        },
-        {
-          transform: "rotate(-9deg)",
-          clipPath: "inset(0 0 0 0%)",
-          opacity: 0.8,
-          offset: 0.7,
-        },
-        {
-          transform: "rotate(-9deg)",
-          clipPath: "inset(0 0 0 0%)",
-          opacity: 0,
-          offset: 1,
-        },
-      ],
-      { duration: 210, easing: "linear" },
-    );
   }
   function burst(word) {
     // Small square ink chips follow the existing slash. The original split,

@@ -4,6 +4,10 @@
   "url": "https://www.npmjs.com/package/lucide-static/v/1.64.0",
   "icons": [
     {
+      "name": "lightbulb",
+      "sha256": "6e335e6397fd53b6e957801e4f00ffaa2c7f049605d327d58dd881a7f066a4a6"
+    },
+    {
       "name": "settings",
       "sha256": "d8f2e75c94a585a16da4f6f2f16dc79b873049ac433afe4969af5c63ef2c38bd"
     },

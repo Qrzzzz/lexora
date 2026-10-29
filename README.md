@@ -26,6 +26,8 @@
 <details>
 <summary><strong>🖥️ 界面预览</strong></summary>
 
+<img src="./docs/readme-assets/home.png" alt="Lexora 首页，选择一本词册开始或继续" width="100%" />
+
 <img src="./docs/readme-assets/study.png" alt="Lexora 学习页，居中单词与简短中文释义" width="100%" />
 
 <table>
@@ -41,7 +43,7 @@
 
 打开 **[qrzzzz.github.io/lexora](https://qrzzzz.github.io/lexora/)** 即可开始，无需安装或登录。
 
-首次打开会载入一套完整的四级核心词汇样例，也可以在菜单的「词册」页导入自己的 JSON 文件。网页由 GitHub Pages 托管，词册解析与学习都在浏览器中完成。
+首页选择要学习的词册，再点击开始或继续。内置完整的四级核心词汇样例，也可导入自己的 JSON 文件。网页由 GitHub Pages 托管，词册解析与学习都在浏览器中完成。
 
 <a id="主要功能"></a>
 
@@ -57,9 +59,9 @@
 ### ✍️ 学习与交互
 
 - 翻面回想、词汇拼写、原序与乱序。
-- 保留原型的切片、飞散和翻页动效，划线从右上向左下利落划出，支持撤回与可点击回顾；[原文校验与适配说明](./docs/original-motion.md)。
+- 记住时切片飞散，撤回时切片合拢；回到上一个词采用反向翻页。划线从右上向左下，支持可点击回顾；[动效与原文适配说明](./docs/original-motion.md)。
 - 放大触控区域，使用可变字重与荧光笔反馈；标签页按左右方向切换，历史文字保持清晰并在边缘渐隐。
-- 桌面支持键盘与鼠标，手机提供常显的触控操作；回顾不改变正在学习的位置。
+- 桌面支持键盘与鼠标；窄屏底部仅保留记住、灯泡提示、下一个三个图标。回顾不改变正在学习的位置。
 - 设置、词册、条目和备份使用页面内视图。首页保持留白，界面暂只提供中文。
 
 空格切到下一个，Enter 显示或隐藏释义；X 记住了，U 撤回。手机可直接点按底部操作。
@@ -68,7 +70,8 @@
 
 ### 🔤 阅读与保存
 
-- 全站自托管思源宋体，默认黑白，可选浅色、夜读与纸纹。
+- 全站自托管思源宋体，默认跟随系统，使用文档站的浅蓝白与深蓝配色，也可手动选择；纸纹已移除。
+- 大单词的悬停字重参考 [React Bits Text Pressure](https://reactbits.dev/c/text-animations/text-pressure)，仅在鼠标悬停时响应，固定字宽避免抖动，不额外加载字体或 React。
 - 动效跟随系统的减少动态效果设置，也可手动关闭。
 - 设置、下一个、记住、撤回采用不同震动模式，提供独立开关。音效暂未启用，设置保留「后续开发」入口，当前不加载或播放音效。
 - 网页震动取决于浏览器能力，iPhone Safari 不支持；不支持时显示说明，不影响视觉反馈。
@@ -139,6 +142,8 @@ node scripts/package-site.mjs
 感谢 [思源宋体](https://github.com/adobe-fonts/source-han-serif) 提供字体支持，感谢 [WordTyper Vocabularies](https://github.com/grhliu/wordtyper-vocabularies) 与 [ECDICT](https://github.com/skywind3000/ECDICT) 提供首个样例的数据基础。
 
 界面图标使用 [Lucide](https://lucide.dev)，所需 SVG 随项目自托管，无需外部 CDN。
+
+大单词的字重距离响应参考 [React Bits Text Pressure](https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/TextPressure)，在本应用内用原生 JavaScript 适配，遵循其 [MIT + Commons Clause 许可](./assets/REACT-BITS-LICENSE.md)。
 
 ## 📄 许可证
 

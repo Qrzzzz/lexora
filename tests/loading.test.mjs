@@ -8,6 +8,15 @@ import { loadPreset } from "../src/presets.js";
 
 const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
 const hash = (text) => createHash("sha256").update(text).digest("hex");
+test("a real poem is available before JavaScript and its player has an independent entry", async () => {
+  const html = await read("../index.html");
+  assert.ok(html.includes(`<span data-poem-text>${sitePoems[0].text}</span>`));
+  assert.ok(
+    html.indexOf('src="./src/loading/index.js"') <
+      html.indexOf('src="./src/app.js"'),
+  );
+  assert.match(html, /rel="modulepreload" href="\.\/src\/loading\/poems\.js"/);
+});
 test("document-site player, styles and 250 poems retain their source content", async () => {
   const source = JSON.parse(await read("../docs/loading-source/source.json"));
   assert.equal(

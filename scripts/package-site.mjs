@@ -1,4 +1,4 @@
-import { mkdir, cp, rm, writeFile, readFile } from "node:fs/promises";
+import { mkdir, cp, rm, writeFile, readFile, readdir } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -42,6 +42,34 @@ if (!commit) {
   }
 }
 const bytes = await readFile(resolve(root, "examples/first-dictionary.json"));
+// Version the entry and its relative JS dependencies together. Source archives
+// and immutable original motion/poem files stay untouched in the checkout.
+const version = commit.slice(0, 12);
+async function stampModules(dir) {
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const file = resolve(dir, entry.name);
+    if (entry.isDirectory()) await stampModules(file);
+    else if (entry.name.endsWith(".js")) {
+      const source = await readFile(file, "utf8");
+      await writeFile(
+        file,
+        source.replace(
+          /((?:from\s*|import\s*(?:\(\s*)?)["'])(\.{1,2}\/[^"'\n]+\.js)(["'])/g,
+          `$1$2?v=${version}$3`,
+        ),
+      );
+    }
+  }
+}
+await stampModules(resolve(out, "src"));
+const html = await readFile(resolve(out, "index.html"), "utf8");
+await writeFile(
+  resolve(out, "index.html"),
+  html.replace(
+    /((?:src|href)="\.\/src\/[^"?]+\.(?:js|css))"/g,
+    `$1?v=${version}"`,
+  ),
+);
 const sample = JSON.parse(bytes);
 await writeFile(
   resolve(out, "build-info.json"),

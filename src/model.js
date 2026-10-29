@@ -1,7 +1,6 @@
 import { validateDeck, validId, cardTerm, cardSummary } from "./deck.js";
 export const PREFS = {
-  theme: "white",
-  texture: false,
+  theme: "system",
   motion: true,
   haptics: true,
   showAnswer: true,
@@ -11,7 +10,7 @@ export const PREFS = {
 };
 export const localDay = (date = new Date()) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-const themes = ["paper", "white", "mist", "night"];
+const themes = ["system", "paper", "white", "mist", "night"];
 const record = (x) => x && typeof x === "object" && !Array.isArray(x);
 const safeNumber = (x, min = 0) => Number.isSafeInteger(x) && x >= min;
 const assert = (ok, message) => {
@@ -216,7 +215,6 @@ export function validateWorkspace(input) {
   assert(
     record(prefs) &&
       themes.includes(prefs.theme) &&
-      typeof prefs.texture === "boolean" &&
       typeof prefs.motion === "boolean" &&
       (prefs.haptics === undefined || typeof prefs.haptics === "boolean") &&
       (prefs.showAnswer === undefined ||
@@ -318,8 +316,7 @@ export function validateWorkspace(input) {
     progress,
     activeDeckId: input.activeDeckId,
     preferences: {
-      theme: prefs.theme,
-      texture: prefs.texture,
+      theme: ["paper", "mist"].includes(prefs.theme) ? "system" : prefs.theme,
       motion: prefs.motion,
       haptics: prefs.haptics !== false,
       showAnswer: prefs.showAnswer !== false,

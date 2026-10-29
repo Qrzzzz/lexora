@@ -1,0 +1,221 @@
+/* Reading palette from the personal documentation site's tokens.css. */
+:root {
+  --control-ink: rgba(36, 62, 205, 0.18);
+}
+body[data-theme="night"] {
+  --control-ink: rgba(167, 188, 255, 0.26);
+}
+@media (prefers-color-scheme: dark) {
+  body[data-theme="system"] {
+    --paper: #151d37;
+    --ink: #f0f4ff;
+    --meaning: #a6b0cd;
+    --muted: #a6b0cd;
+    --line: #303b58;
+    --wash: #1d2844;
+    --accent: #a7bcff;
+    --control-ink: rgba(167, 188, 255, 0.26);
+    color-scheme: dark;
+  }
+}
+.home-page {
+  width: min(100%, 820px);
+  min-height: 100dvh;
+  margin: auto;
+  padding: clamp(140px, 22vh, 230px) 0 90px;
+}
+.home-page > h1 {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0 0 44px;
+}
+.home-page > h1:focus {
+  outline: none;
+}
+.home-deck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 26px 0 34px;
+  border-bottom: 1px solid var(--line);
+}
+.home-deck h2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+  font-variation-settings: "wght" 500;
+  transition: font-variation-settings 240ms;
+}
+.home-deck-copy {
+  min-width: 0;
+}
+.library-term .control-label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.home-deck:hover h2 {
+  font-variation-settings: "wght" 650;
+}
+.home-deck p {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+.home-start {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+#home-import {
+  margin-top: 28px;
+  color: var(--muted);
+}
+.workspace-heading {
+  justify-content: flex-start;
+  gap: 24px;
+}
+.workspace-heading h1 {
+  margin: 0;
+}
+#close-workspace {
+  flex-shrink: 0;
+}
+#panel-settings .theme-options {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+#panel-settings .theme-options [data-theme="system"] i {
+  background: linear-gradient(115deg, #eef2f3 50%, #151d37 50%);
+  color: #243ecd;
+}
+#panel-settings .theme-options [data-theme="white"] i {
+  background: #eef2f3;
+  color: #243ecd;
+}
+#panel-settings .theme-options [data-theme="night"] i {
+  background: #151d37;
+  color: #a7bcff;
+}
+#panel-settings .theme-options button {
+  white-space: nowrap;
+}
+.pressure-letter {
+  display: inline-block;
+  white-space: pre;
+  font-variation-settings: "wght" 900;
+  transition:
+    font-variation-settings 160ms ease-out,
+    color 180ms;
+}
+.pressure-word {
+  white-space: pre-wrap;
+}
+#master {
+  color: var(--accent);
+}
+.word-slash {
+  background: var(--accent);
+}
+.square-particle:nth-child(3n) {
+  background: var(--accent);
+}
+.word-motion-layer .word-stage {
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  #study-controls .control-label {
+    display: none;
+  }
+  #study-controls {
+    grid-template-columns: repeat(3, 1fr);
+    width: min(360px, calc(100% - 40px));
+  }
+  #study-controls .study-action {
+    min-width: 64px;
+    min-height: 64px;
+    padding: 14px;
+  }
+  #study-controls .icon {
+    width: 27px;
+    height: 27px;
+    stroke-width: 1.85;
+  }
+  #study-controls .study-action {
+    position: relative;
+    isolation: isolate;
+  }
+  #study-controls .study-action::before {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--control-ink);
+    opacity: 0;
+    z-index: -1;
+  }
+  #study-controls .study-action.is-pressed {
+    transform: scale(0.94);
+  }
+  #study-controls .study-action.is-feedback::before {
+    animation: icon-ink 440ms ease-out;
+  }
+  #undo .control-label {
+    display: none;
+  }
+  .home-page {
+    padding-top: 145px;
+  }
+  .home-page > h1 {
+    margin-bottom: 28px;
+  }
+  .home-deck {
+    gap: 16px;
+  }
+  .home-deck h2 {
+    font-size: 27px;
+  }
+  .home-start {
+    font-size: 18px;
+    padding: 10px 4px;
+  }
+  .workspace-heading {
+    gap: 18px;
+  }
+  .workspace-heading h1 {
+    font-size: 27px;
+  }
+  #close-workspace {
+    font-size: 17px;
+    padding-left: 0;
+  }
+  #panel-settings .theme-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #panel-settings .theme-options button {
+    font-size: 17px;
+  }
+}
+@keyframes icon-ink {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}

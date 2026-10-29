@@ -5,43 +5,25 @@
   font-display: swap;
 }
 :root {
-  --paper: #fff;
-  --ink: #171717;
-  --meaning: #696969;
-  --muted: #767676;
-  --line: #e8e8e8;
-  --wash: #f5f5f5;
-  --accent: #171717;
+  --paper: #eef2f3;
+  --ink: #172439;
+  --meaning: #566580;
+  --muted: #596984;
+  --line: #d2d9e2;
+  --wash: #e4eaf0;
+  --accent: #243ecd;
   --error: #9b493c;
   --serif: "Source Han Serif", "Source Han Serif SC", "思源宋体", serif;
   color-scheme: light;
 }
-body[data-theme="paper"] {
-  --paper: #faf8f1;
-  --ink: #302e28;
-  --meaning: #6c675a;
-  --muted: #80796b;
-  --line: #e1dccf;
-  --wash: #f0ece1;
-  --accent: #615747;
-}
-body[data-theme="mist"] {
-  --paper: #f2f5f3;
-  --ink: #2e3833;
-  --meaning: #5e7167;
-  --muted: #74837a;
-  --line: #d8e2dc;
-  --wash: #e6eeea;
-  --accent: #526d60;
-}
 body[data-theme="night"] {
-  --paper: #151515;
-  --ink: #e9e9e9;
-  --meaning: #bcbcbc;
-  --muted: #a3a3a3;
-  --line: #383838;
-  --wash: #292929;
-  --accent: #e9e9e9;
+  --paper: #151d37;
+  --ink: #f0f4ff;
+  --meaning: #a6b0cd;
+  --muted: #a6b0cd;
+  --line: #303b58;
+  --wash: #1d2844;
+  --accent: #a7bcff;
   --error: #e5a08c;
   color-scheme: dark;
 }
@@ -132,18 +114,6 @@ kbd {
 .skip-link:focus {
   top: 10px;
 }
-.paper-grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 10;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
-}
-.no-texture .paper-grain {
-  display: none;
-}
-
 /* Supplied prototype: full-height focus layout, heavy word, quiet meaning. */
 .notebook {
   padding: 0 7vw;
@@ -1047,12 +1017,6 @@ select {
 :root {
   --control-ink: rgba(65, 99, 183, 0.19);
   --control-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-body[data-theme="paper"] {
-  --control-ink: rgba(162, 133, 53, 0.2);
-}
-body[data-theme="mist"] {
-  --control-ink: rgba(61, 129, 104, 0.2);
 }
 body[data-theme="night"] {
   --control-ink: rgba(166, 187, 237, 0.25);

@@ -1,4 +1,6 @@
 const sprite = new URL("../assets/icons/lucide.svg", import.meta.url);
+const version = new URL(import.meta.url).searchParams.get("v");
+if (version) sprite.searchParams.set("v", version);
 const ns = "http://www.w3.org/2000/svg";
 export function icon(name) {
   const svg = document.createElementNS(ns, "svg");

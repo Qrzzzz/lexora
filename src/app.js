@@ -29,6 +29,7 @@ import { createFeedback } from "./feedback.js";
 import { installControlFeedback } from "./controls.js";
 import { loading } from "./loading/index.js";
 import { icon } from "./icons.js";
+import { createTextPressure } from "./pressure.js";
 const $ = (id) => document.getElementById(id);
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -44,6 +45,9 @@ const button = (text, action, className = "text-button", iconName) => {
   return node;
 };
 let workspace,
+  screen = "home",
+  workspaceOrigin = "home",
+  routeReady = false,
   tab = null,
   reviewId = null,
   revealed = true,
@@ -68,6 +72,110 @@ const motion = createMotion(
   () => currentCard(workspace),
 );
 const feedback = createFeedback(() => workspace?.preferences || {});
+const pressure = createTextPressure(
+  $("study-stage"),
+  () => !!workspace?.preferences.motion && screen === "study" && !tab,
+);
+const systemDark = matchMedia("(prefers-color-scheme: dark)");
+function route(view, replace = false) {
+  if (!routeReady) return;
+  if (history.state?.view !== view)
+    history[replace ? "replaceState" : "pushState"](
+      { view, entryId: view === "entry" ? entryId : null },
+      "",
+      `#${view}`,
+    );
+}
+function showHome(record = true) {
+  motion.clear();
+  pressure.reset();
+  screen = "home";
+  tab = null;
+  reviewId = null;
+  $("study").hidden = true;
+  $("workspace").hidden = true;
+  $("home").hidden = false;
+  $("settings-trigger").setAttribute("aria-expanded", false);
+  renderHome();
+  if (record) route("home");
+  $("home-title").focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+function showStudy(record = true) {
+  if (!activeDeck(workspace)) {
+    showHome(record);
+    return;
+  }
+  motion.clear();
+  screen = "study";
+  tab = null;
+  reviewId = null;
+  $("home").hidden = true;
+  $("workspace").hidden = true;
+  $("study").hidden = false;
+  $("settings-trigger").setAttribute("aria-expanded", false);
+  renderStudy();
+  if (record) route("study");
+  $("study-stage").focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+function chooseDeck(id) {
+  if (workspace.activeDeckId !== id) resetUndo();
+  workspace.activeDeckId = id;
+  revealed = workspace.preferences.showAnswer;
+  save();
+  showStudy();
+}
+async function beginPreset(preset) {
+  $("home-error").hidden = true;
+  loading.show({ canContinue: true });
+  try {
+    const deck = await Promise.race([
+      loadPreset(preset),
+      loading.continued.then(() => null),
+    ]);
+    if (!deck) return;
+    resetUndo();
+    importDeck(workspace, deck);
+    chooseDeck(deck.id);
+  } catch (error) {
+    $("home-error").textContent = error.message;
+    $("home-error").hidden = false;
+  } finally {
+    loading.finish();
+  }
+}
+function renderHome() {
+  const list = $("home-decks");
+  list.replaceChildren();
+  const add = (title, detail, action, label) => {
+    const row = element("article", "home-deck");
+    const text = element("div", "home-deck-copy");
+    text.append(element("h2", "", title), element("p", "", detail));
+    row.append(
+      text,
+      button(label, action, "text-button home-start", "arrow-right"),
+    );
+    list.append(row);
+  };
+  for (const deck of workspace.decks) {
+    const p = workspace.progress.find((p) => p.deckId === deck.id);
+    add(
+      presets.find((preset) => preset.deckId === deck.id)?.title || deck.title,
+      `${deck.cards.length.toLocaleString("zh-CN")} ${deck.cards.some((c) => c.type === "knowledge") ? "条" : "词"}${p.mastered.length ? ` · 已记住 ${p.mastered.length}` : ""}`,
+      () => chooseDeck(deck.id),
+      "继续",
+    );
+  }
+  for (const preset of presets)
+    if (!workspace.decks.some((d) => d.id === preset.deckId))
+      add(
+        preset.title,
+        `${preset.count.toLocaleString("zh-CN")} 词`,
+        () => beginPreset(preset),
+        "开始",
+      );
+}
 function notify(text) {
   clearTimeout(toastTimer);
   $("toast").textContent = text;
@@ -108,12 +216,13 @@ function save({ explicit = false } = {}) {
     });
   return saveQueue;
 }
-function remember() {
+function remember(action = "edit") {
   const p = activeProgress(workspace);
   if (!p) return;
   const serialized = JSON.stringify({
     deckId: workspace.activeDeckId,
     progress: p,
+    action,
   });
   undoStack.push(serialized);
   undoBytes += serialized.length;
@@ -125,6 +234,7 @@ function resetUndo() {
   undoBytes = 0;
 }
 function perform(kind, action, origin) {
+  pressure.reset();
   const previous = motion.captureHistory($("history-list"));
   const capture = motion.capture(kind);
   action();
@@ -133,8 +243,8 @@ function perform(kind, action, origin) {
 }
 function applyPreferences() {
   const p = workspace.preferences;
-  document.body.dataset.theme = p.theme;
-  document.body.classList.toggle("no-texture", !p.texture);
+  document.body.dataset.theme =
+    p.theme === "system" ? (systemDark.matches ? "night" : "white") : p.theme;
   document.documentElement.classList.toggle("no-motion", !p.motion);
   document.querySelector("meta[name=theme-color]").content = getComputedStyle(
     document.body,
@@ -144,7 +254,7 @@ function applyPreferences() {
   $("mode").value = p.mode;
   $("order").value = p.order;
   $("history-display").value = p.historyDisplay;
-  $("texture").setAttribute("aria-checked", p.texture);
+  $("restart-round").disabled = !activeDeck(workspace);
   $("motion").setAttribute("aria-checked", p.motion);
   $("sound").setAttribute("aria-checked", false);
   $("haptics").setAttribute("aria-checked", p.haptics);
@@ -206,6 +316,16 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
   stage.replaceChildren();
   $("study-controls").hidden = false;
   $("undo").disabled = !undoStack.length;
+  const lastAction = undoStack.length
+    ? JSON.parse(undoStack.at(-1)).action
+    : null;
+  const undoLabel =
+    lastAction === "next" || lastAction === "round" ? "上一个" : "撤回";
+  $("undo").replaceChildren(
+    icon("undo-2"),
+    element("span", "control-label", undoLabel),
+  );
+  $("undo").setAttribute("aria-label", undoLabel);
   $("current-deck").textContent = deck?.title || "选择一本词册";
   const today = workspace.progress.reduce(
     (sum, p) => sum + (p.daily[localDay()] || 0),
@@ -269,6 +389,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
   const termButton = button(prompt, () => openEntry(card.id), "term-button");
   termButton.setAttribute("aria-label", `查看「${cardTerm(card)}」词条`);
   heading.replaceChildren(termButton);
+  pressure.attach(!spell && card.type === "vocabulary" ? termButton : null);
   if (!spell && card.pronunciations?.length)
     stage.append(
       element(
@@ -315,7 +436,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
     controls.append(
       button("返回", closeHistory, "text-button", "arrow-left"),
       button(
-        p.mastered.includes(card.id) ? "恢复" : "记住了",
+        p.mastered.includes(card.id) ? "重新学习" : "记住了",
         () => toggleFromReview(card.id),
         "text-button",
         p.mastered.includes(card.id) ? "undo-2" : "check",
@@ -330,6 +451,10 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
         : card.type === "vocabulary"
           ? "释义"
           : "答案";
+    $("reveal").setAttribute(
+      "aria-label",
+      spell ? "检查拼写" : revealed ? "隐藏释义" : "提示释义",
+    );
     $("master").setAttribute(
       "aria-label",
       card.type === "vocabulary" ? "记住了这个词" : "标记已经掌握",
@@ -349,10 +474,10 @@ function appendAnswer(parent, card) {
   parent.append(answer);
 }
 function rate(kind) {
-  if (tab || reviewId || !currentCard(workspace)) return;
+  if (screen !== "study" || tab || reviewId || !currentCard(workspace)) return;
   feedback.perform(kind === "master" ? "master" : "next");
   perform(kind === "master" ? "master" : "next", () => {
-    remember();
+    remember(kind === "master" ? "master" : "next");
     rateCard(workspace, kind);
     revealed = workspace.preferences.showAnswer;
     checked = false;
@@ -366,7 +491,16 @@ function undo() {
     return;
   }
   feedback.perform("undo");
-  perform("undo", () => {
+  const previousAction = JSON.parse(undoStack.at(-1)).action;
+  const animation =
+    previousAction === "master"
+      ? "restore"
+      : previousAction === "restore"
+        ? "master"
+        : previousAction === "next" || previousAction === "round"
+          ? "previous"
+          : "update";
+  perform(animation, () => {
     const raw = undoStack.pop(),
       snapshot = JSON.parse(raw);
     undoBytes -= raw.length;
@@ -431,7 +565,7 @@ function checkSpelling() {
 }
 function nextRound() {
   perform("next", () => {
-    remember();
+    remember("round");
     startRound(workspace);
     reviewId = null;
     revealed = workspace.preferences.showAnswer;
@@ -450,15 +584,16 @@ function openHistory(id, origin) {
   $("study-stage").focus({ preventScroll: true });
 }
 function closeHistory() {
-  perform("undo", () => {
+  perform("previous", () => {
     reviewId = null;
     revealed = workspace.preferences.showAnswer;
   });
   $("study-stage").focus({ preventScroll: true });
 }
 function toggleFromReview(id) {
-  perform("undo", () => {
-    remember();
+  const restoring = activeProgress(workspace).mastered.includes(id);
+  perform(restoring ? "restore" : "master", () => {
+    remember(restoring ? "restore" : "master");
     toggleMastered(workspace, id);
     save();
   });
@@ -469,14 +604,17 @@ function toggleFromReview(id) {
   );
 }
 
-function openWorkspace(name) {
+function openWorkspace(name, record = true) {
   if (tab === name) return;
   const previousTab = tab;
+  if (!tab) workspaceOrigin = screen;
   motion.clear();
+  pressure.reset();
   tab = name;
   reviewId = null;
   // Keep the study layout in the document: workspace unfolds into its place, without an overlay or focus trap.
   $("study").hidden = true;
+  $("home").hidden = true;
   $("workspace").hidden = false;
   for (const panel of document.querySelectorAll(".panel"))
     panel.hidden = panel.id !== `panel-${name}`;
@@ -500,6 +638,10 @@ function openWorkspace(name) {
   };
   $("workspace-eyebrow").textContent = names[name][0];
   $("workspace-heading").textContent = names[name][1];
+  $("close-workspace").replaceChildren(
+    icon("arrow-left"),
+    element("span", "control-label", name === "entry" ? "返回学习" : "返回"),
+  );
   if (name === "decks") renderDecks();
   if (name === "entry") renderEntry();
   if (name === "library") {
@@ -507,6 +649,7 @@ function openWorkspace(name) {
     renderLibrary();
   }
   applyPreferences();
+  if (record) route(name);
   const tabs = ["decks", "library", "settings", "backup", "help"];
   if (previousTab && tabs.includes(name)) {
     const direction =
@@ -521,26 +664,11 @@ function openWorkspace(name) {
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 function closeWorkspace() {
-  if (tab === "entry" && entryReturn?.tab === "library") {
-    entryReturn = null;
-    openWorkspace("library");
-    return;
-  }
-  if (tab === "entry") reviewId = entryReturn?.reviewId || null;
+  const returnToStudy = tab === "entry" || workspaceOrigin === "study";
   entryReturn = null;
-  motion.clear();
-  tab = null;
-  $("workspace").hidden = true;
-  $("study").hidden = false;
-  $("settings-trigger").setAttribute("aria-expanded", "false");
-  $("deck-trigger").setAttribute("aria-expanded", "false");
-  renderStudy();
-  motion.enter(
-    $("reading-column") || document.querySelector(".reading-column"),
-    { axis: "none" },
-  );
-  $("study-stage").focus({ preventScroll: true });
-  window.scrollTo({ top: 0, behavior: "instant" });
+  if (returnToStudy) showStudy(false);
+  else showHome(false);
+  route(screen, true);
 }
 function renderDecks() {
   $("deck-list").replaceChildren();
@@ -569,7 +697,7 @@ function renderDecks() {
           revealed = workspace.preferences.showAnswer;
           resetUndo();
           save();
-          closeWorkspace();
+          showStudy();
         },
         "text-button",
         "arrow-right",
@@ -709,7 +837,7 @@ function renderLibrary() {
       "div",
       `library-row${mastered.has(card.id) ? " is-mastered" : ""}`,
     );
-    const action = button(mastered.has(card.id) ? "恢复" : "记住了", () => {
+    const action = button(mastered.has(card.id) ? "重新学习" : "记住了", () => {
       remember();
       toggleMastered(workspace, card.id);
       save();
@@ -723,7 +851,7 @@ function renderLibrary() {
     action.dataset.cardId = card.id;
     action.setAttribute(
       "aria-label",
-      `${mastered.has(card.id) ? "恢复" : "记住了"} ${cardTerm(card)}`,
+      `${mastered.has(card.id) ? "重新学习" : "记住了"} ${cardTerm(card)}`,
     );
     row.append(
       button(cardTerm(card), () => openEntry(card.id), "library-term"),
@@ -802,6 +930,20 @@ async function readBackup(file) {
 }
 
 function bind() {
+  document.querySelector(".skip-link").onclick = (event) => {
+    event.preventDefault();
+    (tab
+      ? $("workspace-heading")
+      : screen === "home"
+        ? $("home-title")
+        : $("study-stage")
+    ).focus({ preventScroll: true });
+  };
+  document.querySelector(".brand").onclick = (e) => {
+    e.preventDefault();
+    showHome();
+  };
+  $("home-import").onclick = () => openWorkspace("decks");
   $("again").onclick = () => rate("again");
   $("master").onclick = () => rate("master");
   $("reveal").onclick = reveal;
@@ -839,7 +981,7 @@ function bind() {
         save();
       }),
   );
-  for (const key of ["texture", "motion", "haptics"])
+  for (const key of ["motion", "haptics"])
     $(key).onclick = () => {
       workspace.preferences[key] = !workspace.preferences[key];
       motion.clear();
@@ -847,7 +989,7 @@ function bind() {
       save();
     };
   $("restart-round").onclick = () => {
-    remember();
+    remember("round");
     startRound(workspace);
     revealed = workspace.preferences.showAnswer;
     save();
@@ -999,6 +1141,7 @@ function bind() {
       openWorkspace("decks");
       return;
     }
+    if (screen !== "study") return;
     if (key === "u") {
       e.preventDefault();
       undo();
@@ -1025,7 +1168,22 @@ function bind() {
     motionEnabled: () => workspace.preferences.motion,
   });
   matchMedia("(max-width:760px)").addEventListener("change", () => {
-    if (!tab) renderHistory();
+    if (!tab && screen === "study") renderHistory();
+  });
+  systemDark.addEventListener("change", () => {
+    if (workspace.preferences.theme === "system") applyPreferences();
+  });
+  window.addEventListener("popstate", (event) => {
+    const target = event.state?.view || "home";
+    if (target === "entry" && event.state?.entryId) {
+      entryId = event.state.entryId;
+      openWorkspace("entry", false);
+    } else if (target === "study" || target === "entry") showStudy(false);
+    else if (
+      ["settings", "decks", "library", "help", "backup"].includes(target)
+    )
+      openWorkspace(target, false);
+    else showHome(false);
   });
 }
 
@@ -1036,23 +1194,7 @@ async function boot() {
   try {
     const saved = await loadWorkspace();
     if (saved) workspace = validateWorkspace(saved);
-    else {
-      try {
-        const controller = new AbortController();
-        loading.allowContinue();
-        const deck = await Promise.race([
-          loadPreset(undefined, { signal: controller.signal }),
-          loading.continued.then(() => {
-            controller.abort();
-            return null;
-          }),
-        ]);
-        workspace = deck ? createWorkspace(deck) : createWorkspace();
-      } catch (e) {
-        workspace = createWorkspace();
-        presetError = e.message;
-      }
-    }
+    else workspace = createWorkspace();
   } catch (error) {
     workspace = createWorkspace(demoDeck);
     blockAutosave = true;
@@ -1064,7 +1206,12 @@ async function boot() {
   $("settings-trigger").disabled = false;
   $("study-stage").removeAttribute("aria-busy");
   bind();
-  renderStudy();
+  applyPreferences();
+  const initialRoute = location.hash.slice(1);
+  if (initialRoute === "study" && activeDeck(workspace)) showStudy(false);
+  else showHome(false);
+  routeReady = true;
+  route(screen, true);
   loading.finish();
   if (!blockAutosave) save();
 }

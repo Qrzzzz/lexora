@@ -215,7 +215,7 @@ test("independent deck IDs keep separate learning progress", () => {
 test("full backup round-trips decks, settings, queues and history", () => {
   const w = createWorkspace(demoDeck);
   rateCard(w, "master");
-  w.preferences.theme = "mist";
+  w.preferences.theme = "night";
   const restored = validateWorkspace(
     JSON.parse(JSON.stringify({ ...w, exportedAt: new Date().toISOString() })),
   );
