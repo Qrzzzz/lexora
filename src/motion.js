@@ -11,6 +11,7 @@ export function createMotion(stage, enabled, current) {
   });
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   const animations = new Set();
+  let particles;
   let layer;
   const allowed = () => enabled() && !reduced.matches;
   function clear() {
@@ -19,6 +20,8 @@ export function createMotion(stage, enabled, current) {
     animations.clear();
     layer?.remove();
     layer = null;
+    particles?.remove();
+    particles = null;
   }
   function animate(el, frames, options = {}) {
     if (!el || !allowed()) return;
@@ -65,6 +68,7 @@ export function createMotion(stage, enabled, current) {
     if (!capture || !allowed()) return;
     if (Object.hasOwn(capture, "original")) {
       original.play(capture.original);
+      if (kind === "master" && capture.original) burst(capture.original.word);
       return;
     }
     layer = document.createElement("div");
@@ -115,11 +119,80 @@ export function createMotion(stage, enabled, current) {
   function reveal(el) {
     animate(el, [{ opacity: 0 }, { opacity: 1 }], { duration: 160 });
   }
+  function burst(word) {
+    // Small square ink chips follow the existing slash. The original split,
+    // fragments, timing and incoming word animation remain untouched.
+    const host = document.createElement("div");
+    host.className = "square-particle-layer";
+    host.inert = true;
+    host.setAttribute("aria-hidden", "true");
+    document.body.append(host);
+    particles = host;
+    for (let i = 0; i < 20; i++) {
+      const chip = document.createElement("i");
+      const along = (i / 19 - 0.5) * word.width * 0.9;
+      const side = i % 2 ? 1 : -1;
+      const dx = side * (18 + (i % 5) * 10);
+      const dy = side * (15 + (i % 4) * 9);
+      const size = [2, 3, 2, 4, 2][i % 5];
+      chip.className = "square-particle";
+      Object.assign(chip.style, {
+        left: `${word.left + word.width * 0.5 + along}px`,
+        top: `${word.top + word.height * 0.55 - along * 0.16}px`,
+        width: `${size}px`,
+        height: `${size}px`,
+      });
+      host.append(chip);
+      animate(
+        chip,
+        [
+          { transform: "translate(0,0) rotate(-9deg) scale(.25)", opacity: 0 },
+          {
+            transform: `translate(${dx * 0.2}px,${dy * 0.2}px) rotate(${side * 18}deg) scale(1)`,
+            opacity: 0.62,
+            offset: 0.2,
+          },
+          {
+            transform: `translate(${dx}px,${dy + 14}px) rotate(${side * (55 + i * 11)}deg) scale(.2)`,
+            opacity: 0,
+          },
+        ],
+        {
+          duration: 310 + (i % 4) * 30,
+          delay: 44 + (i % 3) * 8,
+          easing: "cubic-bezier(.18,.7,.28,1)",
+        },
+      );
+    }
+    const last = animate(host, [{ opacity: 1 }, { opacity: 1 }], {
+      duration: 465,
+    });
+    last?.finished.then(
+      () => host.remove(),
+      () => host.remove(),
+    );
+  }
+  function captureHistory(list) {
+    return new Map(
+      [...list.children].map((entry) => {
+        const style = getComputedStyle(entry);
+        return [
+          entry.dataset.eventId,
+          {
+            rect: entry.getBoundingClientRect(),
+            opacity: Number(style.opacity),
+            filter: style.filter,
+          },
+        ];
+      }),
+    );
+  }
   function history(list, previous) {
     for (const entry of list.children) {
       const old = previous.get(entry.dataset.eventId),
         rect = entry.getBoundingClientRect();
       const opacity = Number(entry.style.getPropertyValue("--history-opacity"));
+      const filter = `blur(${entry.style.getPropertyValue("--history-blur")})`;
       if (
         old &&
         old.opacity === opacity &&
@@ -133,15 +206,16 @@ export function createMotion(stage, enabled, current) {
           {
             transform: old
               ? `translate(${old.rect.left - rect.left}px,${old.rect.top - rect.top}px)`
-              : "translateY(10px)",
-            opacity: old?.opacity || 0,
+              : `translateY(${rect.height + 20}px)`,
+            opacity: old?.opacity ?? 0,
+            filter: old?.filter || "blur(1px)",
           },
-          { transform: "none", opacity },
+          { transform: "none", opacity, filter },
         ],
-        { duration: 300 },
+        { duration: 420, easing: "cubic-bezier(.16,1,.3,1)" },
       );
     }
   }
   reduced.addEventListener("change", clear);
-  return { clear, capture, play, enter, reveal, history };
+  return { clear, capture, play, enter, reveal, history, captureHistory };
 }

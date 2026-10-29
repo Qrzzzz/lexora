@@ -27,6 +27,7 @@ import { loadWorkspace, persistWorkspace } from "./storage.js";
 import { createMotion } from "./motion.js";
 import { createFeedback } from "./feedback.js";
 import { installControlFeedback } from "./controls.js";
+import { loading } from "./loading/index.js";
 const $ = (id) => document.getElementById(id);
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -119,9 +120,10 @@ function resetUndo() {
   undoBytes = 0;
 }
 function perform(kind, action, origin) {
+  const previous = motion.captureHistory($("history-list"));
   const capture = motion.capture(kind);
   action();
-  renderStudy();
+  renderStudy(previous);
   motion.play(capture, kind, origin);
 }
 function applyPreferences() {
@@ -147,29 +149,18 @@ function applyPreferences() {
       b.setAttribute("aria-pressed", b.dataset.theme === p.theme),
     );
 }
-function renderHistory() {
+function renderHistory(previous = motion.captureHistory($("history-list"))) {
   const deck = activeDeck(workspace),
     p = activeProgress(workspace),
     list = $("history-list");
-  const previous = new Map(
-    [...list.children].map((b) => [
-      b.dataset.eventId,
-      {
-        rect: b.getBoundingClientRect(),
-        opacity: Number(b.style.getPropertyValue("--history-opacity")),
-      },
-    ]),
-  );
   list.replaceChildren();
   const cards = new Map(deck?.cards.map((c) => [c.id, c]) || []),
-    events = (p?.recent || []).filter((e) => cards.has(e.cardId)).slice(-4);
-  const mobile = matchMedia("(max-width:760px)").matches;
-  if (mobile) events.reverse();
+    events = (p?.recent || []).filter((e) => cards.has(e.cardId)).slice(-8);
   $("history-empty").hidden = !!events.length;
   for (let i = 0; i < events.length; i++) {
     const event = events[i],
       card = cards.get(event.cardId),
-      age = mobile ? i : events.length - 1 - i;
+      age = events.length - 1 - i;
     const b = button(
       "",
       () => openHistory(card.id, b.getBoundingClientRect()),
@@ -180,10 +171,8 @@ function renderHistory() {
     b.dataset.eventId = event.eventId;
     b.setAttribute("aria-label", `回看 ${cardTerm(card)}`);
     b.setAttribute("aria-pressed", reviewId === card.id);
-    b.style.setProperty(
-      "--history-opacity",
-      String([1, 0.84, 0.68, 0.52][age]),
-    );
+    b.style.setProperty("--history-opacity", String(1 - age * 0.075));
+    b.style.setProperty("--history-blur", `${age * 0.48}px`);
     b.append(
       element("span", "history-term", cardTerm(card)),
       element(
@@ -196,7 +185,7 @@ function renderHistory() {
   }
   motion.history(list, previous);
 }
-function renderStudy() {
+function renderStudy(previous = motion.captureHistory($("history-list"))) {
   motion.clear();
   applyPreferences();
   const deck = activeDeck(workspace),
@@ -211,7 +200,7 @@ function renderStudy() {
     0,
   );
   $("daily-count").textContent = `今日 ${today}`;
-  renderHistory();
+  renderHistory(previous);
   if (!deck) {
     $("position").textContent = "";
     $("study-controls").hidden = true;
@@ -249,14 +238,8 @@ function renderStudy() {
     stage.append(summary);
     return;
   }
-  if (reviewId)
-    stage.append(
-      element(
-        "span",
-        "review-badge",
-        p.mastered.includes(card.id) ? "已斩" : "回顾",
-      ),
-    );
+  if (reviewId && p.mastered.includes(card.id))
+    stage.append(element("span", "review-badge", "已斩"));
   const spell =
     !reviewId && workspace.preferences.mode === "spelling" && canSpell(card);
   const prompt =
@@ -975,8 +958,15 @@ function bind() {
       else if (reviewId) closeHistory();
       return;
     }
-    if (e.target.closest("button,a") && ["enter", " "].includes(key)) return;
     if (tab) return;
+    // Keep native activation for navigation and history. In the learning area,
+    // these keys always retain their original meaning, even on a focused term.
+    if (
+      e.target.closest("button,a") &&
+      !e.target.closest("#study-stage,#study-controls") &&
+      ["enter", " "].includes(key)
+    )
+      return;
     if (key === "s") {
       e.preventDefault();
       openWorkspace("settings");
@@ -995,8 +985,10 @@ function bind() {
     if (reviewId) return;
     if (key === "enter" || key === " ") {
       e.preventDefault();
-      if (currentCard(workspace)) reveal();
-      else if (activeDeck(workspace)) nextRound();
+      if (currentCard(workspace)) {
+        if (key === " ") rate("again");
+        else reveal();
+      } else if (activeDeck(workspace)) nextRound();
     } else if (key === "j" || key === "arrowleft") {
       e.preventDefault();
       rate("again");
@@ -1017,7 +1009,6 @@ function bind() {
 
 async function boot() {
   $("study-stage").setAttribute("aria-busy", "true");
-  $("study-stage").append(element("p", "loading-note", "正在载入词册…"));
   $("study-controls").hidden = true;
   $("settings-trigger").disabled = true;
   try {
@@ -1025,7 +1016,16 @@ async function boot() {
     if (saved) workspace = validateWorkspace(saved);
     else {
       try {
-        workspace = createWorkspace(await loadPreset());
+        const controller = new AbortController();
+        loading.allowContinue();
+        const deck = await Promise.race([
+          loadPreset(undefined, { signal: controller.signal }),
+          loading.continued.then(() => {
+            controller.abort();
+            return null;
+          }),
+        ]);
+        workspace = deck ? createWorkspace(deck) : createWorkspace();
       } catch (e) {
         workspace = createWorkspace();
         presetError = e.message;
@@ -1043,6 +1043,7 @@ async function boot() {
   $("study-stage").removeAttribute("aria-busy");
   bind();
   renderStudy();
+  loading.finish();
   if (!blockAutosave) save();
 }
 boot();

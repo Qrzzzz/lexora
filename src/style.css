@@ -86,9 +86,14 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible,
-[tabindex]:focus-visible {
+[tabindex]:not([tabindex="-1"]):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
+}
+#study:focus,
+#study-stage:focus,
+#workspace-heading:focus {
+  outline: none;
 }
 button,
 input,
@@ -245,10 +250,6 @@ kbd {
 .card-example {
   display: none;
 }
-.loading-note {
-  font-size: 16px;
-  color: var(--muted);
-}
 .spelling-form {
   width: 100%;
   max-width: 470px;
@@ -377,76 +378,12 @@ kbd {
 }
 
 /* New history sits in the original page margin, without shifting its center. */
-.recollection {
-  position: fixed;
-  left: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 155px;
-  z-index: 2;
-}
+
 .recollection:has(#history-list:empty) {
   display: none;
 }
-.rail-heading {
-  margin-bottom: 14px;
-  color: var(--muted);
-}
-.rail-heading h2 {
-  font-weight: 400;
-  font-size: 10px;
-}
-.history-window {
-  height: 282px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  padding-top: 10px;
-}
-.history-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.history-entry {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 12px 0;
-  min-height: 60px;
-  color: var(--muted);
-  opacity: var(--history-opacity, 1);
-  filter: none;
-  transition:
-    opacity 0.2s,
-    filter 0.2s;
-}
-.history-entry:hover,
-.history-entry:focus-visible {
-  opacity: 1 !important;
-  filter: none !important;
-}
-.history-term {
-  display: block;
-  font-size: 15px;
-  line-height: 1.5;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.history-status {
-  display: block;
-  font-size: 9px;
-  margin-top: 5px;
-}
 .history-entry.is-mastered .history-term {
   text-decoration: none;
-}
-.history-entry[aria-pressed="true"] {
-  color: var(--ink);
-  opacity: 1;
-  filter: none;
 }
 
 /* In-page utility views reuse the original thin rules and monochrome controls. */
@@ -776,15 +713,7 @@ select {
 .motion-fragment {
   border-radius: 1px;
 }
-@media (max-width: 1100px) {
-  .recollection {
-    left: 20px;
-    width: 110px;
-  }
-  .history-term {
-    font-size: 12px;
-  }
-}
+
 @media (max-width: 760px) {
   .notebook {
     padding: 0 24px;
@@ -849,43 +778,7 @@ select {
   #undo kbd {
     display: none;
   }
-  .recollection {
-    position: fixed;
-    left: 24px;
-    right: 90px;
-    top: auto;
-    bottom: calc(88px + env(safe-area-inset-bottom));
-    width: auto;
-    transform: none;
-  }
-  .rail-heading,
-  .history-status {
-    display: none;
-  }
-  .history-window {
-    height: 35px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0;
-    scrollbar-width: none;
-  }
-  .history-list {
-    flex-direction: row;
-    gap: 18px;
-    width: max-content;
-    min-width: 100%;
-  }
-  .history-entry {
-    width: auto;
-    max-width: 125px;
-    flex-shrink: 0;
-    padding: 0;
-    min-height: 35px;
-  }
-  .history-term {
-    font-size: 11px;
-    max-width: 125px;
-  }
+
   .workspace {
     padding-top: 90px;
   }
@@ -964,12 +857,6 @@ select {
 .history-entry > .control-label::before {
   display: none;
 }
-.history-term {
-  position: relative;
-  isolation: isolate;
-  width: max-content;
-  max-width: 100%;
-}
 .history-term::before {
   content: "";
   position: absolute;
@@ -1022,18 +909,12 @@ select {
   .motion-layer {
     display: none;
   }
-  .history-entry {
-    filter: none !important;
-  }
 }
 .no-motion *,
 .no-motion *::before,
 .no-motion *::after {
   animation: none !important;
   transition: none !important;
-}
-.no-motion .history-entry {
-  filter: none !important;
 }
 
 /* Dictionary content stays in the existing in-page view. */
@@ -1352,7 +1233,7 @@ a[href]:not(.brand):not(.skip-link) {
   font-size: 18px;
 }
 .setting-row p {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   max-width: 420px;
 }
@@ -1486,7 +1367,7 @@ a[href]:not(.brand):not(.skip-link) {
 .deck-row p,
 .preset-row p,
 .small-note {
-  font-size: 13px;
+  font-size: 14px;
 }
 .preset-row h3,
 .import-area h3 {
@@ -1536,55 +1417,10 @@ a[href]:not(.brand):not(.skip-link) {
   min-height: 54px;
   padding: 10px 14px;
 }
-.recollection {
-  width: 180px;
-}
-.rail-heading h2 {
-  font-size: 13px;
-}
-.history-window {
-  position: relative;
-  height: 300px;
-  mask-image: linear-gradient(to bottom, transparent, #000 22px, #000);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22px, #000);
-}
-.history-entry {
-  filter: none;
-  min-height: 66px;
-  padding: 8px 4px;
-  transition: opacity 200ms;
-}
-.history-entry > .control-label {
-  display: block;
-  width: 100%;
-}
-.history-term {
-  font-size: 18px;
-  line-height: 1.55;
-}
-.history-status {
-  font-size: 11px;
-  line-height: 1.6;
-  display: block;
-  margin-top: 3px;
-}
 .history-entry.is-mastered .history-term {
   text-decoration: none;
 }
-.history-entry:hover,
-.history-entry:focus-visible {
-  filter: none !important;
-  opacity: 1 !important;
-}
-@media (max-width: 1100px) and (min-width: 761px) {
-  .recollection {
-    width: 125px;
-    left: 18px;
-  }
-  .history-term {
-    font-size: 16px;
-  }
-}
+
 @media (max-width: 760px) {
   .notebook {
     padding: 0 20px;
@@ -1620,62 +1456,6 @@ a[href]:not(.brand):not(.skip-link) {
     min-height: 56px;
     font-size: 16px;
   }
-  .recollection {
-    left: 20px;
-    right: 114px;
-    bottom: calc(96px + env(safe-area-inset-bottom));
-    width: auto;
-    top: auto;
-    transform: none;
-  }
-  .history-window {
-    height: 64px;
-    max-height: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: block;
-    mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
-    -webkit-mask-image: linear-gradient(
-      to right,
-      #000 calc(100% - 24px),
-      transparent
-    );
-  }
-  .history-list {
-    gap: 14px;
-    min-height: 64px;
-    align-items: center;
-  }
-  .history-entry {
-    min-height: 60px;
-    max-width: 150px;
-    min-width: 80px;
-    width: auto;
-    padding: 4px 2px;
-  }
-  .history-term {
-    font-size: 16px;
-    max-width: 145px;
-  }
-  .history-status {
-    font-size: 11px;
-    display: block;
-  }
-  .history-window::after {
-    content: "";
-    position: sticky;
-    display: block;
-    float: right;
-    right: 0;
-    bottom: 0;
-    width: 18px;
-    height: 64px;
-    margin-top: -64px;
-    pointer-events: none;
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    mask-image: linear-gradient(to right, transparent, #000);
-  }
   .workspace {
     padding-top: 90px;
   }
@@ -1702,7 +1482,7 @@ a[href]:not(.brand):not(.skip-link) {
     font-size: 17px;
   }
   .setting-row p {
-    font-size: 12px;
+    font-size: 14px;
     max-width: 200px;
   }
   .theme-options {
@@ -1771,10 +1551,6 @@ a[href]:not(.brand):not(.skip-link) {
   .theme-options button {
     min-width: 48px;
     padding: 6px;
-  }
-  .recollection {
-    left: 16px;
-    right: 105px;
   }
   .study-action {
     font-size: 17px;

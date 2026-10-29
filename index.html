@@ -15,9 +15,58 @@
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="stylesheet" href="./src/original-word-motion.css" />
+    <link rel="stylesheet" href="./src/history.css" />
+    <link rel="stylesheet" href="./src/loading/original-loading.css" />
+    <link rel="stylesheet" href="./src/loading/adapter.css" />
     <script type="module" src="./src/app.js"></script>
   </head>
   <body data-theme="white">
+    <div
+      id="site-loading"
+      class="site-loading"
+      role="status"
+      aria-live="polite"
+      aria-label="正在加载"
+    >
+      <div class="site-loading__composition" aria-hidden="true">
+        <div class="site-loading__heading">
+          <div class="site-loading__title">
+            <span style="--letter: 0">l</span><span style="--letter: 1">o</span
+            ><span style="--letter: 2">a</span><span style="--letter: 3">d</span
+            ><span style="--letter: 4">i</span><span style="--letter: 5">n</span
+            ><span style="--letter: 6">g</span>
+          </div>
+        </div>
+        <div class="site-loading__poem-stage">
+          <div class="site-loading__poem" data-poem-player>
+            <div class="site-loading__poem-ghost" data-poem-ghost></div>
+            <!-- prettier-ignore -->
+            <div class="site-loading__poem-live"><span data-poem-text></span><span class="site-loading__cursor">_</span></div>
+            <p class="site-loading__attribution" lang="en">
+              Words by
+              <a
+                href="https://chatgpt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                tabindex="-1"
+                >ChatGPT 6 Astra</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="site-loading__recovery"
+        data-loading-recovery
+        hidden
+        role="group"
+        aria-label="加载选项"
+      >
+        <p>仍在加载，可以稍候，或先导入自己的词册。</p>
+        <button data-loading-continue disabled>先开始</button
+        ><button data-loading-retry>重试</button>
+      </div>
+    </div>
     <a class="skip-link" href="#study">跳到学习内容</a>
     <div class="paper-grain" aria-hidden="true"></div>
     <div class="notebook">
@@ -49,8 +98,7 @@
           aria-label="学习手帖"
           tabindex="-1"
         >
-          <aside class="recollection" aria-labelledby="history-heading">
-            <div class="rail-heading"><h2 id="history-heading">回顾</h2></div>
+          <aside class="recollection" aria-label="历史词条">
             <div class="history-window">
               <div id="history-list" class="history-list"></div>
             </div>
@@ -72,11 +120,19 @@
               role="group"
               aria-label="学习操作"
             >
-              <button id="again" class="study-action">
+              <button
+                id="again"
+                class="study-action"
+                aria-keyshortcuts="Space J ArrowLeft"
+              >
                 <span class="action-icon" aria-hidden="true">←</span
-                ><span>再遇</span><kbd>J</kbd>
+                ><span>下一个</span><kbd>Space</kbd>
               </button>
-              <button id="reveal" class="study-action reveal-action">
+              <button
+                id="reveal"
+                class="study-action reveal-action"
+                aria-keyshortcuts="Enter"
+              >
                 <span id="reveal-label">翻开释义</span><kbd>Enter</kbd>
               </button>
               <button id="master" class="study-action master-action">
@@ -313,8 +369,8 @@
             <div class="help-lines">
               <p>再遇：留到下轮。斩：标记掌握。回顾：仅回看，不改变进度。</p>
               <p>
-                Enter 翻面 / 检查 · J / ← 再遇 · X / → 斩 · U 撤回 · S 设置 · B
-                词册 · Esc 返回。
+                空格 下一个 · Enter 释义 / 检查 · J / ← 下一个 · X / → 斩 · U
+                撤回 · S 设置 · B 词册 · Esc 返回。
               </p>
               <p>
                 手机直接点按底部按钮。撤回记录仅在本次打开期间保留，最多 30 步。

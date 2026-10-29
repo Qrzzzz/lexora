@@ -1,4 +1,8 @@
 src/original-word-motion.js
 src/original-word-motion.css
+src/loading/poem-player.js
+src/loading/original-loading.css
+src/loading/poems.js
+docs/loading-source/
 examples/first-dictionary.json
 data/sources/

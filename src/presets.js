@@ -11,9 +11,12 @@ export const presets = [
   },
 ];
 
-export async function loadPreset(preset = presets[0]) {
+export async function loadPreset(preset = presets[0], { signal } = {}) {
   const controller = new AbortController(),
     timer = setTimeout(() => controller.abort(), 60000);
+  const abort = () => controller.abort();
+  if (signal?.aborted) abort();
+  else signal?.addEventListener("abort", abort, { once: true });
   try {
     const response = await fetch(preset.url, {
       cache: "no-cache",
@@ -30,5 +33,6 @@ export async function loadPreset(preset = presets[0]) {
     return deck;
   } finally {
     clearTimeout(timer);
+    signal?.removeEventListener("abort", abort);
   }
 }
