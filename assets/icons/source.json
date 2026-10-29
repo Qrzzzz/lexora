@@ -4,6 +4,10 @@
   "url": "https://www.npmjs.com/package/lucide-static/v/1.64.0",
   "icons": [
     {
+      "name": "share-2",
+      "sha256": "56a205a8a59dbfc5be34540a4048a2d5ef9af774268973e91a58e12385064e61"
+    },
+    {
       "name": "lightbulb",
       "sha256": "6e335e6397fd53b6e957801e4f00ffaa2c7f049605d327d58dd881a7f066a4a6"
     },
@@ -70,6 +74,12 @@
     {
       "name": "folder-open",
       "sha256": "56e4a9efba444c127ab2ad19bed2b182cc79d252855d5f80153011eaaef719d0"
+    },
+    {
+      "name": "github",
+      "version": "0.468.0",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/github.svg",
+      "sha256": "0321caf10777f668ab0ec49c0d58b157c3d004d1b4aef2b99ab4c9711b053257"
     }
   ]
 }

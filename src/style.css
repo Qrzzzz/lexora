@@ -5,27 +5,8 @@
   font-display: swap;
 }
 :root {
-  --paper: #eef2f3;
-  --ink: #172439;
-  --meaning: #566580;
-  --muted: #596984;
-  --line: #d2d9e2;
-  --wash: #e4eaf0;
-  --accent: #243ecd;
-  --error: #9b493c;
   --serif: "Source Han Serif", "Source Han Serif SC", "思源宋体", serif;
   color-scheme: light;
-}
-body[data-theme="night"] {
-  --paper: #151d37;
-  --ink: #f0f4ff;
-  --meaning: #a6b0cd;
-  --muted: #a6b0cd;
-  --line: #303b58;
-  --wash: #1d2844;
-  --accent: #a7bcff;
-  --error: #e5a08c;
-  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -523,36 +504,6 @@ select {
 .toggle[aria-checked="true"]::before {
   opacity: 1;
 }
-.theme-options {
-  display: flex;
-  gap: 16px;
-}
-.theme-options button {
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-options i {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid #8885;
-  background: #faf8f1;
-}
-.theme-options [data-theme="white"] i {
-  background: #fff;
-}
-.theme-options [data-theme="mist"] i {
-  background: #f2f5f3;
-}
-.theme-options [data-theme="night"] i {
-  background: #151515;
-}
-.theme-options [aria-pressed="true"] i {
-  outline: 1px solid var(--muted);
-  outline-offset: 3px;
-}
 .inline-notice {
   margin-top: 25px;
   padding: 20px;
@@ -646,9 +597,6 @@ select {
   margin: 70px auto 0;
   max-width: 720px;
   padding: 12px 0;
-}
-.toast {
-  display: none !important;
 }
 
 .motion-layer {
@@ -781,9 +729,6 @@ select {
   .library-row p {
     font-size: 16px;
   }
-  .theme-options {
-    gap: 10px;
-  }
   .import-area {
     gap: 16px;
   }
@@ -802,27 +747,12 @@ select {
   .masthead {
     left: 18px;
   }
-  .theme-options {
-    gap: 5px;
-  }
   .workspace-tabs {
     gap: 20px;
   }
   .study-controls {
     width: calc(100% - 36px);
   }
-}
-
-/* Keep colour swatches measurable inside feedback labels; keep history ink
-   behind the word, never behind its smaller status caption. */
-.theme-options i {
-  display: block;
-}
-.theme-options .control-label {
-  display: block;
-}
-.theme-options .control-label::before {
-  display: none;
 }
 .history-entry > .control-label::before {
   display: none;
@@ -860,9 +790,6 @@ select {
   min-height: 44px;
 }
 @media (max-width: 760px) {
-  .theme-options button {
-    min-width: 48px;
-  }
 }
 @media (hover: none) and (min-width: 761px) {
   .study-controls {
@@ -1015,11 +942,7 @@ select {
 /* One feedback language for every control: a larger target, variable weight,
    and a left-to-right marker stroke rather than an underline. */
 :root {
-  --control-ink: rgba(65, 99, 183, 0.19);
   --control-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-body[data-theme="night"] {
-  --control-ink: rgba(166, 187, 237, 0.25);
 }
 button,
 input,
@@ -1259,22 +1182,6 @@ a[href]:not(.brand):not(.skip-link) {
 .toggle.is-pressed > span {
   width: 25px;
 }
-.theme-options {
-  gap: 10px;
-}
-.theme-options button {
-  min-height: 56px;
-  min-width: 52px;
-  padding: 10px;
-}
-.theme-options i {
-  width: 28px;
-  height: 28px;
-}
-.theme-options [aria-pressed="true"] i {
-  outline-width: 2px;
-  outline-offset: 4px;
-}
 .setting-row select,
 .library-tools select {
   font-size: 16px;
@@ -1450,17 +1357,6 @@ a[href]:not(.brand):not(.skip-link) {
     font-size: 16px;
     max-width: 200px;
   }
-  .theme-options {
-    gap: 2px;
-  }
-  .theme-options button {
-    min-width: 48px;
-    padding: 7px;
-  }
-  .theme-options i {
-    width: 25px;
-    height: 25px;
-  }
   .setting-row select {
     font-size: 16px;
     min-width: 128px;
@@ -1512,10 +1408,6 @@ a[href]:not(.brand):not(.skip-link) {
   .workspace-tabs button {
     font-size: 16px;
     padding: 12px 5px;
-  }
-  .theme-options button {
-    min-width: 48px;
-    padding: 6px;
   }
   .study-action {
     font-size: 17px;

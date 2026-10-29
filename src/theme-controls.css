@@ -1,0 +1,77 @@
+#panel-settings .theme-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+  gap: 12px;
+  margin: 12px 0 24px;
+}
+#panel-settings .theme-options button {
+  min-width: 0;
+  min-height: 112px;
+  padding: 12px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  overflow: visible;
+}
+#panel-settings .theme-options .control-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  line-height: 1.5;
+}
+#panel-settings .theme-options .control-label::before {
+  display: none;
+}
+.theme-swatch {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--swatch-fill);
+  color: var(--accent);
+  overflow: visible;
+}
+[data-theme="system"] > .control-label > .theme-swatch {
+  background: conic-gradient(
+    from 28deg,
+    var(--preview-white) 0 180deg,
+    var(--preview-night) 180deg 360deg
+  );
+}
+.theme-swatch > .icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+}
+[aria-pressed="true"] > .control-label > .theme-swatch {
+  outline: 1px solid var(--muted);
+  outline-offset: 5px;
+}
+[aria-pressed="true"] > .control-label > .theme-swatch > .icon {
+  opacity: 1;
+}
+.theme-label {
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  #panel-settings .theme-options {
+    gap: 8px;
+    margin: 6px 0 16px;
+  }
+  #panel-settings .theme-options button {
+    min-height: 96px;
+    font-size: 17px;
+  }
+  .theme-swatch {
+    width: 38px;
+    height: 38px;
+  }
+}

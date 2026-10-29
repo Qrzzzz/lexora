@@ -30,6 +30,11 @@ import { installControlFeedback } from "./controls.js";
 import { loading } from "./loading/index.js";
 import { icon } from "./icons.js";
 import { createTextPressure } from "./pressure.js";
+import { resolveTheme } from "./themes.js";
+import { renderThemeChoices } from "./theme-controls.js";
+import { actionIcon } from "./action-icons.js";
+import { workspaceTabs } from "./config.js";
+import { copyStudyPoster } from "./share.js";
 const $ = (id) => document.getElementById(id);
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -50,7 +55,7 @@ let workspace,
   routeReady = false,
   tab = null,
   reviewId = null,
-  revealed = true,
+  revealed = false,
   checked = false,
   pendingDeck = null,
   pendingBackup = null,
@@ -122,7 +127,7 @@ function showStudy(record = true) {
 function chooseDeck(id) {
   if (workspace.activeDeckId !== id) resetUndo();
   workspace.activeDeckId = id;
-  revealed = workspace.preferences.showAnswer;
+  revealed = false;
   save();
   showStudy();
 }
@@ -176,9 +181,10 @@ function renderHome() {
         "开始",
       );
 }
-function notify(text) {
+function notify(text, visible = false) {
   clearTimeout(toastTimer);
   $("toast").textContent = text;
+  $("toast").dataset.visible = String(visible);
   $("toast").hidden = false;
   toastTimer = setTimeout(() => ($("toast").hidden = true), 2700);
 }
@@ -223,6 +229,7 @@ function remember(action = "edit") {
     deckId: workspace.activeDeckId,
     progress: p,
     action,
+    revealed,
   });
   undoStack.push(serialized);
   undoBytes += serialized.length;
@@ -243,8 +250,7 @@ function perform(kind, action, origin) {
 }
 function applyPreferences() {
   const p = workspace.preferences;
-  document.body.dataset.theme =
-    p.theme === "system" ? (systemDark.matches ? "night" : "white") : p.theme;
+  document.body.dataset.theme = resolveTheme(p.theme, systemDark.matches);
   document.documentElement.classList.toggle("no-motion", !p.motion);
   document.querySelector("meta[name=theme-color]").content = getComputedStyle(
     document.body,
@@ -271,7 +277,11 @@ function renderHistory(previous = motion.captureHistory($("history-list"))) {
     list = $("history-list");
   list.replaceChildren();
   const cards = new Map(deck?.cards.map((c) => [c.id, c]) || []),
-    events = (p?.recent || []).filter((e) => cards.has(e.cardId)).slice(-8);
+    events = (p?.recent || [])
+      .filter((e) => cards.has(e.cardId))
+      .slice(workspace.preferences.historyDisplay === "summary" ? -6 : -8);
+  document.querySelector(".recollection").dataset.display =
+    workspace.preferences.historyDisplay;
   $("history-empty").hidden = !!events.length;
   for (let i = 0; i < events.length; i++) {
     const event = events[i],
@@ -292,7 +302,10 @@ function renderHistory(previous = motion.captureHistory($("history-list"))) {
     b.setAttribute("aria-label", `回看 ${cardTerm(card)}`);
     b.setAttribute("aria-pressed", reviewId === card.id);
     b.style.setProperty("--history-opacity", String(1 - age * 0.075));
-    b.style.setProperty("--history-blur", `${age * 0.48}px`);
+    b.style.setProperty(
+      "--history-blur",
+      `${age * (workspace.preferences.historyDisplay === "summary" ? 0.56 : 0.48)}px`,
+    );
     const term = element("span", "history-term");
     term.append(element("span", "history-word", cardTerm(card)));
     b.append(term);
@@ -455,6 +468,7 @@ function renderStudy(previous = motion.captureHistory($("history-list"))) {
       "aria-label",
       spell ? "检查拼写" : revealed ? "隐藏释义" : "提示释义",
     );
+    $("reveal").setAttribute("aria-pressed", spell ? checked : revealed);
     $("master").setAttribute(
       "aria-label",
       card.type === "vocabulary" ? "记住了这个词" : "标记已经掌握",
@@ -479,7 +493,7 @@ function rate(kind) {
   perform(kind === "master" ? "master" : "next", () => {
     remember(kind === "master" ? "master" : "next");
     rateCard(workspace, kind);
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
     checked = false;
     save();
   });
@@ -510,7 +524,7 @@ function undo() {
     workspace.progress[at] = snapshot.progress;
     workspace.activeDeckId = snapshot.deckId;
     reviewId = null;
-    revealed = workspace.preferences.showAnswer;
+    revealed = snapshot.revealed ?? false;
     checked = false;
     save();
   });
@@ -526,8 +540,6 @@ function reveal() {
     return;
   }
   revealed = !revealed;
-  workspace.preferences.showAnswer = revealed;
-  save();
   renderStudy();
   motion.reveal($("study-stage").querySelector(".answer,.closed-answer"));
 }
@@ -559,6 +571,8 @@ function checkSpelling() {
   );
   input.parentElement.append(result, answer);
   $("reveal-label").textContent = "继续";
+  $("reveal").setAttribute("aria-pressed", true);
+  $("reveal").setAttribute("aria-label", "继续");
   input.blur();
   $("reveal").focus({ preventScroll: true });
   motion.reveal(result);
@@ -568,7 +582,7 @@ function nextRound() {
     remember("round");
     startRound(workspace);
     reviewId = null;
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
     save();
   });
 }
@@ -586,7 +600,7 @@ function openHistory(id, origin) {
 function closeHistory() {
   perform("previous", () => {
     reviewId = null;
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
   });
   $("study-stage").focus({ preventScroll: true });
 }
@@ -650,7 +664,7 @@ function openWorkspace(name, record = true) {
   }
   applyPreferences();
   if (record) route(name);
-  const tabs = ["decks", "library", "settings", "backup", "help"];
+  const tabs = workspaceTabs.map((t) => t.id);
   if (previousTab && tabs.includes(name)) {
     const direction =
       previousTab === "entry"
@@ -694,7 +708,7 @@ function renderDecks() {
         () => {
           workspace.activeDeckId = deck.id;
           reviewId = null;
-          revealed = workspace.preferences.showAnswer;
+          revealed = false;
           resetUndo();
           save();
           showStudy();
@@ -930,6 +944,53 @@ async function readBackup(file) {
 }
 
 function bind() {
+  renderThemeChoices($("theme-options"));
+  const tabs = document.querySelector(".workspace-tabs");
+  tabs.replaceChildren();
+  for (const item of workspaceTabs) {
+    const tabButton = element("button", "", item.label);
+    tabButton.dataset.tab = item.id;
+    tabs.append(tabButton);
+  }
+  for (const [id, kind] of [
+    ["master", "keep"],
+    ["reveal", "hint"],
+    ["again", "next"],
+  ]) {
+    const el = $(id);
+    el.querySelectorAll(".icon,[data-icon]").forEach((node) => node.remove());
+    el.prepend(actionIcon(kind));
+  }
+  $("share-trigger").onclick = async () => {
+    const share = $("share-trigger");
+    share.disabled = true;
+    share.classList.add("is-sharing");
+    share.setAttribute("aria-busy", "true");
+    try {
+      const result = await copyStudyPoster(
+        workspace,
+        document.body.dataset.theme,
+      );
+      notify(
+        result.copied ? "海报已复制" : "此浏览器无法复制图片，海报已下载",
+        true,
+      );
+      if (result.copied) {
+        share.replaceChildren(icon("check"));
+        share.classList.add("is-copied");
+      }
+    } catch {
+      notify("未能生成海报，请重试", true);
+    } finally {
+      share.disabled = false;
+      share.classList.remove("is-sharing");
+      share.removeAttribute("aria-busy");
+      setTimeout(() => {
+        share.replaceChildren(icon("share-2"));
+        share.classList.remove("is-copied");
+      }, 1800);
+    }
+  };
   document.querySelector(".skip-link").onclick = (event) => {
     event.preventDefault();
     (tab
@@ -960,7 +1021,7 @@ function bind() {
   $("backup-shortcut").onclick = () => openWorkspace("backup");
   $("mode").onchange = (e) => {
     workspace.preferences.mode = e.target.value;
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
     checked = false;
     save();
   };
@@ -991,7 +1052,7 @@ function bind() {
   $("restart-round").onclick = () => {
     remember("round");
     startRound(workspace);
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
     save();
     closeWorkspace();
     notify("已重新开始");
@@ -1008,7 +1069,7 @@ function bind() {
       pendingDeck = null;
       resetUndo();
       reviewId = null;
-      revealed = workspace.preferences.showAnswer;
+      revealed = false;
       $("import-preview").hidden = true;
       save({ explicit: true });
       renderDecks();
@@ -1087,7 +1148,7 @@ function bind() {
     pendingBackup = null;
     resetUndo();
     reviewId = null;
-    revealed = workspace.preferences.showAnswer;
+    revealed = false;
     $("backup-preview").hidden = true;
     save({ explicit: true });
     closeWorkspace();
@@ -1202,7 +1263,7 @@ async function boot() {
       "本地手帖未能读取，已进入临时示例。原数据不会被自动覆盖；可导入备份恢复，或导入新词册后明确开始。",
     );
   }
-  revealed = workspace.preferences.showAnswer;
+  revealed = false;
   $("settings-trigger").disabled = false;
   $("study-stage").removeAttribute("aria-busy");
   bind();

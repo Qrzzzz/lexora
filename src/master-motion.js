@@ -49,22 +49,44 @@ export function memoryTransition(stage, capture, reverse, animate) {
   lower.style.clipPath = `polygon(0 ${split + slant}px,100% ${split - slant}px,100% 100%,0 100%)`;
   host.append(upper, lower);
   const up = [
-    { transform: "translate(0,0) rotate(0)", opacity: 1, offset: 0 },
+    {
+      transform: "translate(0,0) rotate(0) scale(1)",
+      filter: "blur(0px)",
+      opacity: 1,
+      offset: 0,
+    },
     {
       transform: "translate(-3px,-2px) rotate(-.3deg)",
       opacity: 1,
-      offset: 0.17,
+      filter: "blur(0px)",
+      offset: 0.28,
     },
     {
-      transform: "translate(-180px,-110px) rotate(-9deg)",
+      transform: "translate(-180px,-110px) rotate(-9deg) scale(1.045)",
+      filter: "blur(3px)",
       opacity: 0,
       offset: 1,
     },
   ];
   const down = [
-    { transform: "translate(0,0) rotate(0)", opacity: 1, offset: 0 },
-    { transform: "translate(4px,3px) rotate(.4deg)", opacity: 1, offset: 0.17 },
-    { transform: "translate(200px,120px) rotate(8deg)", opacity: 0, offset: 1 },
+    {
+      transform: "translate(0,0) rotate(0) scale(1)",
+      filter: "blur(0px)",
+      opacity: 1,
+      offset: 0,
+    },
+    {
+      transform: "translate(4px,3px) rotate(.4deg)",
+      filter: "blur(0px)",
+      opacity: 1,
+      offset: 0.28,
+    },
+    {
+      transform: "translate(200px,120px) rotate(8deg) scale(1.045)",
+      filter: "blur(3px)",
+      opacity: 0,
+      offset: 1,
+    },
   ];
   if (reverse) {
     stage.style.visibility = "hidden";
@@ -112,8 +134,8 @@ export function memoryTransition(stage, capture, reverse, animate) {
       );
     }
   } else {
-    run(upper, up, { duration: 600, easing: "cubic-bezier(.32,0,.18,1)" });
-    run(lower, down, { duration: 660, easing: "cubic-bezier(.32,0,.18,1)" });
+    run(upper, up, { duration: 480, easing: "cubic-bezier(.32,0,.18,1)" });
+    run(lower, down, { duration: 520, easing: "cubic-bezier(.32,0,.18,1)" });
     const slash = document.createElement("i");
     slash.className = "word-slash";
     slash.style.cssText = `opacity:0;left:${word.left - 65}px;top:${word.top + word.height * 0.55}px;width:${word.width + 130}px`;
@@ -137,7 +159,7 @@ export function memoryTransition(stage, capture, reverse, animate) {
           transform: "rotate(-9deg)",
           clipPath: "inset(0 0 0 0%)",
           opacity: 1,
-          offset: 0.5,
+          offset: 0.55,
         },
         {
           transform: "rotate(-9deg)",
@@ -152,7 +174,7 @@ export function memoryTransition(stage, capture, reverse, animate) {
           offset: 1,
         },
       ],
-      { duration: 280, easing: "linear" },
+      { duration: 340, easing: "linear" },
     );
     for (let i = 0; i < 16; i++) {
       const chip = document.createElement("i"),
@@ -164,11 +186,17 @@ export function memoryTransition(stage, capture, reverse, animate) {
       run(
         chip,
         [
-          { opacity: 0, transform: "scale(.2)" },
-          { opacity: 0.7, offset: 0.2 },
+          { opacity: 0, transform: "scale(.4)", filter: "blur(0px)" },
+          {
+            opacity: 0.7,
+            transform: "scale(1.2)",
+            filter: "blur(0px)",
+            offset: 0.2,
+          },
           {
             opacity: 0,
-            transform: `translate(${side * (40 + (i % 5) * 20)}px,${side * (30 + (i % 4) * 18)}px) rotate(${side * (40 + i * 17)}deg) scale(.2)`,
+            transform: `translate(${side * (40 + (i % 5) * 20)}px,${side * (30 + (i % 4) * 18)}px) rotate(${side * (40 + i * 17)}deg) scale(1.1)`,
+            filter: "blur(1.5px)",
           },
         ],
         {
@@ -184,7 +212,7 @@ export function memoryTransition(stage, capture, reverse, animate) {
         { opacity: 0, transform: "translateY(20px) scale(.975)" },
         { opacity: 1, transform: "none" },
       ],
-      { duration: 400, delay: 230, easing: "cubic-bezier(.16,1,.3,1)" },
+      { duration: 300, delay: 210, easing: "cubic-bezier(.16,1,.3,1)" },
     );
   }
   return { host, finished: Promise.all(pending) };

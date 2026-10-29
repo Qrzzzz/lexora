@@ -3,6 +3,7 @@ src/original-word-motion.css
 src/loading/poem-player.js
 src/loading/original-loading.css
 src/loading/poems.js
+src/themes.css
 docs/loading-source/
 examples/first-dictionary.json
 data/sources/

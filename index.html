@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="./src/history.css" />
     <link rel="stylesheet" href="./src/workspace.css" />
     <link rel="stylesheet" href="./src/shell.css" />
+    <link rel="stylesheet" href="./src/themes.css" />
+    <link rel="stylesheet" href="./src/theme-controls.css" />
+    <link rel="stylesheet" href="./src/refinements.css" />
     <link rel="stylesheet" href="./src/loading/original-loading.css" />
     <link rel="stylesheet" href="./src/loading/adapter.css" />
     <link rel="modulepreload" href="./src/loading/poem-player.js" />
@@ -94,6 +97,13 @@
         <a class="brand" href="#home" aria-label="Lexora 首页">Lexora</a>
         <nav aria-label="手帖导航">
           <button
+            id="share-trigger"
+            aria-label="分享今日学习"
+            title="分享今日学习"
+          >
+            <span data-icon="share-2"></span>
+          </button>
+          <button
             id="deck-trigger"
             aria-expanded="false"
             aria-controls="workspace"
@@ -120,9 +130,19 @@
         >
           <h1 id="home-title" tabindex="-1">词册</h1>
           <div id="home-decks" class="home-decks"></div>
-          <button id="home-import" class="text-button">
-            <span data-icon="plus"></span>导入词册
-          </button>
+          <div class="home-actions">
+            <button id="home-import" class="text-button">
+              <span data-icon="plus"></span>导入词册</button
+            ><a
+              id="home-repository"
+              href="https://github.com/Qrzzzz/lexora"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub 仓库"
+              title="GitHub 仓库"
+              ><span data-icon="github"></span
+            ></a>
+          </div>
           <p id="home-error" class="error-note" role="status" hidden></p>
         </section>
         <section
@@ -199,13 +219,7 @@
               <h1 id="workspace-heading" tabindex="-1">词册</h1>
             </div>
           </header>
-          <nav class="workspace-tabs" aria-label="页面">
-            <button data-tab="decks">词册</button
-            ><button data-tab="library">条目</button
-            ><button data-tab="settings">设置</button
-            ><button data-tab="backup">备份</button
-            ><button data-tab="help">帮助</button>
-          </nav>
+          <nav class="workspace-tabs" aria-label="页面"></nav>
           <div id="panel-decks" class="panel" hidden>
             <div id="deck-list" class="deck-list"></div>
             <h2 id="preset-heading" class="section-heading">样例词册</h2>
@@ -303,31 +317,13 @@
                 class="settings-section paper-settings"
                 aria-labelledby="paper-settings-title"
               >
-                <h2 id="paper-settings-title" class="settings-title">纸面</h2>
+                <h2 id="paper-settings-title" class="settings-title">配色</h2>
                 <div
                   id="theme-options"
                   class="theme-options"
                   role="group"
                   aria-label="阅读配色"
-                >
-                  <button
-                    data-theme="system"
-                    aria-label="随系统"
-                    title="随系统"
-                  >
-                    <i><span data-icon="check"></span></i
-                    ><span>随系统</span></button
-                  ><button
-                    data-theme="white"
-                    aria-label="浅蓝白"
-                    title="浅蓝白"
-                  >
-                    <i><span data-icon="check"></span></i
-                    ><span>浅蓝白</span></button
-                  ><button data-theme="night" aria-label="深蓝" title="深蓝">
-                    <i><span data-icon="check"></span></i><span>深蓝</span>
-                  </button>
-                </div>
+                ></div>
               </section>
               <section
                 class="settings-section feedback-settings"
@@ -378,6 +374,27 @@
                 </div>
               </section>
             </div>
+            <section class="settings-about" aria-labelledby="about-title">
+              <h2 id="about-title" class="settings-title">关于</h2>
+              <div class="about-links">
+                <a
+                  href="https://github.com/Qrzzzz/lexora"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub 仓库<span data-icon="arrow-up-right"></span></a
+                ><a
+                  href="https://qrzzzz.github.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >主站<span data-icon="arrow-up-right"></span></a
+                ><a
+                  href="https://qrzzzz.github.io/lyrics-card-generator/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >歌词卡片生成器<span data-icon="arrow-up-right"></span
+                ></a>
+              </div>
+            </section>
             <div class="settings-footer">
               <button id="restart-round" class="text-button">
                 <span data-icon="rotate-ccw"></span>重开本轮

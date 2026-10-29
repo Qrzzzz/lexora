@@ -187,49 +187,6 @@
   line-height: 1.4;
   margin-top: 2px;
 }
-#panel-settings .theme-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 16px;
-  margin-bottom: 24px;
-}
-#panel-settings .theme-options button {
-  min-width: 0;
-  min-height: 112px;
-  padding: 12px 8px;
-  font-size: 18px;
-}
-#panel-settings .theme-options .control-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-#panel-settings .theme-options i {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid #17171720;
-  color: #302e28;
-}
-#panel-settings .theme-options [data-theme="night"] i {
-  color: #f9f8f3;
-}
-#panel-settings .theme-options .icon {
-  width: 22px;
-  height: 22px;
-  opacity: 0;
-  transition: opacity 150ms;
-}
-#panel-settings .theme-options [aria-pressed="true"] .icon {
-  opacity: 1;
-}
-#panel-settings .theme-options [aria-pressed="true"] i {
-  outline: 1px solid var(--muted);
-  outline-offset: 5px;
-}
 .future-control {
   min-width: 64px;
   padding: 10px 0;
@@ -359,23 +316,6 @@
   .history-display-option .select-control {
     width: 132px;
     margin-top: 0;
-  }
-  #panel-settings .theme-options {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-  #panel-settings .theme-options button {
-    min-height: 92px;
-    padding: 8px 3px;
-    font-size: 17px;
-  }
-  #panel-settings .theme-options i {
-    width: 36px;
-    height: 36px;
-  }
-  #panel-settings .theme-options .control-label {
-    gap: 12px;
   }
   #panel-settings .setting-row {
     min-height: 64px;

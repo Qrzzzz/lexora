@@ -47,6 +47,7 @@ export function createTextPressure(stage, enabled) {
     const textNode = word.firstChild;
     if (!textNode || textNode.nodeType !== Node.TEXT_NODE) return;
     let offset = 0;
+    const fontSize = parseFloat(getComputedStyle(word).fontSize);
     for (const char of Array.from(text)) {
       range.setStart(textNode, offset);
       range.setEnd(textNode, offset + char.length);
@@ -55,7 +56,7 @@ export function createTextPressure(stage, enabled) {
       span.className = "pressure-letter";
       span.textContent = char;
       span.ariaHidden = "true";
-      if (width > 0) span.style.width = `${width}px`;
+      if (width > 0 && fontSize > 0) span.style.width = `${width / fontSize}em`;
       label.append(span);
       letters.push(span);
       offset += char.length;

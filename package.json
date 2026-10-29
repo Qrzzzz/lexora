@@ -5,6 +5,7 @@
   "type": "module",
   "description": "A quiet, local-first study notebook for the web.",
   "scripts": {
+    "themes": "node scripts/build-themes.mjs",
     "dev": "node scripts/serve.mjs",
     "test": "node --test tests/*.test.mjs",
     "check": "npm test"
