@@ -19,6 +19,7 @@ await cp(
 );
 for (const path of [
   "docs/sample-dictionary.md",
+  "docs/themes.md",
   "docs/deck-format-v1.md",
   "data/NOTICE.md",
   "data/sources/wordtyper-cet4/LICENSE",

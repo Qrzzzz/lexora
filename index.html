@@ -32,7 +32,7 @@
     ></script>
     <script type="module" src="./src/app.js"></script>
   </head>
-  <body data-theme="system">
+  <body>
     <div
       id="site-loading"
       class="site-loading"
@@ -319,11 +319,46 @@
               >
                 <h2 id="paper-settings-title" class="settings-title">配色</h2>
                 <div
+                  id="theme-modes"
+                  class="theme-modes"
+                  role="group"
+                  aria-label="深浅模式"
+                ></div>
+                <div
                   id="theme-options"
                   class="theme-options"
                   role="group"
-                  aria-label="阅读配色"
+                  aria-label="主题色"
                 ></div>
+                <div class="custom-theme-row">
+                  <button id="custom-theme" type="button" aria-pressed="false">
+                    自选
+                  </button>
+                  <input
+                    id="custom-color-picker"
+                    type="color"
+                    value="#243ecd"
+                    aria-label="选择自选颜色"
+                  />
+                  <input
+                    id="custom-color-hex"
+                    type="text"
+                    value="#243ecd"
+                    aria-label="自选色号"
+                    aria-describedby="custom-color-error"
+                    spellcheck="false"
+                    autocomplete="off"
+                    maxlength="16"
+                  />
+                </div>
+                <p
+                  id="custom-color-error"
+                  class="color-error"
+                  role="status"
+                  hidden
+                >
+                  请输入有效色号，如 #B43B53
+                </p>
               </section>
               <section
                 class="settings-section feedback-settings"

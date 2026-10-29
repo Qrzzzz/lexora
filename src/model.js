@@ -1,7 +1,7 @@
 import { validateDeck, validId, cardTerm, cardSummary } from "./deck.js";
-import { isThemeChoice } from "./themes.js";
+import { THEME_DEFAULTS, normalizeThemePreferences } from "./themes.js";
 export const PREFS = {
-  theme: "system",
+  ...THEME_DEFAULTS,
   motion: true,
   haptics: true,
   showAnswer: false,
@@ -212,9 +212,12 @@ export function validateWorkspace(input) {
   );
   assert(!decks.length || input.activeDeckId !== null, "备份缺少当前词册");
   const prefs = input.preferences;
+  const themePreferences = record(prefs)
+    ? normalizeThemePreferences(prefs)
+    : null;
   assert(
     record(prefs) &&
-      (isThemeChoice(prefs.theme) || ["paper", "mist"].includes(prefs.theme)) &&
+      themePreferences &&
       typeof prefs.motion === "boolean" &&
       (prefs.haptics === undefined || typeof prefs.haptics === "boolean") &&
       (prefs.showAnswer === undefined ||
@@ -316,7 +319,7 @@ export function validateWorkspace(input) {
     progress,
     activeDeckId: input.activeDeckId,
     preferences: {
-      theme: ["paper", "mist"].includes(prefs.theme) ? "system" : prefs.theme,
+      ...themePreferences,
       motion: prefs.motion,
       haptics: prefs.haptics !== false,
       showAnswer: prefs.showAnswer === true,

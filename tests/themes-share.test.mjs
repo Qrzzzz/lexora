@@ -2,9 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
-  palettes,
-  themeChoices,
-  isThemeChoice,
+  themePresets,
+  THEME_DEFAULTS,
+  generatePalette,
+  normalizeHex,
+  contrastRatio,
   resolveTheme,
   themeStylesheet,
 } from "../src/themes.js";
@@ -19,32 +21,155 @@ import { todayStudyCount } from "../src/share.js";
 import { links } from "../src/config.js";
 import { qrRows, qrURL } from "../src/share-qr.js";
 
-test("all palettes provide the same semantic colors and generated CSS stays current", async () => {
-  const tokens = Object.keys(palettes.white.tokens).sort();
-  for (const [id, palette] of Object.entries(palettes)) {
-    assert.deepEqual(Object.keys(palette.tokens).sort(), tokens, id);
-    assert.equal(resolveTheme(id, true), id);
-  }
-  assert.equal(resolveTheme("system", false), "white");
-  assert.equal(resolveTheme("system", true), "night");
+test("one seed produces both complete semantic palettes and CSS stays current", async () => {
+  const tokens = Object.keys(resolveTheme().tokens).sort();
+  for (const [id, preset] of Object.entries(themePresets))
+    for (const appearance of ["light", "dark"]) {
+      const palette = generatePalette(
+        preset.color,
+        appearance,
+        preset.monochrome,
+      );
+      assert.deepEqual(Object.keys(palette).sort(), tokens, id);
+      assert.notEqual(palette.paper, palette.ink);
+    }
+  assert.equal(resolveTheme(THEME_DEFAULTS, false).appearance, "light");
+  assert.equal(resolveTheme(THEME_DEFAULTS, true).appearance, "dark");
   assert.equal(
     await readFile(new URL("../src/themes.css", import.meta.url), "utf8"),
     themeStylesheet(),
   );
 });
-test("registering a palette makes it available to controls, backups and CSS together", () => {
-  palettes.testPalette = { ...palettes.white, label: "测试" };
+test("a new preset needs only a seed and label; backups retain both choices", () => {
+  themePresets.testPalette = { color: "#e34b75", label: "测试" };
   try {
-    assert.equal(isThemeChoice("testPalette"), true);
-    assert.ok(themeChoices().some((p) => p.id === "testPalette"));
-    assert.match(themeStylesheet(), /body\[data-theme="testPalette"\]/);
     const workspace = createWorkspace(demoDeck);
-    workspace.preferences.theme = "testPalette";
-    assert.equal(validateWorkspace(workspace).preferences.theme, "testPalette");
+    workspace.preferences.colorTheme = "testPalette";
+    workspace.preferences.appearance = "dark";
+    assert.deepEqual(validateWorkspace(workspace), workspace);
+    assert.equal(resolveTheme(workspace.preferences).seed, "#e34b75");
   } finally {
-    delete palettes.testPalette;
+    delete themePresets.testPalette;
   }
-  assert.equal(isThemeChoice("testPalette"), false);
+});
+
+test("text colors remain readable for presets and extreme or arbitrary custom seeds", () => {
+  assert.equal(contrastRatio("#000000", "#ffffff"), 21);
+  assert.ok(contrastRatio("#777777", "#ffffff") < 4.5);
+  const seeds = [
+    ...Object.values(themePresets).map((p) => p.color),
+    "#ffffff",
+    "#000000",
+    "#808080",
+    "#ffff00",
+    "#00ffff",
+    "#ff00ff",
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+  ];
+  let state = 4729;
+  for (let i = 0; i < 128; i++) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    seeds.push("#" + (state & 0xffffff).toString(16).padStart(6, "0"));
+  }
+  for (const seed of seeds)
+    for (const appearance of ["light", "dark"]) {
+      const tokens = generatePalette(seed, appearance);
+      for (const key of [
+        "paper",
+        "surface",
+        "ink",
+        "muted",
+        "meaning",
+        "accent",
+        "wash",
+      ])
+        assert.match(tokens[key], /^#[\da-f]{6}$/);
+      for (const background of ["paper", "surface", "wash"])
+        for (const [text, min] of [
+          ["ink", 7.5],
+          ["meaning", 5],
+          ["muted", 4.6],
+          ["accent", 4.6],
+        ])
+          assert.ok(
+            contrastRatio(tokens[text], tokens[background]) >= min,
+            `${seed} ${appearance} ${text}/${background}`,
+          );
+    }
+});
+test("monochrome is neutral throughout, including actions and errors", () => {
+  for (const appearance of ["light", "dark"]) {
+    const tokens = generatePalette("#000000", appearance, true);
+    assert.equal(tokens.paper, appearance === "light" ? "#ffffff" : "#000000");
+    for (const value of Object.values(tokens)) {
+      const channels = value.startsWith("#")
+        ? [value.slice(1, 3), value.slice(3, 5), value.slice(5, 7)]
+        : value.match(/[\d.]+/g).slice(0, 3);
+      assert.equal(new Set(channels).size, 1, value);
+    }
+  }
+});
+test("mode changes keep the selected seed and custom input normalizes safely", () => {
+  assert.equal(normalizeHex("  #F8C "), "#ff88cc");
+  for (const value of [
+    "red",
+    "#12345",
+    "#12345678",
+    "var(--x)",
+    "#fff; color:red",
+    {},
+    null,
+  ])
+    assert.equal(normalizeHex(value), null);
+  const workspace = createWorkspace(demoDeck);
+  workspace.preferences.colorTheme = "custom";
+  workspace.preferences.customColor = "#fe2a61";
+  assert.equal(
+    resolveTheme(workspace.preferences, false).seed,
+    resolveTheme(workspace.preferences, true).seed,
+  );
+  for (const appearance of ["system", "light", "dark"]) {
+    workspace.preferences.appearance = appearance;
+    assert.deepEqual(validateWorkspace(workspace), workspace);
+  }
+  workspace.preferences.customColor = "#F8C";
+  assert.equal(validateWorkspace(workspace).preferences.customColor, "#ff88cc");
+  for (const patch of [
+    { customColor: "#fff;background:red" },
+    { appearance: "night" },
+    { colorTheme: "constructor" },
+  ])
+    assert.throws(
+      () =>
+        validateWorkspace({
+          ...workspace,
+          preferences: { ...workspace.preferences, ...patch },
+        }),
+      /阅读偏好/,
+    );
+});
+test("legacy themes migrate to independent mode and color without progress loss", () => {
+  for (const [theme, appearance] of [
+    ["system", "system"],
+    ["white", "light"],
+    ["night", "dark"],
+    ["paper", "system"],
+    ["mist", "system"],
+  ]) {
+    const workspace = createWorkspace(demoDeck);
+    rateCard(workspace, "master");
+    const old = {
+      ...workspace,
+      preferences: { theme, motion: true, mode: "recall", order: "source" },
+    };
+    const restored = validateWorkspace(old);
+    assert.equal(restored.preferences.appearance, appearance);
+    assert.equal(restored.preferences.colorTheme, "blue");
+    assert.ok(!Object.hasOwn(restored.preferences, "theme"));
+    assert.deepEqual(restored.progress, workspace.progress);
+  }
 });
 test("poster counts today's study events across decks and respects undo snapshots", () => {
   const workspace = createWorkspace(demoDeck),

@@ -1,5 +1,5 @@
 import { localDay } from "./model.js";
-import { palettes } from "./themes.js";
+import { resolveTheme } from "./themes.js";
 import { links } from "./config.js";
 import { qrRows } from "./share-qr.js";
 
@@ -10,10 +10,9 @@ export function todayStudyCount(workspace, date = new Date()) {
 export async function createStudyPoster({
   count,
   date = new Date(),
-  theme = "white",
+  colors = resolveTheme().tokens,
 }) {
   await document.fonts.load('900 64px "Source Han Serif"').catch(() => {});
-  const colors = (palettes[theme] || palettes.white).tokens;
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1440;
@@ -90,10 +89,10 @@ export async function createStudyPoster({
     ),
   );
 }
-export async function copyStudyPoster(workspace, theme, environment = window) {
+export async function copyStudyPoster(workspace, colors, environment = window) {
   const date = new Date(),
     count = todayStudyCount(workspace, date);
-  const poster = createStudyPoster({ count, date, theme });
+  const poster = createStudyPoster({ count, date, colors });
   // Submit the promise while the click gesture is still active (Safari included).
   if (environment.ClipboardItem && environment.navigator.clipboard?.write) {
     try {

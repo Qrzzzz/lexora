@@ -30,6 +30,8 @@
 
 <img src="./docs/readme-assets/study.png" alt="Lexora 学习页，居中单词与简短中文释义" width="100%" />
 
+<img src="./docs/readme-assets/themes.png" alt="深浅模式与主题色独立选择，支持自选色号" width="100%" />
+
 <table>
   <tr>
     <td width="70%" align="center" valign="top"><img src="./docs/readme-assets/dictionary.png" alt="词条详情，显示音标、词性与多组释义" width="100%" /><br/><sub>词条详情</sub></td>
@@ -72,7 +74,7 @@
 
 ### 🔤 阅读与保存
 
-- 全站自托管思源宋体，默认跟随系统，使用文档站的浅蓝白与深蓝配色，也可手动选择；纸纹已移除。
+- 全站自托管思源宋体；深浅模式与主题色独立选择，默认随系统。蓝、红、绿、大地、紫、黑白六组预设，也支持自选色号；每个色号自动生成深浅两版，页面与分享海报同步。
 - 大单词的悬停字重参考 [React Bits Text Pressure](https://reactbits.dev/c/text-animations/text-pressure)，仅在鼠标悬停时响应，固定字宽避免抖动，不额外加载字体或 React。
 - 动效跟随系统的减少动态效果设置，也可手动关闭。
 - 设置、下一个、记住、撤回采用不同震动模式，提供独立开关。音效暂未启用，设置保留「后续开发」入口，当前不加载或播放音效。
@@ -138,7 +140,7 @@ node scripts/package-site.mjs
 
 词表脚本只使用 Python 标准库，校验固定来源散列，可重复生成同一文件。最后一条命令输出 `output/site/`，可部署到普通静态托管服务。
 
-配色统一定义在 [`src/themes.js`](./src/themes.js)。新增方案时提供同样的语义颜色字段，再运行 `npm run themes`；设置选项、备份校验、页面与分享海报自动复用它。`src/themes.css` 为生成文件，测试会检查它与配色源是否一致。
+配色统一定义在 [`src/themes.js`](./src/themes.js)。新增预设只需名称与一个色号，算法统一生成语义颜色，无需维护两套色板。调整算法或默认蓝色后运行 `npm run themes` 更新首屏备用 CSS；设置、备份、页面与分享海报共用生成结果。详见[主题色机制](./docs/themes.md)。
 
 推送 main 会自动运行检查和 Pages 发布；也支持手动触发。发布前校验格式、学习规则与词表可重复生成性，站点的 `build-info.json` 记录对应提交与词册散列。
 

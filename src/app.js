@@ -31,7 +31,11 @@ import { loading } from "./loading/index.js";
 import { icon } from "./icons.js";
 import { createTextPressure } from "./pressure.js";
 import { resolveTheme } from "./themes.js";
-import { renderThemeChoices } from "./theme-controls.js";
+import {
+  renderThemeChoices,
+  applyTheme,
+  bindThemeControls,
+} from "./theme-controls.js";
 import { actionIcon } from "./action-icons.js";
 import { workspaceTabs } from "./config.js";
 import { copyStudyPoster } from "./share.js";
@@ -250,13 +254,8 @@ function perform(kind, action, origin) {
 }
 function applyPreferences() {
   const p = workspace.preferences;
-  document.body.dataset.theme = resolveTheme(p.theme, systemDark.matches);
+  applyTheme(p, systemDark.matches);
   document.documentElement.classList.toggle("no-motion", !p.motion);
-  document.querySelector("meta[name=theme-color]").content = getComputedStyle(
-    document.body,
-  )
-    .getPropertyValue("--paper")
-    .trim();
   $("mode").value = p.mode;
   $("order").value = p.order;
   $("history-display").value = p.historyDisplay;
@@ -265,11 +264,6 @@ function applyPreferences() {
   $("sound").setAttribute("aria-checked", false);
   $("haptics").setAttribute("aria-checked", p.haptics);
   $("haptics-note").hidden = typeof navigator.vibrate === "function";
-  document
-    .querySelectorAll("#theme-options button")
-    .forEach((b) =>
-      b.setAttribute("aria-pressed", b.dataset.theme === p.theme),
-    );
 }
 function renderHistory(previous = motion.captureHistory($("history-list"))) {
   const deck = activeDeck(workspace),
@@ -969,7 +963,7 @@ function bind() {
     try {
       const result = await copyStudyPoster(
         workspace,
-        document.body.dataset.theme,
+        resolveTheme(workspace.preferences, systemDark.matches).tokens,
       );
       notify(
         result.copied ? "海报已复制" : "此浏览器无法复制图片，海报已下载",
@@ -1034,13 +1028,13 @@ function bind() {
     workspace.preferences.historyDisplay = e.target.value;
     save();
   };
-  document.querySelectorAll("#theme-options button").forEach(
-    (b) =>
-      (b.onclick = () => {
-        workspace.preferences.theme = b.dataset.theme;
-        applyPreferences();
-        save();
-      }),
+  bindThemeControls(
+    () => workspace.preferences,
+    (patch, persist = true) => {
+      Object.assign(workspace.preferences, patch);
+      applyPreferences();
+      if (persist) save();
+    },
   );
   for (const key of ["motion", "haptics"])
     $(key).onclick = () => {
@@ -1232,7 +1226,7 @@ function bind() {
     if (!tab && screen === "study") renderHistory();
   });
   systemDark.addEventListener("change", () => {
-    if (workspace.preferences.theme === "system") applyPreferences();
+    if (workspace.preferences.appearance === "system") applyPreferences();
   });
   window.addEventListener("popstate", (event) => {
     const target = event.state?.view || "home";

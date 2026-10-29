@@ -37,12 +37,15 @@ test("backup preferences preserve progress and retire sound and texture flags", 
   assert.deepEqual(validateWorkspace(restored), restored);
 });
 test("new readers follow the system; legacy paper palettes migrate without progress loss", () => {
-  assert.equal(createWorkspace(demoDeck).preferences.theme, "system");
+  assert.equal(createWorkspace(demoDeck).preferences.appearance, "system");
   for (const theme of ["paper", "mist"]) {
     const w = createWorkspace(demoDeck);
-    w.preferences.theme = theme;
+    w.preferences = { ...w.preferences, theme };
+    for (const key of ["appearance", "colorTheme", "customColor"])
+      delete w.preferences[key];
     const migrated = validateWorkspace(w);
-    assert.equal(migrated.preferences.theme, "system");
+    assert.equal(migrated.preferences.appearance, "system");
+    assert.equal(migrated.preferences.colorTheme, "blue");
     assert.deepEqual(migrated.progress, w.progress);
   }
 });
