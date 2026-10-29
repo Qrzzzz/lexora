@@ -3,6 +3,7 @@ export const PREFS = {
   theme: "white",
   texture: false,
   motion: true,
+  haptics: true,
   showAnswer: true,
   mode: "recall",
   order: "source",
@@ -216,6 +217,7 @@ export function validateWorkspace(input) {
       themes.includes(prefs.theme) &&
       typeof prefs.texture === "boolean" &&
       typeof prefs.motion === "boolean" &&
+      (prefs.haptics === undefined || typeof prefs.haptics === "boolean") &&
       (prefs.showAnswer === undefined ||
         typeof prefs.showAnswer === "boolean") &&
       ["recall", "spelling"].includes(prefs.mode) &&
@@ -316,6 +318,7 @@ export function validateWorkspace(input) {
       theme: prefs.theme,
       texture: prefs.texture,
       motion: prefs.motion,
+      haptics: prefs.haptics !== false,
       showAnswer: prefs.showAnswer !== false,
       mode: prefs.mode,
       order: prefs.order,

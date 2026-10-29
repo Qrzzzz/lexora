@@ -25,6 +25,8 @@ import {
 } from "./model.js";
 import { loadWorkspace, persistWorkspace } from "./storage.js";
 import { createMotion } from "./motion.js";
+import { createFeedback } from "./feedback.js";
+import { installControlFeedback } from "./controls.js";
 const $ = (id) => document.getElementById(id);
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -60,7 +62,9 @@ let undoStack = [],
 const motion = createMotion(
   $("study-stage"),
   () => !!workspace?.preferences.motion,
+  () => currentCard(workspace),
 );
+const feedback = createFeedback(() => workspace?.preferences || {});
 function notify(text) {
   clearTimeout(toastTimer);
   $("toast").textContent = text;
@@ -115,7 +119,7 @@ function resetUndo() {
   undoBytes = 0;
 }
 function perform(kind, action, origin) {
-  const capture = motion.capture();
+  const capture = motion.capture(kind);
   action();
   renderStudy();
   motion.play(capture, kind, origin);
@@ -134,6 +138,9 @@ function applyPreferences() {
   $("order").value = p.order;
   $("texture").setAttribute("aria-checked", p.texture);
   $("motion").setAttribute("aria-checked", p.motion);
+  $("sound").setAttribute("aria-checked", false);
+  $("haptics").setAttribute("aria-checked", p.haptics);
+  $("haptics-note").hidden = typeof navigator.vibrate === "function";
   document
     .querySelectorAll("#theme-options button")
     .forEach((b) =>
@@ -150,7 +157,6 @@ function renderHistory() {
       {
         rect: b.getBoundingClientRect(),
         opacity: Number(b.style.getPropertyValue("--history-opacity")),
-        filter: getComputedStyle(b).filter,
       },
     ]),
   );
@@ -174,8 +180,10 @@ function renderHistory() {
     b.dataset.eventId = event.eventId;
     b.setAttribute("aria-label", `回看 ${cardTerm(card)}`);
     b.setAttribute("aria-pressed", reviewId === card.id);
-    b.style.setProperty("--history-opacity", String([1, 0.68, 0.4, 0.21][age]));
-    b.style.setProperty("--history-blur", `${[0, 0.15, 0.45, 0.75][age]}px`);
+    b.style.setProperty(
+      "--history-opacity",
+      String([1, 0.84, 0.68, 0.52][age]),
+    );
     b.append(
       element("span", "history-term", cardTerm(card)),
       element(
@@ -344,6 +352,7 @@ function appendAnswer(parent, card) {
 }
 function rate(kind) {
   if (tab || reviewId || !currentCard(workspace)) return;
+  feedback.perform(kind === "master" ? "master" : "next");
   perform(kind === "master" ? "master" : "next", () => {
     remember();
     rateCard(workspace, kind);
@@ -358,6 +367,7 @@ function undo() {
     notify("还没有可以撤回的操作");
     return;
   }
+  feedback.perform("undo");
   perform("undo", () => {
     const raw = undoStack.pop(),
       snapshot = JSON.parse(raw);
@@ -462,6 +472,8 @@ function toggleFromReview(id) {
 }
 
 function openWorkspace(name) {
+  if (tab === name) return;
+  const previousTab = tab;
   motion.clear();
   tab = name;
   reviewId = null;
@@ -497,7 +509,16 @@ function openWorkspace(name) {
     renderLibrary();
   }
   applyPreferences();
-  motion.enter($("workspace"));
+  const tabs = ["decks", "library", "settings", "backup", "help"];
+  if (previousTab && tabs.includes(name)) {
+    const direction =
+      previousTab === "entry"
+        ? -1
+        : Math.sign(tabs.indexOf(name) - tabs.indexOf(previousTab)) || 1;
+    motion.enter($(`panel-${name}`), { axis: "x", direction, distance: 32 });
+  } else if (name === "entry")
+    motion.enter($("panel-entry"), { axis: "x", distance: 28 });
+  else motion.enter($("workspace"));
   $("workspace-heading").focus({ preventScroll: true });
   window.scrollTo({ top: 0, behavior: "instant" });
 }
@@ -518,6 +539,7 @@ function closeWorkspace() {
   renderStudy();
   motion.enter(
     $("reading-column") || document.querySelector(".reading-column"),
+    { axis: "none" },
   );
   $("study-stage").focus({ preventScroll: true });
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -812,7 +834,7 @@ function bind() {
         save();
       }),
   );
-  for (const key of ["texture", "motion"])
+  for (const key of ["texture", "motion", "haptics"])
     $(key).onclick = () => {
       workspace.preferences[key] = !workspace.preferences[key];
       motion.clear();
@@ -984,6 +1006,10 @@ function bind() {
     }
   });
   // Desktop shortcuts never intercept typing; touch paths do not rely on shortcuts.
+  installControlFeedback({
+    onInteraction: () => feedback.perform("settings"),
+    motionEnabled: () => workspace.preferences.motion,
+  });
   matchMedia("(max-width:760px)").addEventListener("change", () => {
     if (!tab) renderHistory();
   });

@@ -14,6 +14,7 @@
     <title>Lexora</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/original-word-motion.css" />
     <script type="module" src="./src/app.js"></script>
   </head>
   <body data-theme="white">
@@ -60,7 +61,11 @@
               <button id="current-deck" title="打开词册">手帖示例</button
               ><span id="position">01 / 03</span>
             </div>
-            <div id="study-stage" class="study-stage" tabindex="-1"></div>
+            <div
+              id="study-stage"
+              class="study-stage word-stage"
+              tabindex="-1"
+            ></div>
             <div
               id="study-controls"
               class="study-controls"
@@ -226,6 +231,37 @@
                 role="switch"
                 aria-checked="true"
                 aria-label="学习动画"
+              >
+                <span></span>
+              </button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <h2>音效</h2>
+                <p>后续开发</p>
+              </div>
+              <button
+                id="sound"
+                class="toggle"
+                role="switch"
+                aria-checked="false"
+                aria-label="学习音效（后续开发）"
+                disabled
+              >
+                <span></span>
+              </button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <h2>震动</h2>
+                <p id="haptics-note" hidden>当前浏览器不支持网页震动</p>
+              </div>
+              <button
+                id="haptics"
+                class="toggle"
+                role="switch"
+                aria-checked="true"
+                aria-label="震动反馈"
               >
                 <span></span>
               </button>
