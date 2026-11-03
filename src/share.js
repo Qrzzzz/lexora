@@ -27,38 +27,41 @@ export async function createStudyPoster({
     ctx.fillStyle = color;
     ctx.fillText(value, x, y);
   };
-  text("今日学习", 72, 144, 54);
-  const day = localDay(date).replaceAll("-", ".");
-  font(44);
-  ctx.fillStyle = colors.muted;
-  ctx.textAlign = "right";
-  ctx.fillText(day, 1008, 142);
-  ctx.textAlign = "left";
+  text(localDay(date).replaceAll("-", "."), 72, 148, 52, colors.meaning, 900);
   const value = String(count);
-  let size = 660;
+  let size = 600;
   font(size, 900);
-  while (ctx.measureText(value).width > 936) {
-    size -= 4;
+  while (ctx.measureText(value).width > 850) {
+    size -= 1;
     font(size, 900);
   }
-  // The same count becomes the only graphic: offset translucent impressions.
+  const numberWidth = ctx.measureText(value).width;
+  const wordsX = Math.min(
+    470,
+    72 + numberWidth - Math.max(100, numberWidth * 0.27),
+  );
+  let wordsSize = 170;
+  font(wordsSize, 900);
+  while (ctx.measureText("Words").width > 1040 - wordsX) {
+    wordsSize -= 1;
+    font(wordsSize, 900);
+  }
+  // One word behind one number. A diffuse impression adds depth without ghost digits.
   ctx.save();
-  ctx.globalAlpha = 0.08;
-  text(value, 30, 918, size * 1.08, colors.accent, 900);
+  ctx.globalAlpha = 0.13;
+  ctx.filter = "blur(28px)";
+  text("Words", wordsX, 866, wordsSize, colors.accent, 900);
   ctx.restore();
   ctx.save();
-  ctx.globalAlpha = 0.16;
-  text(value, 108, 760, size, colors.accent, 900);
+  ctx.globalAlpha = 0.68;
+  text("Words", wordsX, 866, wordsSize, colors.accent, 900);
   ctx.restore();
-  text(value, 72, 838, size, colors.ink, 900);
-  text("词次", 80, 978, 54, colors.meaning);
-  ctx.strokeStyle = colors.line;
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(72, 1064);
-  ctx.lineTo(1008, 1064);
-  ctx.stroke();
-  const box = { x: 72, y: 1128, size: 240 },
+  ctx.save();
+  ctx.shadowColor = colors["control-ink"];
+  ctx.shadowBlur = 24;
+  text(value, 72, 820, size, colors.ink, 900);
+  ctx.restore();
+  const box = { x: 792, y: 1136, size: 216 },
     quiet = 4,
     cell = box.size / (qrRows.length + quiet * 2);
   ctx.fillStyle = colors["qr-paper"];
@@ -73,14 +76,14 @@ export async function createStudyPoster({
           bottom = Math.round(box.y + (y + quiet + 1) * cell);
         ctx.fillRect(left, top, right - left, bottom - top);
       }
-  text("Lexora", 352, 1195, 64, colors.ink, 650);
-  text("扫码访问", 354, 1264, 44, colors.meaning);
+  text("Lexora", 72, 1238, 64, colors.ink, 900);
   text(
     links.app.replace("https://", "").replace(/\/$/, ""),
-    354,
-    1332,
+    72,
+    1320,
     44,
-    colors.ink,
+    colors.meaning,
+    900,
   );
   return new Promise((resolve, reject) =>
     canvas.toBlob(
