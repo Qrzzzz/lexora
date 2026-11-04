@@ -46,10 +46,29 @@ export async function createStudyPoster({
     wordsSize -= 1;
     font(wordsSize, 900);
   }
-  // One word behind one number. A diffuse impression adds depth without ghost digits.
+  // A broad atmospheric glow plus a tighter blurred impression around the overlap.
+  // The gradient and native shadows also work where Canvas filter is unavailable.
   ctx.save();
-  ctx.globalAlpha = 0.13;
-  ctx.filter = "blur(28px)";
+  ctx.translate(Math.min(760, wordsX + 240), 780);
+  ctx.scale(1, 0.58);
+  const glow = ctx.createRadialGradient(0, 0, 24, 0, 0, 420);
+  glow.addColorStop(0, colors.accent);
+  glow.addColorStop(1, colors.paper);
+  ctx.globalAlpha = 0.23;
+  ctx.fillStyle = glow;
+  ctx.fillRect(-420, -420, 840, 840);
+  ctx.restore();
+  ctx.save();
+  ctx.shadowColor = colors.accent;
+  ctx.shadowBlur = 52;
+  ctx.globalAlpha = 0.5;
+  text(value, 72, 820, size, colors.accent, 900);
+  ctx.restore();
+  ctx.save();
+  ctx.globalAlpha = 0.62;
+  ctx.filter = "blur(16px)";
+  ctx.shadowColor = colors.accent;
+  ctx.shadowBlur = 34;
   text("Words", wordsX, 866, wordsSize, colors.accent, 900);
   ctx.restore();
   ctx.save();
@@ -57,8 +76,8 @@ export async function createStudyPoster({
   text("Words", wordsX, 866, wordsSize, colors.accent, 900);
   ctx.restore();
   ctx.save();
-  ctx.shadowColor = colors["control-ink"];
-  ctx.shadowBlur = 24;
+  ctx.shadowColor = colors.accent;
+  ctx.shadowBlur = 14;
   text(value, 72, 820, size, colors.ink, 900);
   ctx.restore();
   const box = { x: 792, y: 1136, size: 216 },
