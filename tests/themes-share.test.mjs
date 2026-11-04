@@ -32,6 +32,9 @@ test("one seed produces both complete semantic palettes and CSS stays current", 
       );
       assert.deepEqual(Object.keys(palette).sort(), tokens, id);
       assert.notEqual(palette.paper, palette.ink);
+      assert.equal(palette["qr-paper"], palette.paper);
+      assert.equal(palette["qr-ink"], palette.ink);
+      assert.ok(contrastRatio(palette["qr-paper"], palette["qr-ink"]) >= 7.5);
     }
   assert.equal(resolveTheme(THEME_DEFAULTS, false).appearance, "light");
   assert.equal(resolveTheme(THEME_DEFAULTS, true).appearance, "dark");

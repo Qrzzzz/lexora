@@ -192,8 +192,8 @@ export function generatePalette(
     "action-keep": monochrome ? ink : dark ? "#75d5a3" : "#67bd91",
     "action-hint": monochrome ? ink : dark ? "#ffd83e" : "#f5cd38",
     "action-next": monochrome ? ink : dark ? "#83abff" : "#719cf3",
-    "qr-paper": "#ffffff",
-    "qr-ink": "#000000",
+    "qr-paper": paper,
+    "qr-ink": ink,
   };
 }
 export function resolveTheme(preferences = THEME_DEFAULTS, systemDark = false) {
