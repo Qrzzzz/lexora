@@ -49,6 +49,8 @@
 
 首页选择要学习的词册，再点击开始或继续。内置完整的四级核心词汇样例，也可导入自己的 JSON 文件。网页由 GitHub Pages 托管，词册解析与学习都在浏览器中完成。
 
+第二套预设为 [SystemC 英语词汇](./examples/systemc-dictionary.json)：由提供的 Excel 原始 219 条，经规则复数还原、重复合并后整理为 218 条，补充音标与词性，保留技术语境。[来源与重建说明](./data/sources/systemc/README.md)。
+
 <a id="主要功能"></a>
 
 ## ✨ 主要功能

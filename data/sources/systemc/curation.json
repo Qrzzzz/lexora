@@ -1,0 +1,14 @@
+{
+  "regularPlurals": {
+    "abbreviations": "abbreviation",
+    "arguments": "argument",
+    "differences": "difference",
+    "loops": "loop",
+    "points": "point",
+    "separations": "separation",
+    "similarities": "similarity",
+    "statements": "statement",
+    "tasks": "task"
+  },
+  "policy": "规则复数还原单数，已有单数时合并；不规则和独立用法保留。"
+}

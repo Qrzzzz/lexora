@@ -1,0 +1,162 @@
+{
+  "CPP": {
+    "phonetic": "ˌsiː plʌs ˈplʌs",
+    "partOfSpeech": "n.",
+    "note": "按原表 C++ 含义读作 C plus plus。"
+  },
+  "DUT": {
+    "phonetic": "ˌdiː juː ˈtiː",
+    "partOfSpeech": "n.",
+    "note": "Device Under Test；按字母拼读。"
+  },
+  "EDA": {
+    "phonetic": "ˌiː diː ˈeɪ",
+    "partOfSpeech": "n.",
+    "note": "Electronic Design Automation；按字母拼读。"
+  },
+  "ESL": {
+    "phonetic": "ˌiː es ˈel",
+    "partOfSpeech": "n.",
+    "note": "此处为 Electronic System Level；按字母拼读。"
+  },
+  "OOP": {
+    "phonetic": "ˌəʊ əʊ ˈpiː",
+    "partOfSpeech": "n.",
+    "note": "Object-Oriented Programming；采用字母拼读。"
+  },
+  "OS": {
+    "phonetic": "ˌəʊ ˈes",
+    "partOfSpeech": "n.",
+    "note": "Operating System；按字母拼读。"
+  },
+  "RAM": {
+    "phonetic": "ræm",
+    "partOfSpeech": "n.",
+    "note": "Random Access Memory；常作缩略词连读。"
+  },
+  "RTL": {
+    "phonetic": "ˌɑː tiː ˈel",
+    "partOfSpeech": "n.",
+    "note": "Register Transfer Level；按字母拼读。"
+  },
+  "SoC": {
+    "phonetic": "ˌes əʊ ˈsiː",
+    "partOfSpeech": "n.",
+    "note": "System-on-a-Chip；采用字母拼读。"
+  },
+  "SystemC": {
+    "phonetic": "ˈsɪstəm siː",
+    "partOfSpeech": "n.",
+    "note": "System + 字母 C。"
+  },
+  "TLM": {
+    "phonetic": "ˌtiː el ˈem",
+    "partOfSpeech": "n.",
+    "note": "Transaction Level Modeling；按字母拼读。"
+  },
+  "VCD": {
+    "phonetic": "ˌviː siː ˈdiː",
+    "partOfSpeech": "n.",
+    "note": "Value Change Dump；按字母拼读。"
+  },
+  "WLF": {
+    "phonetic": "ˌdʌbəljuː el ˈef",
+    "partOfSpeech": "n.",
+    "note": "Waveform Log File；按字母拼读。"
+  },
+  "duty cycle": {
+    "phonetic": "ˈdjuːti ˌsaɪkəl",
+    "partOfSpeech": "n.",
+    "note": "复合名词，按组成词给出读法。"
+  },
+  "initializer list": {
+    "phonetic": "ɪˈnɪʃəlaɪzə lɪst",
+    "partOfSpeech": "n.",
+    "note": "复合名词，按组成词给出读法。"
+  },
+  "sensitivity list": {
+    "phonetic": "ˌsensəˈtɪvəti lɪst",
+    "partOfSpeech": "n.",
+    "note": "复合名词，按组成词给出读法。"
+  },
+  "stand for": {
+    "phonetic": "stænd fɔː",
+    "partOfSpeech": "phr. v.",
+    "note": "动词短语，采用 for 的强读形式。"
+  },
+  "non": {
+    "phonetic": "nɒn",
+    "partOfSpeech": "prefix",
+    "note": "作前缀 non-。"
+  },
+  "testbench": {
+    "phonetic": "ˈtestbentʃ",
+    "partOfSpeech": "n.",
+    "note": "复合名词 test + bench。"
+  },
+  "tri-state": {
+    "phonetic": "ˈtraɪ steɪt",
+    "partOfSpeech": "adj.",
+    "note": "技术语境：三态的。"
+  },
+  "built": {
+    "phonetic": "bɪlt",
+    "partOfSpeech": "v.",
+    "note": "build 的过去式、过去分词。"
+  },
+  "called": {
+    "phonetic": "kɔːld",
+    "partOfSpeech": "v.",
+    "note": "call 的过去式、过去分词。"
+  },
+  "concurrency": {
+    "phonetic": "kənˈkʌrənsi",
+    "partOfSpeech": "n.",
+    "note": "技术语境：并发性。"
+  },
+  "generated": {
+    "phonetic": "ˈdʒenəreɪtɪd",
+    "partOfSpeech": "adj.",
+    "note": "generate 的过去分词，此处作形容词。"
+  },
+  "including": {
+    "phonetic": "ɪnˈkluːdɪŋ",
+    "partOfSpeech": "prep.",
+    "note": ""
+  },
+  "initialization": {
+    "phonetic": "ɪˌnɪʃəlaɪˈzeɪʃən",
+    "partOfSpeech": "n.",
+    "note": ""
+  },
+  "modelling": {
+    "phonetic": "ˈmɒdəlɪŋ",
+    "partOfSpeech": "n.",
+    "note": "modeling 的英式拼写，此处指建模。"
+  },
+  "prefixing": {
+    "phonetic": "ˈpriːfɪksɪŋ",
+    "partOfSpeech": "n.",
+    "note": "此处指加前缀的操作。"
+  },
+  "replaced": {
+    "phonetic": "rɪˈpleɪst",
+    "partOfSpeech": "v.",
+    "note": "replace 的过去式、过去分词。"
+  },
+  "shown": {
+    "phonetic": "ʃəʊn",
+    "partOfSpeech": "v.",
+    "note": "show 的过去分词。"
+  },
+  "slower": {
+    "phonetic": "ˈsləʊə",
+    "partOfSpeech": "adj.",
+    "note": "slow 的比较级。"
+  },
+  "waveform": {
+    "phonetic": "ˈweɪvfɔːm",
+    "partOfSpeech": "n.",
+    "note": ""
+  }
+}

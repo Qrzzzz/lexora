@@ -1,0 +1,5734 @@
+{
+  "format": "lexora.deck",
+  "schemaVersion": 2,
+  "id": "lexora:systemc",
+  "revision": 1,
+  "title": "SystemC 英语词汇",
+  "description": "原表 219 条，经规则复数归一合并为 218 条；保留原始中文释义，补充音标与词性。",
+  "language": "en",
+  "answerLanguage": "zh-Hans",
+  "sources": [
+    {
+      "id": "user-systemc-workbook",
+      "title": "SystemC_英语单词翻译表.xlsx"
+    },
+    {
+      "id": "ecdict-systemc",
+      "title": "ECDICT 音标与词性",
+      "url": "https://raw.githubusercontent.com/skywind3000/ECDICT/ab22ad36302cafc6349a050e2b60894855208055/ecdict.csv",
+      "license": "MIT"
+    },
+    {
+      "id": "systemc-editorial",
+      "title": "SystemC 技术术语读法与词性编校"
+    }
+  ],
+  "cards": [
+    {
+      "id": "systemc-4f1481e36076010d",
+      "type": "vocabulary",
+      "term": "abbreviation",
+      "shortDefinition": "缩写",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ə.briːviˈeɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "缩写"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：abbreviations；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-70430045cb502bc0",
+      "type": "vocabulary",
+      "term": "accelerate",
+      "shortDefinition": "加速",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/əkˈseləreɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "加速"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a0561fd649cdb6ba",
+      "type": "vocabulary",
+      "term": "access",
+      "shortDefinition": "访问",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈækses/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "访问"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e40dfff1a71eb7ba",
+      "type": "vocabulary",
+      "term": "advance",
+      "shortDefinition": "前进，推进",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ədˈvɑːns/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.; adj.; v.",
+          "definitions": [
+            "前进，推进"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-27747689baf9903c",
+      "type": "vocabulary",
+      "term": "alternative",
+      "shortDefinition": "替代的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ɔːlˈtɜːnətiv/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "替代的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-6da6a14b76fa130e",
+      "type": "vocabulary",
+      "term": "amongst",
+      "shortDefinition": "在...之中（正式用语，等同于among）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/əˈmʌŋst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "prep.",
+          "definitions": [
+            "在...之中（正式用语，等同于among）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-4ca303a3bf7ddf7b",
+      "type": "vocabulary",
+      "term": "architecture",
+      "shortDefinition": "架构",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɑːkitektʃə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "架构"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b74f83c9353b55cd",
+      "type": "vocabulary",
+      "term": "argument",
+      "shortDefinition": "参数",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɑːgjumənt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "参数"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-dbe42cc09c16704a",
+      "type": "vocabulary",
+      "term": "array",
+      "shortDefinition": "数组",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/əˈreɪ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "数组"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ce7a7c10b0dfd968",
+      "type": "vocabulary",
+      "term": "assignment",
+      "shortDefinition": "赋值",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/əˈsaɪnmənt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "赋值"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b1b886ce5f5750a0",
+      "type": "vocabulary",
+      "term": "behind",
+      "shortDefinition": "在...后面，落后于",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/biˈhaɪnd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adv.; prep.",
+          "definitions": [
+            "在...后面，落后于"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-8ada24bf6bf31392",
+      "type": "vocabulary",
+      "term": "below",
+      "shortDefinition": "在...下面，低于",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/biˈləʊ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "prep.; adv.",
+          "definitions": [
+            "在...下面，低于"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f08dd851c430f52f",
+      "type": "vocabulary",
+      "term": "bind",
+      "shortDefinition": "绑定",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/baɪnd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; n.; v.",
+          "definitions": [
+            "绑定"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-80f70afeef3caa57",
+      "type": "vocabulary",
+      "term": "binding",
+      "shortDefinition": "绑定（动名词形式）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈbaɪndiŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "绑定（动名词形式）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d0013c2e0a387e4c",
+      "type": "vocabulary",
+      "term": "bit",
+      "shortDefinition": "位",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/bit/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "位"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5a9cf40c7b2a1649",
+      "type": "vocabulary",
+      "term": "blocking",
+      "shortDefinition": "阻塞的，阻断的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈblɔkiŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "阻塞的，阻断的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5e1cf42878df58fe",
+      "type": "vocabulary",
+      "term": "bound",
+      "shortDefinition": "绑定（bind的过去式与过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/baʊnd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; vi.; vt.; v.",
+          "definitions": [
+            "绑定（bind的过去式与过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-26f8567f25691822",
+      "type": "vocabulary",
+      "term": "box",
+      "shortDefinition": "盒子，框，包装盒",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/bɒks/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "盒子，框，包装盒"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-586a866f990ab55e",
+      "type": "vocabulary",
+      "term": "built",
+      "shortDefinition": "建造，构建（build的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/bɪlt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "建造，构建（build的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "build 的过去式、过去分词。"
+    },
+    {
+      "id": "systemc-04e027e4990a203f",
+      "type": "vocabulary",
+      "term": "bus",
+      "shortDefinition": "总线",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/bʌs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; v.",
+          "definitions": [
+            "总线"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7edb360f06acaef2",
+      "type": "vocabulary",
+      "term": "call",
+      "shortDefinition": "调用",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kɔːl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "调用"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-8c90cbf5d27d61f5",
+      "type": "vocabulary",
+      "term": "called",
+      "shortDefinition": "被称为，被叫做（call的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kɔːld/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "被称为，被叫做（call的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "call 的过去式、过去分词。"
+    },
+    {
+      "id": "systemc-9a43b6dac4660897",
+      "type": "vocabulary",
+      "term": "cannot",
+      "shortDefinition": "不能，无法",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈkænɒt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "aux.",
+          "definitions": [
+            "不能，无法"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-6a7ef1ed9f15c2f5",
+      "type": "vocabulary",
+      "term": "cause",
+      "shortDefinition": "原因，导致",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kɔːz/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "原因，导致"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-69e36568cd8b4659",
+      "type": "vocabulary",
+      "term": "channel",
+      "shortDefinition": "管道",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈtʃænəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "管道"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d7cea7305a333d5c",
+      "type": "vocabulary",
+      "term": "chip",
+      "shortDefinition": "芯片",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/tʃip/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "芯片"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0889113e04d3203f",
+      "type": "vocabulary",
+      "term": "class",
+      "shortDefinition": "类（编程术语），班级",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/klɑːs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "类（编程术语），班级"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d8198efa3604d164",
+      "type": "vocabulary",
+      "term": "clock",
+      "shortDefinition": "时钟",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/klɒk/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "时钟"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-310ff200149b44a3",
+      "type": "vocabulary",
+      "term": "close",
+      "shortDefinition": "关闭，紧密的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kləʊz/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; vt.; vi.; adv.; v.",
+          "definitions": [
+            "关闭，紧密的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5694d08a2e53ffca",
+      "type": "vocabulary",
+      "term": "code",
+      "shortDefinition": "代码",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəʊd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "代码"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-21d24d26cff2e2a2",
+      "type": "vocabulary",
+      "term": "coexist",
+      "shortDefinition": "共存",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.kəʊigˈzist/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vi.; v.",
+          "definitions": [
+            "共存"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d4e16994df9002e5",
+      "type": "vocabulary",
+      "term": "communication",
+      "shortDefinition": "通讯",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kə.mjuːniˈkeɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "通讯"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e996bb0ea465fae7",
+      "type": "vocabulary",
+      "term": "compiler",
+      "shortDefinition": "编译器",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəmˈpaɪlə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "编译器"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-eebbf6457e46a7f6",
+      "type": "vocabulary",
+      "term": "complete",
+      "shortDefinition": "完成的，完整的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəmˈpliːt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; vt.; v.",
+          "definitions": [
+            "完成的，完整的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-fb209e75cfb94344",
+      "type": "vocabulary",
+      "term": "computation",
+      "shortDefinition": "计算",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.kɒmpjuˈteɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "计算"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5927a6af65f833f4",
+      "type": "vocabulary",
+      "term": "concatenation",
+      "shortDefinition": "连接",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.kɒnkætiˈneɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "连接"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2f1b86bf5531b8e8",
+      "type": "vocabulary",
+      "term": "concern",
+      "shortDefinition": "涉及，关注",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kənˈsɜːn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "涉及，关注"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d1b92de2d2079261",
+      "type": "vocabulary",
+      "term": "concurrency",
+      "shortDefinition": "并发",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kənˈkʌrənsi/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "并发"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "技术语境：并发性。"
+    },
+    {
+      "id": "systemc-5a638a128ca67348",
+      "type": "vocabulary",
+      "term": "connect",
+      "shortDefinition": "连接",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəˈnekt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "连接"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b38d9d168c3aedf1",
+      "type": "vocabulary",
+      "term": "connection",
+      "shortDefinition": "连接",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəˈnekʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "连接"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e3c1703abf8a6b3d",
+      "type": "vocabulary",
+      "term": "constructor",
+      "shortDefinition": "构造函数",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kənˈstrʌktə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "构造函数"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-15a596e3c98c407e",
+      "type": "vocabulary",
+      "term": "correct",
+      "shortDefinition": "正确的，纠正",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/kəˈrekt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; vt.; v.",
+          "definitions": [
+            "正确的，纠正"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c59e6d6725012feb",
+      "type": "vocabulary",
+      "term": "correspond",
+      "shortDefinition": "对应，符合",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.kɒriˈspɒnd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vi.; v.",
+          "definitions": [
+            "对应，符合"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-aa0310e6d5844ec5",
+      "type": "vocabulary",
+      "term": "CPP",
+      "shortDefinition": "C++编程语言（C Plus Plus）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌsiː plʌs ˈplʌs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "C++编程语言（C Plus Plus）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "按原表 C++ 含义读作 C plus plus。"
+    },
+    {
+      "id": "systemc-c501935a6b2b247d",
+      "type": "vocabulary",
+      "term": "cycle",
+      "shortDefinition": "周期，循环",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsaɪkl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "周期，循环"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3a6eb0790f39ac87",
+      "type": "vocabulary",
+      "term": "data",
+      "shortDefinition": "数据",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdeɪtə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "数据"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0b8e9e995d8d77f1",
+      "type": "vocabulary",
+      "term": "debug",
+      "shortDefinition": "调试",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/diːˈbʌg/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "调试"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3e6d4b43d473c69d",
+      "type": "vocabulary",
+      "term": "decimal",
+      "shortDefinition": "十进制的，小数",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdesiməl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.",
+          "definitions": [
+            "十进制的，小数"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b7012df7548775c2",
+      "type": "vocabulary",
+      "term": "declare",
+      "shortDefinition": "声明",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/diˈklєə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "声明"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-abcd0ee1fc2cdf51",
+      "type": "vocabulary",
+      "term": "declaration",
+      "shortDefinition": "声明（declare的名词形式）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.dekləˈreɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "声明（declare的名词形式）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ecd38f260821a09a",
+      "type": "vocabulary",
+      "term": "define",
+      "shortDefinition": "定义（动词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/diˈfaɪn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "定义（动词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-4c4ed1afbfdaa1e4",
+      "type": "vocabulary",
+      "term": "definition",
+      "shortDefinition": "定义（名词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.defiˈniʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "定义（名词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-4f4a9410ffcdf895",
+      "type": "vocabulary",
+      "term": "delta",
+      "shortDefinition": "增量，差值（希腊字母表的第 4 个字母）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdeltə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "增量，差值（希腊字母表的第 4 个字母）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c52028f34e378d1e",
+      "type": "vocabulary",
+      "term": "describe",
+      "shortDefinition": "描述",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/diˈskraɪb/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "描述"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c9046f7a37ad0ea7",
+      "type": "vocabulary",
+      "term": "description",
+      "shortDefinition": "描述，说明",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/diˈskripʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "描述，说明"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2c20a6b064ee805c",
+      "type": "vocabulary",
+      "term": "diagram",
+      "shortDefinition": "图表",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdaɪəɡræm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; v.",
+          "definitions": [
+            "图表"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-69ea741e98fdc758",
+      "type": "vocabulary",
+      "term": "difference",
+      "shortDefinition": "差异，不同（difference的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdifərəns/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "差异，不同（difference的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：differences；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-a4c3ed04a95a3da1",
+      "type": "vocabulary",
+      "term": "done",
+      "shortDefinition": "完成的（do的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/dʌn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "完成的（do的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-50f7becde477bb50",
+      "type": "vocabulary",
+      "term": "draw",
+      "shortDefinition": "绘制，画图",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/drɔː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vi.; vt.; n.",
+          "definitions": [
+            "绘制，画图"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b4def8217cadae26",
+      "type": "vocabulary",
+      "term": "driver",
+      "shortDefinition": "驱动",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdraɪvə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "驱动"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-9a83861eb9a593c0",
+      "type": "vocabulary",
+      "term": "DUT",
+      "shortDefinition": "被测设备（Device Under Test）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌdiː juː ˈtiː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "被测设备（Device Under Test）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Device Under Test；按字母拼读。"
+    },
+    {
+      "id": "systemc-65044067c5773643",
+      "type": "vocabulary",
+      "term": "duty cycle",
+      "shortDefinition": "占空比",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdjuːti ˌsaɪkəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "占空比"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "复合名词，按组成词给出读法。"
+    },
+    {
+      "id": "systemc-73c76d56fd404200",
+      "type": "vocabulary",
+      "term": "dynamic",
+      "shortDefinition": "动态的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/daɪˈnæmik/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.",
+          "definitions": [
+            "动态的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-643d95ce1960f537",
+      "type": "vocabulary",
+      "term": "EDA",
+      "shortDefinition": "电子设计自动化（Electronic Design Autom…",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌiː diː ˈeɪ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "电子设计自动化（Electronic Design Automation）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Electronic Design Automation；按字母拼读。"
+    },
+    {
+      "id": "systemc-ed157486b875d92c",
+      "type": "vocabulary",
+      "term": "electrical",
+      "shortDefinition": "电气的，电子的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈlektrikəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "电气的，电子的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2e1cfa82b035c26c",
+      "type": "vocabulary",
+      "term": "empty",
+      "shortDefinition": "空的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈempti/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.; vt.; vi.; v.",
+          "definitions": [
+            "空的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-cc73c906e945aa99",
+      "type": "vocabulary",
+      "term": "equivalent",
+      "shortDefinition": "等效的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈkwivələnt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "等效的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f233e03d870b8663",
+      "type": "vocabulary",
+      "term": "ESL",
+      "shortDefinition": "电子系统级（Electronic System Level）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌiː es ˈel/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "电子系统级（Electronic System Level）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "此处为 Electronic System Level；按字母拼读。"
+    },
+    {
+      "id": "systemc-10aca1d8b724381a",
+      "type": "vocabulary",
+      "term": "evaluate",
+      "shortDefinition": "评估，评价",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈvæljueɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "评估，评价"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b8e1f80bd70ae078",
+      "type": "vocabulary",
+      "term": "event",
+      "shortDefinition": "事件",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈvent/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "事件"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-50d858e0985ecc7f",
+      "type": "vocabulary",
+      "term": "example",
+      "shortDefinition": "例子",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/igˈzæmpl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "例子"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-fedcc8d1af5f19c0",
+      "type": "vocabulary",
+      "term": "exchanged",
+      "shortDefinition": "交换的（exchange的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iksˈtʃeɪndʒd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "交换的（exchange的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-73f80633a12775cf",
+      "type": "vocabulary",
+      "term": "executed",
+      "shortDefinition": "执行的（execute的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈeksikjuːtid/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "执行的（execute的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a402c4336ebfd782",
+      "type": "vocabulary",
+      "term": "execution",
+      "shortDefinition": "执行",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.eksiˈkjuːʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "执行"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-afafb16ac47b9b3d",
+      "type": "vocabulary",
+      "term": "existing",
+      "shortDefinition": "现有的，存在的（exist的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/i^ˈzistiŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "现有的，存在的（exist的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0818ab2593f5cb6c",
+      "type": "vocabulary",
+      "term": "explain",
+      "shortDefinition": "解释，说明",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ikˈspleɪn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "解释，说明"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-fcbcf165908dd18a",
+      "type": "vocabulary",
+      "term": "false",
+      "shortDefinition": "假的，错误的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/fɔːls/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; adv.",
+          "definitions": [
+            "假的，错误的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3b9c358f36f0a31b",
+      "type": "vocabulary",
+      "term": "file",
+      "shortDefinition": "文件",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/faɪl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "文件"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-42af43e3616eba4a",
+      "type": "vocabulary",
+      "term": "finish",
+      "shortDefinition": "完成，结束",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈfiniʃ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "完成，结束"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d64ee7977758cccf",
+      "type": "vocabulary",
+      "term": "flowchart",
+      "shortDefinition": "流程图",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/fləʊˈtʃɑːt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "流程图"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-8d0288f434f2ff12",
+      "type": "vocabulary",
+      "term": "following",
+      "shortDefinition": "以下的，跟随",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈfɒləʊiŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "以下的，跟随"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-07397d633f25a710",
+      "type": "vocabulary",
+      "term": "form",
+      "shortDefinition": "形式，表单",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/fɔːm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; v.",
+          "definitions": [
+            "形式，表单"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e904c9ccfa425ff0",
+      "type": "vocabulary",
+      "term": "format",
+      "shortDefinition": "格式",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈfɔːmæt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "格式"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a18b869b2e81c0c5",
+      "type": "vocabulary",
+      "term": "full",
+      "shortDefinition": "完整的，满的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ful/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; adv.; vt.; v.",
+          "definitions": [
+            "完整的，满的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-78f9ac018e554365",
+      "type": "vocabulary",
+      "term": "function",
+      "shortDefinition": "函数，功能",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈfʌŋkʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.",
+          "definitions": [
+            "函数，功能"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-cf13b0c72f2bf80e",
+      "type": "vocabulary",
+      "term": "functionality",
+      "shortDefinition": "功能性，功能",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/,fʌŋkəʃəˈnæliti/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "功能性，功能"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c974e17b8e7321ce",
+      "type": "vocabulary",
+      "term": "gate",
+      "shortDefinition": "门电路",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/geɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "门电路"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0feae16d55365acf",
+      "type": "vocabulary",
+      "term": "general",
+      "shortDefinition": "一般的，通用的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdʒenərəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; v.",
+          "definitions": [
+            "一般的，通用的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e0cb800a5ccda4cb",
+      "type": "vocabulary",
+      "term": "generated",
+      "shortDefinition": "生成的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈdʒenəreɪtɪd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "生成的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "generate 的过去分词，此处作形容词。"
+    },
+    {
+      "id": "systemc-26787dd2f72cc993",
+      "type": "vocabulary",
+      "term": "hardware",
+      "shortDefinition": "硬件",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈhɑːdwєə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "硬件"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-86582bd8e94a3dc2",
+      "type": "vocabulary",
+      "term": "hexadecimal",
+      "shortDefinition": "十六进制的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈheksədesiməl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.",
+          "definitions": [
+            "十六进制的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-4608fac28f429202",
+      "type": "vocabulary",
+      "term": "hierarchical",
+      "shortDefinition": "层次化的，层级的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/,haɪəˈrɑːkikəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "层次化的，层级的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ff88bf2406519342",
+      "type": "vocabulary",
+      "term": "hierarchy",
+      "shortDefinition": "层次，层级",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈhaɪərɑːki/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "层次，层级"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ae0a9ad3227c5420",
+      "type": "vocabulary",
+      "term": "idea",
+      "shortDefinition": "想法，概念",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/aɪˈdiə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "想法，概念"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f2ec3e85b72ddfae",
+      "type": "vocabulary",
+      "term": "illustrate",
+      "shortDefinition": "说明，举例",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈiləstreɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; v.",
+          "definitions": [
+            "说明，举例"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-251ce3daf88ff669",
+      "type": "vocabulary",
+      "term": "immediate",
+      "shortDefinition": "立即的，即时的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈmiːdiət/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "立即的，即时的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f9bb818d84838e08",
+      "type": "vocabulary",
+      "term": "implement",
+      "shortDefinition": "实现",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈimplimənt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "实现"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-031af55b1821e721",
+      "type": "vocabulary",
+      "term": "including",
+      "shortDefinition": "包括（include的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ɪnˈkluːdɪŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "prep.",
+          "definitions": [
+            "包括（include的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ]
+    },
+    {
+      "id": "systemc-704b7acbacf9cd96",
+      "type": "vocabulary",
+      "term": "infinite",
+      "shortDefinition": "无限的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈinfinit/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "无限的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-40c079d137e82025",
+      "type": "vocabulary",
+      "term": "inheritance",
+      "shortDefinition": "继承",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/inˈheritəns/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "继承"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-05fd548cb946f6ae",
+      "type": "vocabulary",
+      "term": "initialization",
+      "shortDefinition": "初始化（initialize的名词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ɪˌnɪʃəlaɪˈzeɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "初始化（initialize的名词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ]
+    },
+    {
+      "id": "systemc-470ebe82f7552752",
+      "type": "vocabulary",
+      "term": "initialize",
+      "shortDefinition": "初始化",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/iˈniʃəlaɪz/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "初始化"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-53f62df921942693",
+      "type": "vocabulary",
+      "term": "initializer list",
+      "shortDefinition": "初始化列表",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ɪˈnɪʃəlaɪzə lɪst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "初始化列表"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "复合名词，按组成词给出读法。"
+    },
+    {
+      "id": "systemc-5e8c03a94c7835b8",
+      "type": "vocabulary",
+      "term": "instance",
+      "shortDefinition": "实例",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈinstəns/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "实例"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a3e49b4504d88690",
+      "type": "vocabulary",
+      "term": "instantiate",
+      "shortDefinition": "实例化",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/inˈstænʃieɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "实例化"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a5483dab2a402e46",
+      "type": "vocabulary",
+      "term": "instantiating",
+      "shortDefinition": "实例化（instantiate的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ɪnˈstænʃɪeɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; v.",
+          "definitions": [
+            "实例化（instantiate的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2dba2454d80024ac",
+      "type": "vocabulary",
+      "term": "integer",
+      "shortDefinition": "整数",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈintidʒə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "整数"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c796d37c6d491e8f",
+      "type": "vocabulary",
+      "term": "interface",
+      "shortDefinition": "接口",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈintəfeɪs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "接口"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7117fff2d0fd2944",
+      "type": "vocabulary",
+      "term": "known",
+      "shortDefinition": "已知的，知名的（know的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/nəʊn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "已知的，知名的（know的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a4ef304ba42a200b",
+      "type": "vocabulary",
+      "term": "language",
+      "shortDefinition": "语言",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈlæŋgwidʒ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "语言"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0081779c287d567d",
+      "type": "vocabulary",
+      "term": "level",
+      "shortDefinition": "级别，层次",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈlevl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; vt.; vi.; v.",
+          "definitions": [
+            "级别，层次"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f86e4b17a89f8d27",
+      "type": "vocabulary",
+      "term": "limitation",
+      "shortDefinition": "限制，局限性",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.limiˈteɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "限制，局限性"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-38a9c1e721584da2",
+      "type": "vocabulary",
+      "term": "line",
+      "shortDefinition": "线，行",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/laɪn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "线，行"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a330395cc0a53ad1",
+      "type": "vocabulary",
+      "term": "list",
+      "shortDefinition": "列表",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/list/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "列表"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-829f8d848b44fa30",
+      "type": "vocabulary",
+      "term": "literal",
+      "shortDefinition": "字面量，文字",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈlitərəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.",
+          "definitions": [
+            "字面量，文字"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-08e4e1c34e288c71",
+      "type": "vocabulary",
+      "term": "logic",
+      "shortDefinition": "逻辑",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈlɒdʒik/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "逻辑"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-254637f72efcddb6",
+      "type": "vocabulary",
+      "term": "loop",
+      "shortDefinition": "循环（loop的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/luːp/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "循环（loop的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：loops；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-8a64ff09886cc35f",
+      "type": "vocabulary",
+      "term": "maximum",
+      "shortDefinition": "最大的，最大值",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmæksimən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "最大的，最大值"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e409bfc6fe798c2e",
+      "type": "vocabulary",
+      "term": "meaning",
+      "shortDefinition": "意思，含义",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmiːniŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "意思，含义"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c064fbca9d9de8dd",
+      "type": "vocabulary",
+      "term": "memory",
+      "shortDefinition": "内存，记忆",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmeməri/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "内存，记忆"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7de97367c9cdc3c6",
+      "type": "vocabulary",
+      "term": "monitor",
+      "shortDefinition": "监视器，显示器",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɒnitə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; v.",
+          "definitions": [
+            "监视器，显示器"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-9372c470eeadd5ec",
+      "type": "vocabulary",
+      "term": "model",
+      "shortDefinition": "模型，建模",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɒdəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; vi.; vt.",
+          "definitions": [
+            "模型，建模"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e39da5b66920a888",
+      "type": "vocabulary",
+      "term": "modeling",
+      "shortDefinition": "建模（model的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɔdliŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "建模（model的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-980323ece44bfd76",
+      "type": "vocabulary",
+      "term": "modelling",
+      "shortDefinition": "建模（英式拼写，等同于modeling）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɒdəlɪŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "建模（英式拼写，等同于modeling）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "modeling 的英式拼写，此处指建模。"
+    },
+    {
+      "id": "systemc-9106d6212bb4dfc9",
+      "type": "vocabulary",
+      "term": "modify",
+      "shortDefinition": "修改，更改",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɒdifaɪ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; v.",
+          "definitions": [
+            "修改，更改"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-120970d812836f19",
+      "type": "vocabulary",
+      "term": "module",
+      "shortDefinition": "模块",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmɒdjuːl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "模块"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3f8a7e66329a6d6c",
+      "type": "vocabulary",
+      "term": "multiple",
+      "shortDefinition": "多个的，多样的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈmʌltipl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "多个的，多样的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-bcee72e6df5d5631",
+      "type": "vocabulary",
+      "term": "non",
+      "shortDefinition": "非，不（前缀）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/nɒn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "prefix",
+          "definitions": [
+            "非，不（前缀）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "作前缀 non-。"
+    },
+    {
+      "id": "systemc-254bb97b57f12e16",
+      "type": "vocabulary",
+      "term": "not",
+      "shortDefinition": "不，没有",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/nɒt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adv.",
+          "definitions": [
+            "不，没有"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-1242ab99f6773a84",
+      "type": "vocabulary",
+      "term": "notification",
+      "shortDefinition": "通知，告知",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.nəʊtifiˈkeɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "通知，告知"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-6cd6f41455d78245",
+      "type": "vocabulary",
+      "term": "notify",
+      "shortDefinition": "通知，告知",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈnəʊtifaɪ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.",
+          "definitions": [
+            "通知，告知"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-31f61ed3e6e210c5",
+      "type": "vocabulary",
+      "term": "notion",
+      "shortDefinition": "概念，想法",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈnəʊʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "概念，想法"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-12886f9d00055adf",
+      "type": "vocabulary",
+      "term": "number",
+      "shortDefinition": "数字，数量",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈnʌmbə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "数字，数量"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2958d416d08aa5a4",
+      "type": "vocabulary",
+      "term": "object",
+      "shortDefinition": "对象",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɒbdʒekt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "对象"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-dd4c74e8d18e56be",
+      "type": "vocabulary",
+      "term": "OOP",
+      "shortDefinition": "面向对象编程（Object-Oriented Programm…",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌəʊ əʊ ˈpiː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "面向对象编程（Object-Oriented Programming）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Object-Oriented Programming；采用字母拼读。"
+    },
+    {
+      "id": "systemc-6f49db6846664c1e",
+      "type": "vocabulary",
+      "term": "operating",
+      "shortDefinition": "操作的，运行的（operate的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɔpəreɪtiŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "操作的，运行的（operate的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-9bf5a24e4aa77998",
+      "type": "vocabulary",
+      "term": "operation",
+      "shortDefinition": "操作，运算",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.ɒpəˈreɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "操作，运算"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3eeb7e96e59ce40f",
+      "type": "vocabulary",
+      "term": "order",
+      "shortDefinition": "顺序，命令",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɔːdə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "顺序，命令"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5e81c0ea88d18325",
+      "type": "vocabulary",
+      "term": "oriented",
+      "shortDefinition": "以...为导向的，面向...的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈɔːrientid/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "以...为导向的，面向...的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-343d012d58b2e98f",
+      "type": "vocabulary",
+      "term": "OS",
+      "shortDefinition": "操作系统（Operating System）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌəʊ ˈes/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "操作系统（Operating System）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Operating System；按字母拼读。"
+    },
+    {
+      "id": "systemc-e0ee8bb50685e05f",
+      "type": "vocabulary",
+      "term": "output",
+      "shortDefinition": "输出",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈaʊtput/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; v.",
+          "definitions": [
+            "输出"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ef527af5f7ce9b3d",
+      "type": "vocabulary",
+      "term": "overload",
+      "shortDefinition": "重载",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.əʊvəˈləʊd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; n.; v.",
+          "definitions": [
+            "重载"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-284d1e8c49182482",
+      "type": "vocabulary",
+      "term": "passed",
+      "shortDefinition": "传递，通过（过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/pɑːst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "传递，通过（过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-64f46a7526a186d2",
+      "type": "vocabulary",
+      "term": "pin",
+      "shortDefinition": "引脚，针脚，管脚",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/pin/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; adj.",
+          "definitions": [
+            "引脚，针脚，管脚"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-56ccc4dcfc96534b",
+      "type": "vocabulary",
+      "term": "please",
+      "shortDefinition": "请，使高兴",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/pliːz/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adv.; vt.; vi.; v.",
+          "definitions": [
+            "请，使高兴"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-1cdf95bd12e993d5",
+      "type": "vocabulary",
+      "term": "pointer",
+      "shortDefinition": "指针",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈpɒintə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "指针"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-251fecd592e56e6c",
+      "type": "vocabulary",
+      "term": "point",
+      "shortDefinition": "点（point的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/pɒint/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "点（point的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：points；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-ee1661754833584f",
+      "type": "vocabulary",
+      "term": "polymorphism",
+      "shortDefinition": "多态",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.pɒliˈmɔːfizm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "多态"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f8d397a33fcb9725",
+      "type": "vocabulary",
+      "term": "port",
+      "shortDefinition": "端口",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/pɔːt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "端口"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-c4773daf2e6a2e27",
+      "type": "vocabulary",
+      "term": "possible",
+      "shortDefinition": "可能的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈpɒsəbl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.",
+          "definitions": [
+            "可能的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5f11f14568641736",
+      "type": "vocabulary",
+      "term": "prefixing",
+      "shortDefinition": "前缀（prefix的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈpriːfɪksɪŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "前缀（prefix的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "此处指加前缀的操作。"
+    },
+    {
+      "id": "systemc-db1946d32afb3d7b",
+      "type": "vocabulary",
+      "term": "primitive",
+      "shortDefinition": "基本的，原生的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈprimitiv/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "基本的，原生的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3092a5f0dba05ff3",
+      "type": "vocabulary",
+      "term": "priority",
+      "shortDefinition": "优先级",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/praɪˈɒriti/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "优先级"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0487c249731a7d90",
+      "type": "vocabulary",
+      "term": "procedure",
+      "shortDefinition": "过程，程序",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/prəˈsiːdʒə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "过程，程序"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-19ed40bf62c399b8",
+      "type": "vocabulary",
+      "term": "process",
+      "shortDefinition": "进程，处理",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈprɒses/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; adj.",
+          "definitions": [
+            "进程，处理"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-da7241946d2eb066",
+      "type": "vocabulary",
+      "term": "provided",
+      "shortDefinition": "提供的（provide的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/prəˈvaɪdid/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "conj.",
+          "definitions": [
+            "提供的（provide的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-bf4b0c03c646add9",
+      "type": "vocabulary",
+      "term": "RAM",
+      "shortDefinition": "随机存取存储器（Random Access Memory）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ræm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "随机存取存储器（Random Access Memory）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Random Access Memory；常作缩略词连读。"
+    },
+    {
+      "id": "systemc-a441b15fe9a3cf56",
+      "type": "vocabulary",
+      "term": "random",
+      "shortDefinition": "随机的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈrændəm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; adv.",
+          "definitions": [
+            "随机的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a4b64ad329a8b29e",
+      "type": "vocabulary",
+      "term": "refer",
+      "shortDefinition": "参考，涉及",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/riˈfɜː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; v.",
+          "definitions": [
+            "参考，涉及"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-87780fa5de684e87",
+      "type": "vocabulary",
+      "term": "register",
+      "shortDefinition": "寄存器",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈredʒistə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "寄存器"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-28d9e7bbbf81137e",
+      "type": "vocabulary",
+      "term": "relationship",
+      "shortDefinition": "关系",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/riˈleɪʃənʃip/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "关系"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b1f7124c563597b0",
+      "type": "vocabulary",
+      "term": "rely",
+      "shortDefinition": "依赖，依靠",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/riˈlaɪ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vi.",
+          "definitions": [
+            "依赖，依靠"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d6e80ff8fdca7b24",
+      "type": "vocabulary",
+      "term": "repeatedly",
+      "shortDefinition": "重复地，反复地",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/riˈpiːtidli/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adv.",
+          "definitions": [
+            "重复地，反复地"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-6c1aa50442a93e42",
+      "type": "vocabulary",
+      "term": "replaced",
+      "shortDefinition": "替换的（replace的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/rɪˈpleɪst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "替换的（replace的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "replace 的过去式、过去分词。"
+    },
+    {
+      "id": "systemc-9fdbb1a32f3ad216",
+      "type": "vocabulary",
+      "term": "represented",
+      "shortDefinition": "表示的（represent的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌrepriˈzentid/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "表示的（represent的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-8cfc12e7f78033dc",
+      "type": "vocabulary",
+      "term": "represent",
+      "shortDefinition": "表示",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.repriˈzent/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; v.",
+          "definitions": [
+            "表示"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f7fbd5853d11940e",
+      "type": "vocabulary",
+      "term": "resolution",
+      "shortDefinition": "分辨率，解决",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.rezəˈluːʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "分辨率，解决"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-878f5aa26f7caf0b",
+      "type": "vocabulary",
+      "term": "resolving",
+      "shortDefinition": "解决（resolve的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/riˈzɔlviŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "解决（resolve的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-74ca1d86590db7fd",
+      "type": "vocabulary",
+      "term": "RTL",
+      "shortDefinition": "寄存器传输级（Register Transfer Level）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌɑː tiː ˈel/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "寄存器传输级（Register Transfer Level）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Register Transfer Level；按字母拼读。"
+    },
+    {
+      "id": "systemc-c071cf5f5ed6f884",
+      "type": "vocabulary",
+      "term": "running",
+      "shortDefinition": "运行的（run的现在分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈrʌniŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "运行的（run的现在分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5f72005e81c4ecbd",
+      "type": "vocabulary",
+      "term": "schedule",
+      "shortDefinition": "调度",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈskedʒuəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "调度"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5c16250fd4bb6980",
+      "type": "vocabulary",
+      "term": "sensitivity",
+      "shortDefinition": "灵敏度，敏感",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.sensəˈtiviti/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "灵敏度，敏感"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e9b3de235a46b7fa",
+      "type": "vocabulary",
+      "term": "sensitivity list",
+      "shortDefinition": "敏感列表",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌsensəˈtɪvəti lɪst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "敏感列表"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "复合名词，按组成词给出读法。"
+    },
+    {
+      "id": "systemc-66af36d5b0569fde",
+      "type": "vocabulary",
+      "term": "separation",
+      "shortDefinition": "分离，分隔（separation的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.sepəˈreɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "分离，分隔（separation的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：separations；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-baaf53622a51d975",
+      "type": "vocabulary",
+      "term": "shown",
+      "shortDefinition": "显示的（show的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ʃəʊn/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "v.",
+          "definitions": [
+            "显示的（show的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "show 的过去分词。"
+    },
+    {
+      "id": "systemc-d041924c15885af6",
+      "type": "vocabulary",
+      "term": "signal",
+      "shortDefinition": "信号",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsignl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; adj.",
+          "definitions": [
+            "信号"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-8cc0e56b16368984",
+      "type": "vocabulary",
+      "term": "similarity",
+      "shortDefinition": "相似之处（similarity的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.simiˈlæriti/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "相似之处（similarity的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：similarities；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-32e4bc02a7ccf34d",
+      "type": "vocabulary",
+      "term": "simulation",
+      "shortDefinition": "仿真，模拟",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/.simjuˈleɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "仿真，模拟"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-947f187506f7629c",
+      "type": "vocabulary",
+      "term": "single",
+      "shortDefinition": "单一的，单个的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsiŋgl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.; vt.; vi.; v.",
+          "definitions": [
+            "单一的，单个的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ccf1f3674df4b008",
+      "type": "vocabulary",
+      "term": "slower",
+      "shortDefinition": "较慢的（slow的比较级）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsləʊə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "较慢的（slow的比较级）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "slow 的比较级。"
+    },
+    {
+      "id": "systemc-2600f7e4db554c97",
+      "type": "vocabulary",
+      "term": "SoC",
+      "shortDefinition": "片上系统（System-on-a-Chip）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌes əʊ ˈsiː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "片上系统（System-on-a-Chip）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "System-on-a-Chip；采用字母拼读。"
+    },
+    {
+      "id": "systemc-35390f5453e810b6",
+      "type": "vocabulary",
+      "term": "software",
+      "shortDefinition": "软件",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsɒftwєə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "软件"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-41cf6794ba4200b8",
+      "type": "vocabulary",
+      "term": "source",
+      "shortDefinition": "源，来源",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/sɔːs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "源，来源"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-bbccb9c002d5ed59",
+      "type": "vocabulary",
+      "term": "speed",
+      "shortDefinition": "速度",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/spiːd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.; v.",
+          "definitions": [
+            "速度"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7d843341d5813857",
+      "type": "vocabulary",
+      "term": "stand for",
+      "shortDefinition": "代表",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/stænd fɔː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "phr. v.",
+          "definitions": [
+            "代表"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "动词短语，采用 for 的强读形式。"
+    },
+    {
+      "id": "systemc-4ba69735ca53765e",
+      "type": "vocabulary",
+      "term": "state",
+      "shortDefinition": "状态",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/steɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.; vt.",
+          "definitions": [
+            "状态"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b111c6e1d318f203",
+      "type": "vocabulary",
+      "term": "statement",
+      "shortDefinition": "语句（statement的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsteɪtmənt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "语句（statement的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：statements；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-8adb0ce65bdb70c8",
+      "type": "vocabulary",
+      "term": "stimulus",
+      "shortDefinition": "激励，刺激（单数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈstimjuləs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "激励，刺激（单数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "不规则复数：stimuli /ˈstɪmjʊlaɪ/。"
+    },
+    {
+      "id": "systemc-473287f8298dba71",
+      "type": "vocabulary",
+      "term": "string",
+      "shortDefinition": "字符串",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/striŋ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.",
+          "definitions": [
+            "字符串"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a18603086e5bdf9d",
+      "type": "vocabulary",
+      "term": "support",
+      "shortDefinition": "支持",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/səˈpɔːt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "支持"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f516e6c264930936",
+      "type": "vocabulary",
+      "term": "suspend",
+      "shortDefinition": "暂停，挂起",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/səˈspend/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; vi.; v.",
+          "definitions": [
+            "暂停，挂起"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-bbc5e661e106c6dc",
+      "type": "vocabulary",
+      "term": "system",
+      "shortDefinition": "系统",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsistəm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "系统"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-763b55964a4137f3",
+      "type": "vocabulary",
+      "term": "SystemC",
+      "shortDefinition": "系统级芯片设计语言",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈsɪstəm siː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "系统级芯片设计语言"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "System + 字母 C。"
+    },
+    {
+      "id": "systemc-0d4fc4a78d3706ed",
+      "type": "vocabulary",
+      "term": "table",
+      "shortDefinition": "表格",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈteɪbl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "表格"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-0ebb429fa86d481c",
+      "type": "vocabulary",
+      "term": "task",
+      "shortDefinition": "任务（task的复数）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/tɑːsk/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; v.",
+          "definitions": [
+            "任务（task的复数）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ],
+      "note": "原表词形：tasks；规则复数已还原为单数。"
+    },
+    {
+      "id": "systemc-486ad88a3471e0d1",
+      "type": "vocabulary",
+      "term": "testbench",
+      "shortDefinition": "测试平台",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈtestbentʃ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "测试平台"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "复合名词 test + bench。"
+    },
+    {
+      "id": "systemc-39200d1e8a8dbbb6",
+      "type": "vocabulary",
+      "term": "thread",
+      "shortDefinition": "线程",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/θred/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "线程"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2fa598562b7464e0",
+      "type": "vocabulary",
+      "term": "timed",
+      "shortDefinition": "定时的，计时的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/taɪmd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "定时的，计时的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-e65b64d0dbca80bd",
+      "type": "vocabulary",
+      "term": "TLM",
+      "shortDefinition": "事务级建模（Transaction Level Modelin…",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌtiː el ˈem/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "事务级建模（Transaction Level Modeling）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Transaction Level Modeling；按字母拼读。"
+    },
+    {
+      "id": "systemc-ce922519a3c3ecaf",
+      "type": "vocabulary",
+      "term": "transaction",
+      "shortDefinition": "事务",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/trænˈsækʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "事务"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-d887c82f353b013c",
+      "type": "vocabulary",
+      "term": "transistor",
+      "shortDefinition": "晶体管",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/trænˈzistə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "晶体管"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-5d1a9fd7fdc8c719",
+      "type": "vocabulary",
+      "term": "tri-state",
+      "shortDefinition": "三态的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈtraɪ steɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "三态的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "技术语境：三态的。"
+    },
+    {
+      "id": "systemc-b5bea41b6c623f7c",
+      "type": "vocabulary",
+      "term": "true",
+      "shortDefinition": "真的，正确的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/truː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.; n.; adv.; v.",
+          "definitions": [
+            "真的，正确的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7329973a1d4a5e16",
+      "type": "vocabulary",
+      "term": "truncation",
+      "shortDefinition": "截断",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/trʌŋˈkeɪʃən/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "截断"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-1303c06b0b014d0c",
+      "type": "vocabulary",
+      "term": "type",
+      "shortDefinition": "类型",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/taɪp/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "类型"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-ceffe727ab2fa2c7",
+      "type": "vocabulary",
+      "term": "unsigned",
+      "shortDefinition": "无符号的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ʌnˈsaɪnd/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "无符号的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-2937013f21818106",
+      "type": "vocabulary",
+      "term": "update",
+      "shortDefinition": "更新",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ʌpˈdeɪt/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "vt.; n.; v.",
+          "definitions": [
+            "更新"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-a3b142af6e97cfc3",
+      "type": "vocabulary",
+      "term": "use",
+      "shortDefinition": "使用",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/juːs/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "使用"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-f839161355091fcd",
+      "type": "vocabulary",
+      "term": "used",
+      "shortDefinition": "使用过的（use的过去分词）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈjuːst/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "使用过的（use的过去分词）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3b325109deb02ebf",
+      "type": "vocabulary",
+      "term": "variable",
+      "shortDefinition": "变量",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈvєəriəbl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; adj.",
+          "definitions": [
+            "变量"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-b0d51c58c8b9c1f4",
+      "type": "vocabulary",
+      "term": "vector",
+      "shortDefinition": "向量",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈvektə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.",
+          "definitions": [
+            "向量"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-807e7c542324d83c",
+      "type": "vocabulary",
+      "term": "VCD",
+      "shortDefinition": "波形文件格式（Value Change Dump）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌviː siː ˈdiː/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "波形文件格式（Value Change Dump）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Value Change Dump；按字母拼读。"
+    },
+    {
+      "id": "systemc-e2efdd7db924f31d",
+      "type": "vocabulary",
+      "term": "virtual",
+      "shortDefinition": "虚拟的",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈvɜːtʃuəl/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "adj.",
+          "definitions": [
+            "虚拟的"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-4b125ec99a744705",
+      "type": "vocabulary",
+      "term": "wave",
+      "shortDefinition": "波，波形",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/weɪv/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vi.; vt.",
+          "definitions": [
+            "波，波形"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-7d7bd6751b805865",
+      "type": "vocabulary",
+      "term": "waveform",
+      "shortDefinition": "波形",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈweɪvfɔːm/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "波形"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ]
+    },
+    {
+      "id": "systemc-dec0f004eaa07c2a",
+      "type": "vocabulary",
+      "term": "width",
+      "shortDefinition": "宽度",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/widθ/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "宽度"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-9b2abfc29cc47494",
+      "type": "vocabulary",
+      "term": "wire",
+      "shortDefinition": "导线，连线",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˈwaɪə/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.; vt.; vi.; v.",
+          "definitions": [
+            "导线，连线"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "ecdict-systemc"
+      ]
+    },
+    {
+      "id": "systemc-3176071c9e7edeac",
+      "type": "vocabulary",
+      "term": "WLF",
+      "shortDefinition": "波形日志文件（Waveform Log File）",
+      "pronunciations": [
+        {
+          "system": "ipa",
+          "region": "general",
+          "value": "/ˌdʌbəljuː el ˈef/"
+        }
+      ],
+      "senses": [
+        {
+          "id": "source-meaning",
+          "partOfSpeech": "n.",
+          "definitions": [
+            "波形日志文件（Waveform Log File）"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "user-systemc-workbook",
+        "systemc-editorial"
+      ],
+      "note": "Waveform Log File；按字母拼读。"
+    }
+  ]
+}

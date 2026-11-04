@@ -1,0 +1,883 @@
+{
+  "filename": "SystemC_英语单词翻译表.xlsx",
+  "sha256": "db234e8b0a03462cb44338b1f20f2943f4418021a66f7d7bc77067ad3ec08928",
+  "sheet": "Sheet1",
+  "entries": [
+    {
+      "term": "abbreviations",
+      "definition": "缩写"
+    },
+    {
+      "term": "accelerate",
+      "definition": "加速"
+    },
+    {
+      "term": "access",
+      "definition": "访问"
+    },
+    {
+      "term": "advance",
+      "definition": "前进，推进"
+    },
+    {
+      "term": "alternative",
+      "definition": "替代的"
+    },
+    {
+      "term": "amongst",
+      "definition": "在...之中（正式用语，等同于among）"
+    },
+    {
+      "term": "architecture",
+      "definition": "架构"
+    },
+    {
+      "term": "argument",
+      "definition": "参数"
+    },
+    {
+      "term": "arguments",
+      "definition": "参数（复数）"
+    },
+    {
+      "term": "array",
+      "definition": "数组"
+    },
+    {
+      "term": "assignment",
+      "definition": "赋值"
+    },
+    {
+      "term": "behind",
+      "definition": "在...后面，落后于"
+    },
+    {
+      "term": "below",
+      "definition": "在...下面，低于"
+    },
+    {
+      "term": "bind",
+      "definition": "绑定"
+    },
+    {
+      "term": "binding",
+      "definition": "绑定（动名词形式）"
+    },
+    {
+      "term": "bit",
+      "definition": "位"
+    },
+    {
+      "term": "blocking",
+      "definition": "阻塞的，阻断的"
+    },
+    {
+      "term": "bound",
+      "definition": "绑定（bind的过去式与过去分词）"
+    },
+    {
+      "term": "box",
+      "definition": "盒子，框，包装盒"
+    },
+    {
+      "term": "built",
+      "definition": "建造，构建（build的过去分词）"
+    },
+    {
+      "term": "bus",
+      "definition": "总线"
+    },
+    {
+      "term": "call",
+      "definition": "调用"
+    },
+    {
+      "term": "called",
+      "definition": "被称为，被叫做（call的过去分词）"
+    },
+    {
+      "term": "cannot",
+      "definition": "不能，无法"
+    },
+    {
+      "term": "cause",
+      "definition": "原因，导致"
+    },
+    {
+      "term": "channel",
+      "definition": "管道"
+    },
+    {
+      "term": "chip",
+      "definition": "芯片"
+    },
+    {
+      "term": "class",
+      "definition": "类（编程术语），班级"
+    },
+    {
+      "term": "clock",
+      "definition": "时钟"
+    },
+    {
+      "term": "close",
+      "definition": "关闭，紧密的"
+    },
+    {
+      "term": "code",
+      "definition": "代码"
+    },
+    {
+      "term": "coexist",
+      "definition": "共存"
+    },
+    {
+      "term": "communication",
+      "definition": "通讯"
+    },
+    {
+      "term": "compiler",
+      "definition": "编译器"
+    },
+    {
+      "term": "complete",
+      "definition": "完成的，完整的"
+    },
+    {
+      "term": "computation",
+      "definition": "计算"
+    },
+    {
+      "term": "concatenation",
+      "definition": "连接"
+    },
+    {
+      "term": "concern",
+      "definition": "涉及，关注"
+    },
+    {
+      "term": "concurrency",
+      "definition": "并发"
+    },
+    {
+      "term": "connect",
+      "definition": "连接"
+    },
+    {
+      "term": "connection",
+      "definition": "连接"
+    },
+    {
+      "term": "constructor",
+      "definition": "构造函数"
+    },
+    {
+      "term": "correct",
+      "definition": "正确的，纠正"
+    },
+    {
+      "term": "correspond",
+      "definition": "对应，符合"
+    },
+    {
+      "term": "CPP",
+      "definition": "C++编程语言（C Plus Plus）"
+    },
+    {
+      "term": "cycle",
+      "definition": "周期，循环"
+    },
+    {
+      "term": "data",
+      "definition": "数据"
+    },
+    {
+      "term": "debug",
+      "definition": "调试"
+    },
+    {
+      "term": "decimal",
+      "definition": "十进制的，小数"
+    },
+    {
+      "term": "declare",
+      "definition": "声明"
+    },
+    {
+      "term": "declaration",
+      "definition": "声明（declare的名词形式）"
+    },
+    {
+      "term": "define",
+      "definition": "定义（动词）"
+    },
+    {
+      "term": "definition",
+      "definition": "定义（名词）"
+    },
+    {
+      "term": "delta",
+      "definition": "增量，差值（希腊字母表的第 4 个字母）"
+    },
+    {
+      "term": "describe",
+      "definition": "描述"
+    },
+    {
+      "term": "description",
+      "definition": "描述，说明"
+    },
+    {
+      "term": "diagram",
+      "definition": "图表"
+    },
+    {
+      "term": "differences",
+      "definition": "差异，不同（difference的复数）"
+    },
+    {
+      "term": "done",
+      "definition": "完成的（do的过去分词）"
+    },
+    {
+      "term": "draw",
+      "definition": "绘制，画图"
+    },
+    {
+      "term": "driver",
+      "definition": "驱动"
+    },
+    {
+      "term": "DUT",
+      "definition": "被测设备（Device Under Test）"
+    },
+    {
+      "term": "duty cycle",
+      "definition": "占空比"
+    },
+    {
+      "term": "dynamic",
+      "definition": "动态的"
+    },
+    {
+      "term": "EDA",
+      "definition": "电子设计自动化（Electronic Design Automation）"
+    },
+    {
+      "term": "electrical",
+      "definition": "电气的，电子的"
+    },
+    {
+      "term": "empty",
+      "definition": "空的"
+    },
+    {
+      "term": "equivalent",
+      "definition": "等效的"
+    },
+    {
+      "term": "ESL",
+      "definition": "电子系统级（Electronic System Level）"
+    },
+    {
+      "term": "evaluate",
+      "definition": "评估，评价"
+    },
+    {
+      "term": "event",
+      "definition": "事件"
+    },
+    {
+      "term": "example",
+      "definition": "例子"
+    },
+    {
+      "term": "exchanged",
+      "definition": "交换的（exchange的过去分词）"
+    },
+    {
+      "term": "executed",
+      "definition": "执行的（execute的过去分词）"
+    },
+    {
+      "term": "execution",
+      "definition": "执行"
+    },
+    {
+      "term": "existing",
+      "definition": "现有的，存在的（exist的现在分词）"
+    },
+    {
+      "term": "explain",
+      "definition": "解释，说明"
+    },
+    {
+      "term": "false",
+      "definition": "假的，错误的"
+    },
+    {
+      "term": "file",
+      "definition": "文件"
+    },
+    {
+      "term": "finish",
+      "definition": "完成，结束"
+    },
+    {
+      "term": "flowchart",
+      "definition": "流程图"
+    },
+    {
+      "term": "following",
+      "definition": "以下的，跟随"
+    },
+    {
+      "term": "form",
+      "definition": "形式，表单"
+    },
+    {
+      "term": "format",
+      "definition": "格式"
+    },
+    {
+      "term": "full",
+      "definition": "完整的，满的"
+    },
+    {
+      "term": "function",
+      "definition": "函数，功能"
+    },
+    {
+      "term": "functionality",
+      "definition": "功能性，功能"
+    },
+    {
+      "term": "gate",
+      "definition": "门电路"
+    },
+    {
+      "term": "general",
+      "definition": "一般的，通用的"
+    },
+    {
+      "term": "generated",
+      "definition": "生成的"
+    },
+    {
+      "term": "hardware",
+      "definition": "硬件"
+    },
+    {
+      "term": "hexadecimal",
+      "definition": "十六进制的"
+    },
+    {
+      "term": "hierarchical",
+      "definition": "层次化的，层级的"
+    },
+    {
+      "term": "hierarchy",
+      "definition": "层次，层级"
+    },
+    {
+      "term": "idea",
+      "definition": "想法，概念"
+    },
+    {
+      "term": "illustrate",
+      "definition": "说明，举例"
+    },
+    {
+      "term": "immediate",
+      "definition": "立即的，即时的"
+    },
+    {
+      "term": "implement",
+      "definition": "实现"
+    },
+    {
+      "term": "including",
+      "definition": "包括（include的现在分词）"
+    },
+    {
+      "term": "infinite",
+      "definition": "无限的"
+    },
+    {
+      "term": "inheritance",
+      "definition": "继承"
+    },
+    {
+      "term": "initialization",
+      "definition": "初始化（initialize的名词）"
+    },
+    {
+      "term": "initialize",
+      "definition": "初始化"
+    },
+    {
+      "term": "initializer list",
+      "definition": "初始化列表"
+    },
+    {
+      "term": "instance",
+      "definition": "实例"
+    },
+    {
+      "term": "instantiate",
+      "definition": "实例化"
+    },
+    {
+      "term": "instantiating",
+      "definition": "实例化（instantiate的现在分词）"
+    },
+    {
+      "term": "integer",
+      "definition": "整数"
+    },
+    {
+      "term": "interface",
+      "definition": "接口"
+    },
+    {
+      "term": "known",
+      "definition": "已知的，知名的（know的过去分词）"
+    },
+    {
+      "term": "language",
+      "definition": "语言"
+    },
+    {
+      "term": "level",
+      "definition": "级别，层次"
+    },
+    {
+      "term": "limitation",
+      "definition": "限制，局限性"
+    },
+    {
+      "term": "line",
+      "definition": "线，行"
+    },
+    {
+      "term": "list",
+      "definition": "列表"
+    },
+    {
+      "term": "literal",
+      "definition": "字面量，文字"
+    },
+    {
+      "term": "logic",
+      "definition": "逻辑"
+    },
+    {
+      "term": "loops",
+      "definition": "循环（loop的复数）"
+    },
+    {
+      "term": "maximum",
+      "definition": "最大的，最大值"
+    },
+    {
+      "term": "meaning",
+      "definition": "意思，含义"
+    },
+    {
+      "term": "memory",
+      "definition": "内存，记忆"
+    },
+    {
+      "term": "monitor",
+      "definition": "监视器，显示器"
+    },
+    {
+      "term": "model",
+      "definition": "模型，建模"
+    },
+    {
+      "term": "modeling",
+      "definition": "建模（model的现在分词）"
+    },
+    {
+      "term": "modelling",
+      "definition": "建模（英式拼写，等同于modeling）"
+    },
+    {
+      "term": "modify",
+      "definition": "修改，更改"
+    },
+    {
+      "term": "module",
+      "definition": "模块"
+    },
+    {
+      "term": "multiple",
+      "definition": "多个的，多样的"
+    },
+    {
+      "term": "non",
+      "definition": "非，不（前缀）"
+    },
+    {
+      "term": "not",
+      "definition": "不，没有"
+    },
+    {
+      "term": "notification",
+      "definition": "通知，告知"
+    },
+    {
+      "term": "notify",
+      "definition": "通知，告知"
+    },
+    {
+      "term": "notion",
+      "definition": "概念，想法"
+    },
+    {
+      "term": "number",
+      "definition": "数字，数量"
+    },
+    {
+      "term": "object",
+      "definition": "对象"
+    },
+    {
+      "term": "OOP",
+      "definition": "面向对象编程（Object-Oriented Programming）"
+    },
+    {
+      "term": "operating",
+      "definition": "操作的，运行的（operate的现在分词）"
+    },
+    {
+      "term": "operation",
+      "definition": "操作，运算"
+    },
+    {
+      "term": "order",
+      "definition": "顺序，命令"
+    },
+    {
+      "term": "oriented",
+      "definition": "以...为导向的，面向...的"
+    },
+    {
+      "term": "OS",
+      "definition": "操作系统（Operating System）"
+    },
+    {
+      "term": "output",
+      "definition": "输出"
+    },
+    {
+      "term": "overload",
+      "definition": "重载"
+    },
+    {
+      "term": "passed",
+      "definition": "传递，通过（过去分词）"
+    },
+    {
+      "term": "pin",
+      "definition": "引脚，针脚，管脚"
+    },
+    {
+      "term": "please",
+      "definition": "请，使高兴"
+    },
+    {
+      "term": "pointer",
+      "definition": "指针"
+    },
+    {
+      "term": "points",
+      "definition": "点（point的复数）"
+    },
+    {
+      "term": "polymorphism",
+      "definition": "多态"
+    },
+    {
+      "term": "port",
+      "definition": "端口"
+    },
+    {
+      "term": "possible",
+      "definition": "可能的"
+    },
+    {
+      "term": "prefixing",
+      "definition": "前缀（prefix的现在分词）"
+    },
+    {
+      "term": "primitive",
+      "definition": "基本的，原生的"
+    },
+    {
+      "term": "priority",
+      "definition": "优先级"
+    },
+    {
+      "term": "procedure",
+      "definition": "过程，程序"
+    },
+    {
+      "term": "process",
+      "definition": "进程，处理"
+    },
+    {
+      "term": "provided",
+      "definition": "提供的（provide的过去分词）"
+    },
+    {
+      "term": "RAM",
+      "definition": "随机存取存储器（Random Access Memory）"
+    },
+    {
+      "term": "random",
+      "definition": "随机的"
+    },
+    {
+      "term": "refer",
+      "definition": "参考，涉及"
+    },
+    {
+      "term": "register",
+      "definition": "寄存器"
+    },
+    {
+      "term": "relationship",
+      "definition": "关系"
+    },
+    {
+      "term": "rely",
+      "definition": "依赖，依靠"
+    },
+    {
+      "term": "repeatedly",
+      "definition": "重复地，反复地"
+    },
+    {
+      "term": "replaced",
+      "definition": "替换的（replace的过去分词）"
+    },
+    {
+      "term": "represented",
+      "definition": "表示的（represent的过去分词）"
+    },
+    {
+      "term": "represent",
+      "definition": "表示"
+    },
+    {
+      "term": "resolution",
+      "definition": "分辨率，解决"
+    },
+    {
+      "term": "resolving",
+      "definition": "解决（resolve的现在分词）"
+    },
+    {
+      "term": "RTL",
+      "definition": "寄存器传输级（Register Transfer Level）"
+    },
+    {
+      "term": "running",
+      "definition": "运行的（run的现在分词）"
+    },
+    {
+      "term": "schedule",
+      "definition": "调度"
+    },
+    {
+      "term": "sensitivity",
+      "definition": "灵敏度，敏感"
+    },
+    {
+      "term": "sensitivity list",
+      "definition": "敏感列表"
+    },
+    {
+      "term": "separations",
+      "definition": "分离，分隔（separation的复数）"
+    },
+    {
+      "term": "shown",
+      "definition": "显示的（show的过去分词）"
+    },
+    {
+      "term": "signal",
+      "definition": "信号"
+    },
+    {
+      "term": "similarities",
+      "definition": "相似之处（similarity的复数）"
+    },
+    {
+      "term": "simulation",
+      "definition": "仿真，模拟"
+    },
+    {
+      "term": "single",
+      "definition": "单一的，单个的"
+    },
+    {
+      "term": "slower",
+      "definition": "较慢的（slow的比较级）"
+    },
+    {
+      "term": "SoC",
+      "definition": "片上系统（System-on-a-Chip）"
+    },
+    {
+      "term": "software",
+      "definition": "软件"
+    },
+    {
+      "term": "source",
+      "definition": "源，来源"
+    },
+    {
+      "term": "speed",
+      "definition": "速度"
+    },
+    {
+      "term": "stand for",
+      "definition": "代表"
+    },
+    {
+      "term": "state",
+      "definition": "状态"
+    },
+    {
+      "term": "statements",
+      "definition": "语句（statement的复数）"
+    },
+    {
+      "term": "stimulus",
+      "definition": "激励，刺激（单数）"
+    },
+    {
+      "term": "string",
+      "definition": "字符串"
+    },
+    {
+      "term": "support",
+      "definition": "支持"
+    },
+    {
+      "term": "suspend",
+      "definition": "暂停，挂起"
+    },
+    {
+      "term": "system",
+      "definition": "系统"
+    },
+    {
+      "term": "SystemC",
+      "definition": "系统级芯片设计语言"
+    },
+    {
+      "term": "table",
+      "definition": "表格"
+    },
+    {
+      "term": "tasks",
+      "definition": "任务（task的复数）"
+    },
+    {
+      "term": "testbench",
+      "definition": "测试平台"
+    },
+    {
+      "term": "thread",
+      "definition": "线程"
+    },
+    {
+      "term": "timed",
+      "definition": "定时的，计时的"
+    },
+    {
+      "term": "TLM",
+      "definition": "事务级建模（Transaction Level Modeling）"
+    },
+    {
+      "term": "transaction",
+      "definition": "事务"
+    },
+    {
+      "term": "transistor",
+      "definition": "晶体管"
+    },
+    {
+      "term": "tri-state",
+      "definition": "三态的"
+    },
+    {
+      "term": "true",
+      "definition": "真的，正确的"
+    },
+    {
+      "term": "truncation",
+      "definition": "截断"
+    },
+    {
+      "term": "type",
+      "definition": "类型"
+    },
+    {
+      "term": "unsigned",
+      "definition": "无符号的"
+    },
+    {
+      "term": "update",
+      "definition": "更新"
+    },
+    {
+      "term": "use",
+      "definition": "使用"
+    },
+    {
+      "term": "used",
+      "definition": "使用过的（use的过去分词）"
+    },
+    {
+      "term": "variable",
+      "definition": "变量"
+    },
+    {
+      "term": "vector",
+      "definition": "向量"
+    },
+    {
+      "term": "VCD",
+      "definition": "波形文件格式（Value Change Dump）"
+    },
+    {
+      "term": "virtual",
+      "definition": "虚拟的"
+    },
+    {
+      "term": "wave",
+      "definition": "波，波形"
+    },
+    {
+      "term": "waveform",
+      "definition": "波形"
+    },
+    {
+      "term": "width",
+      "definition": "宽度"
+    },
+    {
+      "term": "wire",
+      "definition": "导线，连线"
+    },
+    {
+      "term": "WLF",
+      "definition": "波形日志文件（Waveform Log File）"
+    }
+  ]
+}

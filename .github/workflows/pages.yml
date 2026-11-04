@@ -27,7 +27,8 @@ jobs:
       - name: Verify sample dictionary reproducibility
         run: |
           python3 data/build_first_dictionary.py
-          git diff --exit-code -- examples/first-dictionary.json
+          python3 data/build_systemc_dictionary.py
+          git diff --exit-code -- examples/first-dictionary.json examples/systemc-dictionary.json
       - run: node scripts/package-site.mjs
       - uses: actions/configure-pages@v6.0.0
       - uses: actions/upload-pages-artifact@v5.0.0

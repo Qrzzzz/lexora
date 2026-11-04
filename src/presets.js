@@ -9,6 +9,13 @@ export const presets = [
     count: 3815,
     url: new URL("../examples/first-dictionary.json", import.meta.url),
   },
+  {
+    id: "systemc",
+    deckId: "lexora:systemc",
+    title: "SystemC 英语词汇",
+    count: 218,
+    url: new URL("../examples/systemc-dictionary.json", import.meta.url),
+  },
 ];
 
 export async function loadPreset(preset = presets[0], { signal } = {}) {
