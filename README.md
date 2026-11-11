@@ -146,7 +146,7 @@ node scripts/package-site.mjs
 
 推送 main 会自动运行检查和 Pages 发布；也支持手动触发。发布前校验格式、学习规则与词表可重复生成性，站点的 `build-info.json` 记录对应提交与词册散列。
 
-[贡献说明](./CONTRIBUTING.md) · [本地验证记录](./docs/validation.md)
+[贡献说明](./CONTRIBUTING.md)
 
 ## 🙏 致谢
 
